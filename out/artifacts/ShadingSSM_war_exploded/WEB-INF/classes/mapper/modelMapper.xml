@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoming.dao.modelMapper">
+  <resultMap id="BaseResultMap" type="com.xiaoming.model.model">
+    <constructor>
+      <idArg column="Model_ID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="Model_Type" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="Model_Position_X" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="Model_Position_Y" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="Model_Position_Z" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="Model_Rotation_X" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="Model_Rotation_Y" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="Model_Rotation_Z" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="Model_Scale_X" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="Model_Scale_Y" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="Model_Scale_Z" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="Create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="Update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    Model_ID, Model_Type, Model_Position_X, Model_Position_Y, Model_Position_Z, Model_Rotation_X, 
+    Model_Rotation_Y, Model_Rotation_Z, Model_Scale_X, Model_Scale_Y, Model_Scale_Z, 
+    Create_time, Update_time
+  </sql>
+  <select id="selectByExample" parameterType="com.xiaoming.model.modelExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from model
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from model
+    where Model_ID = #{modelId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from model
+    where Model_ID = #{modelId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xiaoming.model.modelExample">
+    delete from model
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xiaoming.model.model">
+    insert into model (Model_ID, Model_Type, Model_Position_X, 
+      Model_Position_Y, Model_Position_Z, Model_Rotation_X, 
+      Model_Rotation_Y, Model_Rotation_Z, Model_Scale_X, 
+      Model_Scale_Y, Model_Scale_Z, Create_time, 
+      Update_time)
+    values (#{modelId,jdbcType=INTEGER}, #{modelType,jdbcType=VARCHAR}, #{modelPositionX,jdbcType=REAL}, 
+      #{modelPositionY,jdbcType=REAL}, #{modelPositionZ,jdbcType=REAL}, #{modelRotationX,jdbcType=REAL}, 
+      #{modelRotationY,jdbcType=REAL}, #{modelRotationZ,jdbcType=REAL}, #{modelScaleX,jdbcType=REAL}, 
+      #{modelScaleY,jdbcType=REAL}, #{modelScaleZ,jdbcType=REAL}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xiaoming.model.model">
+    insert into model
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="modelId != null">
+        Model_ID,
+      </if>
+      <if test="modelType != null">
+        Model_Type,
+      </if>
+      <if test="modelPositionX != null">
+        Model_Position_X,
+      </if>
+      <if test="modelPositionY != null">
+        Model_Position_Y,
+      </if>
+      <if test="modelPositionZ != null">
+        Model_Position_Z,
+      </if>
+      <if test="modelRotationX != null">
+        Model_Rotation_X,
+      </if>
+      <if test="modelRotationY != null">
+        Model_Rotation_Y,
+      </if>
+      <if test="modelRotationZ != null">
+        Model_Rotation_Z,
+      </if>
+      <if test="modelScaleX != null">
+        Model_Scale_X,
+      </if>
+      <if test="modelScaleY != null">
+        Model_Scale_Y,
+      </if>
+      <if test="modelScaleZ != null">
+        Model_Scale_Z,
+      </if>
+      <if test="createTime != null">
+        Create_time,
+      </if>
+      <if test="updateTime != null">
+        Update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="modelId != null">
+        #{modelId,jdbcType=INTEGER},
+      </if>
+      <if test="modelType != null">
+        #{modelType,jdbcType=VARCHAR},
+      </if>
+      <if test="modelPositionX != null">
+        #{modelPositionX,jdbcType=REAL},
+      </if>
+      <if test="modelPositionY != null">
+        #{modelPositionY,jdbcType=REAL},
+      </if>
+      <if test="modelPositionZ != null">
+        #{modelPositionZ,jdbcType=REAL},
+      </if>
+      <if test="modelRotationX != null">
+        #{modelRotationX,jdbcType=REAL},
+      </if>
+      <if test="modelRotationY != null">
+        #{modelRotationY,jdbcType=REAL},
+      </if>
+      <if test="modelRotationZ != null">
+        #{modelRotationZ,jdbcType=REAL},
+      </if>
+      <if test="modelScaleX != null">
+        #{modelScaleX,jdbcType=REAL},
+      </if>
+      <if test="modelScaleY != null">
+        #{modelScaleY,jdbcType=REAL},
+      </if>
+      <if test="modelScaleZ != null">
+        #{modelScaleZ,jdbcType=REAL},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xiaoming.model.modelExample" resultType="java.lang.Long">
+    select count(*) from model
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update model
+    <set>
+      <if test="record.modelId != null">
+        Model_ID = #{record.modelId,jdbcType=INTEGER},
+      </if>
+      <if test="record.modelType != null">
+        Model_Type = #{record.modelType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modelPositionX != null">
+        Model_Position_X = #{record.modelPositionX,jdbcType=REAL},
+      </if>
+      <if test="record.modelPositionY != null">
+        Model_Position_Y = #{record.modelPositionY,jdbcType=REAL},
+      </if>
+      <if test="record.modelPositionZ != null">
+        Model_Position_Z = #{record.modelPositionZ,jdbcType=REAL},
+      </if>
+      <if test="record.modelRotationX != null">
+        Model_Rotation_X = #{record.modelRotationX,jdbcType=REAL},
+      </if>
+      <if test="record.modelRotationY != null">
+        Model_Rotation_Y = #{record.modelRotationY,jdbcType=REAL},
+      </if>
+      <if test="record.modelRotationZ != null">
+        Model_Rotation_Z = #{record.modelRotationZ,jdbcType=REAL},
+      </if>
+      <if test="record.modelScaleX != null">
+        Model_Scale_X = #{record.modelScaleX,jdbcType=REAL},
+      </if>
+      <if test="record.modelScaleY != null">
+        Model_Scale_Y = #{record.modelScaleY,jdbcType=REAL},
+      </if>
+      <if test="record.modelScaleZ != null">
+        Model_Scale_Z = #{record.modelScaleZ,jdbcType=REAL},
+      </if>
+      <if test="record.createTime != null">
+        Create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        Update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update model
+    set Model_ID = #{record.modelId,jdbcType=INTEGER},
+      Model_Type = #{record.modelType,jdbcType=VARCHAR},
+      Model_Position_X = #{record.modelPositionX,jdbcType=REAL},
+      Model_Position_Y = #{record.modelPositionY,jdbcType=REAL},
+      Model_Position_Z = #{record.modelPositionZ,jdbcType=REAL},
+      Model_Rotation_X = #{record.modelRotationX,jdbcType=REAL},
+      Model_Rotation_Y = #{record.modelRotationY,jdbcType=REAL},
+      Model_Rotation_Z = #{record.modelRotationZ,jdbcType=REAL},
+      Model_Scale_X = #{record.modelScaleX,jdbcType=REAL},
+      Model_Scale_Y = #{record.modelScaleY,jdbcType=REAL},
+      Model_Scale_Z = #{record.modelScaleZ,jdbcType=REAL},
+      Create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      Update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xiaoming.model.model">
+    update model
+    <set>
+      <if test="modelType != null">
+        Model_Type = #{modelType,jdbcType=VARCHAR},
+      </if>
+      <if test="modelPositionX != null">
+        Model_Position_X = #{modelPositionX,jdbcType=REAL},
+      </if>
+      <if test="modelPositionY != null">
+        Model_Position_Y = #{modelPositionY,jdbcType=REAL},
+      </if>
+      <if test="modelPositionZ != null">
+        Model_Position_Z = #{modelPositionZ,jdbcType=REAL},
+      </if>
+      <if test="modelRotationX != null">
+        Model_Rotation_X = #{modelRotationX,jdbcType=REAL},
+      </if>
+      <if test="modelRotationY != null">
+        Model_Rotation_Y = #{modelRotationY,jdbcType=REAL},
+      </if>
+      <if test="modelRotationZ != null">
+        Model_Rotation_Z = #{modelRotationZ,jdbcType=REAL},
+      </if>
+      <if test="modelScaleX != null">
+        Model_Scale_X = #{modelScaleX,jdbcType=REAL},
+      </if>
+      <if test="modelScaleY != null">
+        Model_Scale_Y = #{modelScaleY,jdbcType=REAL},
+      </if>
+      <if test="modelScaleZ != null">
+        Model_Scale_Z = #{modelScaleZ,jdbcType=REAL},
+      </if>
+      <if test="createTime != null">
+        Create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        Update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Model_ID = #{modelId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xiaoming.model.model">
+    update model
+    set Model_Type = #{modelType,jdbcType=VARCHAR},
+      Model_Position_X = #{modelPositionX,jdbcType=REAL},
+      Model_Position_Y = #{modelPositionY,jdbcType=REAL},
+      Model_Position_Z = #{modelPositionZ,jdbcType=REAL},
+      Model_Rotation_X = #{modelRotationX,jdbcType=REAL},
+      Model_Rotation_Y = #{modelRotationY,jdbcType=REAL},
+      Model_Rotation_Z = #{modelRotationZ,jdbcType=REAL},
+      Model_Scale_X = #{modelScaleX,jdbcType=REAL},
+      Model_Scale_Y = #{modelScaleY,jdbcType=REAL},
+      Model_Scale_Z = #{modelScaleZ,jdbcType=REAL},
+      Create_time = #{createTime,jdbcType=TIMESTAMP},
+      Update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where Model_ID = #{modelId,jdbcType=INTEGER}
+  </update>
+</mapper>

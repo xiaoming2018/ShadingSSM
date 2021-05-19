@@ -9,9 +9,108 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a927a490-f0fb-4ae5-b8c1-82353338dd4b" name="Default Changelist" comment="first">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="a927a490-f0fb-4ae5-b8c1-82353338dd4b" name="Default Changelist" comment="README.md update">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/utils/Msg.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/jdbc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/Detector.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/Stats.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/box.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/box2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/cameras.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/controls/DeviceOrientationControls.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/controls/DragControls.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/controls/FirstPersonControls.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/controls/FlyControls.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/controls/OrbitControls.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/controls/PointerLockControls.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/controls/TrackballControls.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/controls/TransformControls.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/controls/experimental/CameraControls.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/libs/WebGL.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/libs/ammo.wasm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/libs/ammo.wasm.wasm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/libs/basis/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/libs/basis/basis_transcoder.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/libs/basis/basis_transcoder.wasm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/libs/chevrotain.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/libs/dat.gui.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/libs/draco/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/libs/draco/draco_decoder.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/libs/draco/draco_decoder.wasm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/libs/draco/draco_encoder.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/libs/draco/draco_wasm_wrapper.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/libs/draco/gltf/draco_decoder.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/libs/draco/gltf/draco_decoder.wasm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/libs/draco/gltf/draco_encoder.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/libs/draco/gltf/draco_wasm_wrapper.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/libs/fflate.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/libs/lottie_canvas.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/libs/meshopt_decoder.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/libs/opentype.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/libs/stats.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/three.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/three.module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/layui/css/layui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/layui/css/modules/code.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/layui/css/modules/laydate/default/laydate.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/layui/css/modules/layer/default/icon-ext.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/layui/css/modules/layer/default/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/layui/css/modules/layer/default/layer.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/layui/css/modules/layer/default/loading-0.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/layui/css/modules/layer/default/loading-1.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/layui/css/modules/layer/default/loading-2.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/layui/font/iconfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/layui/font/iconfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/layui/font/iconfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/layui/font/iconfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/layui/font/iconfont.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/layui/layui.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/textures/cube/space/back.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/textures/cube/space/bottom.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/textures/cube/space/front.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/textures/cube/space/left.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/textures/cube/space/right.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/textures/cube/space/top.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ShadingSSM_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/ShadingSSM_war_exploded.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/classes/com/xiaoming/controller/LoginController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/dispatcher-servlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/dispatcher-servlet.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/lib/commons-dbcp-1.4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/lib/commons-pool-1.5.4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/lib/jstl-1.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/lib/log4j-1.2.14.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/lib/mybatis-3.5.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/lib/mybatis-spring-2.0.6.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/lib/mysql-connector-java-8.0.23.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/lib/protobuf-java-3.11.4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/lib/spring-aop-5.3.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/lib/spring-beans-5.3.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/lib/spring-context-5.3.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/lib/spring-core-5.3.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/lib/spring-expression-5.3.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/lib/spring-jcl-5.3.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/lib/spring-jdbc-5.3.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/lib/spring-tx-5.3.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/lib/spring-web-5.3.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/lib/spring-webmvc-5.3.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/views/success.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/views/success.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/static/js/JQuery3.6.0.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/web/WEB-INF/applicationContext.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/web/WEB-INF/dispatcher-servlet.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/xiaoming/controller/LoginController.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,9 +121,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="spring-beans.schema" />
-        <option value="Class" />
-        <option value="HTML File" />
         <option value="Jsp File" />
+        <option value="HTML File" />
+        <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -61,33 +161,37 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedIndex" value="1" />
-  </component>
   <component name="ProjectId" id="1sFRnnQI7CqscmwL2l0aJaMeCd7" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/web/static/js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.16666667" />
     <property name="project.structure.side.proportion" value="0.24012807" />
-    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\IDEA Project\ShadingSSM\src\main\resources" />
+      <recent name="E:\IDEA Project\ShadingSSM\src\main\web\static" />
       <recent name="E:\IDEA Project\ShadingSSM\src\main\web\static\js" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\IDEA Project\ShadingSSM\src\main\resources" />
       <recent name="E:\IDEA Project\ShadingSSM\src\main" />
     </key>
   </component>
@@ -104,6 +208,32 @@
       </method>
     </configuration>
     <configuration name="generated-requests#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="ShadingSSM [mybatis-generator:generate...]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="mybatis-generator:generate" />
+                <option value="-e" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
       <method v="2" />
     </configuration>
     <configuration name="Tomcat 8.5.65" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.65" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
@@ -195,6 +325,23 @@
         </option>
       </method>
     </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
+      <deployment />
+      <server-settings />
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="HTTP Request.generated-requests#1" />
+      <item itemvalue="Maven.ShadingSSM [mybatis-generator:generate...]" />
+      <item itemvalue="Tomcat Server.Tomcat 8.5.65" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="HTTP Request.generated-requests#1" />
@@ -217,7 +364,16 @@
       <workItem from="1620609207889" duration="2477000" />
       <workItem from="1620612048500" duration="4741000" />
       <workItem from="1620616906484" duration="134000" />
-      <workItem from="1620617062274" duration="8291000" />
+      <workItem from="1620617062274" duration="10337000" />
+      <workItem from="1620696330552" duration="269000" />
+      <workItem from="1620696674389" duration="1233000" />
+      <workItem from="1620782612583" duration="1198000" />
+      <workItem from="1620869564056" duration="782000" />
+      <workItem from="1621306697966" duration="13004000" />
+      <workItem from="1621388112246" duration="639000" />
+      <workItem from="1621391297129" duration="2434000" />
+      <workItem from="1621395601674" duration="5103000" />
+      <workItem from="1621412534301" duration="3389000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1620630624571</created>
@@ -233,7 +389,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620630921405</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="README.md update">
+      <created>1620632728250</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1620632728250</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -249,21 +412,12 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first" />
-    <option name="LAST_COMMIT_MESSAGE" value="first" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/controller/LoginController.java</url>
-          <line>12</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="README.md update" />
+    <option name="LAST_COMMIT_MESSAGE" value="README.md update" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
