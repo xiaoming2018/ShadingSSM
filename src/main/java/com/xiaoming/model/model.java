@@ -27,11 +27,15 @@ public class model {
 
     private Float modelScaleZ;
 
+    private String modelFilepath;
+
+    private String modelFileindex;
+
     private Date createTime;
 
     private Date updateTime;
 
-    public model(Integer modelId, String modelTitle, String modelType, Float modelPositionX, Float modelPositionY, Float modelPositionZ, Float modelRotationX, Float modelRotationY, Float modelRotationZ, Float modelScaleX, Float modelScaleY, Float modelScaleZ, Date createTime, Date updateTime) {
+    public model(Integer modelId, String modelTitle, String modelType, Float modelPositionX, Float modelPositionY, Float modelPositionZ, Float modelRotationX, Float modelRotationY, Float modelRotationZ, Float modelScaleX, Float modelScaleY, Float modelScaleZ, String modelFilepath, String modelFileindex, Date createTime, Date updateTime) {
         this.modelId = modelId;
         this.modelTitle = modelTitle;
         this.modelType = modelType;
@@ -44,6 +48,8 @@ public class model {
         this.modelScaleX = modelScaleX;
         this.modelScaleY = modelScaleY;
         this.modelScaleZ = modelScaleZ;
+        this.modelFilepath = modelFilepath;
+        this.modelFileindex = modelFileindex;
         this.createTime = createTime;
         this.updateTime = updateTime;
     }
@@ -146,6 +152,22 @@ public class model {
 
     public void setModelScaleZ(Float modelScaleZ) {
         this.modelScaleZ = modelScaleZ;
+    }
+
+    public String getModelFilepath() {
+        return modelFilepath;
+    }
+
+    public void setModelFilepath(String modelFilepath) {
+        this.modelFilepath = modelFilepath == null ? null : modelFilepath.trim();
+    }
+
+    public String getModelFileindex() {
+        return modelFileindex;
+    }
+
+    public void setModelFileindex(String modelFileindex) {
+        this.modelFileindex = modelFileindex == null ? null : modelFileindex.trim();
     }
 
     public Date getCreateTime() {

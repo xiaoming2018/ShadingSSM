@@ -121,13 +121,13 @@ function render() {
     // 获取到窗口的一般高度和一半宽度
     let halfwidth = width / 2;
     let halfheight = height / 2;
-
+    
     let vector1 = cube.position.clone().project(camera);
     let vector2 = cube2.position.clone().project(camera);
     let vector3 = cube3.position.clone().project(camera);
 
     // 修改标签 div 位置
-    $(".one").css({
+    $("#first").css({
         left:vector1.x * halfwidth + halfwidth,
         top:-vector1.y * halfheight + halfheight
     });

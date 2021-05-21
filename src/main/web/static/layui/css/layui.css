@@ -935,18 +935,18 @@ a cite {
     top: 0;
     bottom: 0;
     z-index: 999;
-    width: 200px
+    width: 240px
 }
 
 .layui-side-scroll {
     position: relative;
-    width: 220px;
+    width: 240px;
     height: 100%
 }
 
 .layui-body {
     position: relative;
-    left: 200px;
+    left: 240px;
     right: 0;
     top: 0;
     bottom: 0;
@@ -966,7 +966,7 @@ a cite {
 /* 修改侧边栏宽度 */
 .layui-layout-admin .layui-side {
     top: 60px;
-    width: 200px;
+    width: 240px;
     /*width: 300px;*/
     overflow-x: hidden
 }
@@ -984,7 +984,7 @@ a cite {
 
 .layui-layout-admin .layui-footer {
     position: fixed;
-    left: 200px;
+    left: 240px;
     right: 0;
     bottom: 0;
     z-index: 990;
@@ -999,7 +999,7 @@ a cite {
     position: absolute;
     left: 0;
     top: 0;
-    width: 200px;
+    width: 240px;
     height: 100%;
     line-height: 60px;
     text-align: center;
@@ -1013,7 +1013,7 @@ a cite {
 
 .layui-layout-left {
     position: absolute !important;
-    left: 200px;
+    left: 240px;
     top: 0
 }
 
@@ -4146,7 +4146,7 @@ body .layui-table-tips .layui-layer-content {
 }
 
 .layui-nav-tree {
-    width: 200px;
+    width: 240px;
     padding: 0
 }
 

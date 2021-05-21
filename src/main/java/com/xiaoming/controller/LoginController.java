@@ -17,6 +17,8 @@ public class LoginController {
     @RequestMapping(value = "/login")
     @ResponseBody
     public Msg login(String ins) {
+
+        // layui tree data package
         System.out.println(ins);
         // model
         List<JSONObject> modellist = new ArrayList<>();
@@ -32,6 +34,7 @@ public class LoginController {
         JSONObject model = new JSONObject();
         model.put("id","模型");
         model.put("title", "模型");
+        model.put("spread", true);
         model.put("children", modellist);
 
         List<JSONObject> cameraList = new ArrayList<>();
@@ -53,9 +56,11 @@ public class LoginController {
         JSONObject scene = new JSONObject();
         scene.put("id", "101"); // scene id
         scene.put("title", "默认场景"); // scene title
+        scene.put("spread", true); //
         scene.put("children", ls);
 
-        System.out.println("information" + ls);
+        System.out.println("information" + scene);
         return Msg.success().add("data", scene);
     }
+
 }

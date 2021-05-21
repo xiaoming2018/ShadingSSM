@@ -9,7 +9,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a927a490-f0fb-4ae5-b8c1-82353338dd4b" name="Default Changelist" comment="mysql - tree - update" />
+    <list default="true" id="a927a490-f0fb-4ae5-b8c1-82353338dd4b" name="Default Changelist" comment="mysql - tree - update">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/FilesController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/service/Impl/ModelServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/utils/FileProcess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/classes/com/xiaoming/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/classes/com/xiaoming/controller/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/static/js/box.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/static/js/box.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/static/layui/css/layui.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/static/layui/css/layui.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/modelExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/modelExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/modelMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/modelMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/web/static/js/box.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/static/js/box.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/web/static/layui/css/layui.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/static/layui/css/layui.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/xiaoming/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xiaoming/controller/LoginController.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,8 +41,8 @@
         <option value="spring-beans.schema" />
         <option value="Jsp File" />
         <option value="HTML File" />
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -75,12 +95,12 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/web/static/css" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ChatRobot" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.16666667" />
     <property name="project.structure.side.proportion" value="0.24012807" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Language Defaults" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -95,15 +115,13 @@
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 8.5.65">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -263,7 +281,11 @@
       <workItem from="1621391297129" duration="2434000" />
       <workItem from="1621395601674" duration="5103000" />
       <workItem from="1621412534301" duration="4525000" />
-      <workItem from="1621473400562" duration="17466000" />
+      <workItem from="1621473400562" duration="18110000" />
+      <workItem from="1621559563782" duration="14945000" />
+      <workItem from="1621583432207" duration="355000" />
+      <workItem from="1621583813005" duration="47000" />
+      <workItem from="1621583925910" duration="4055000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1620630624571</created>
@@ -314,7 +336,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621501470897</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="mysql - tree - update">
+      <created>1621502370795</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1621502370795</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -338,6 +367,37 @@
     <MESSAGE value="mysql - ssm - 逆向工程 update" />
     <MESSAGE value="mysql - tree - update" />
     <option name="LAST_COMMIT_MESSAGE" value="mysql - tree - update" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/controller/FilesController.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/controller/FilesController.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/controller/FilesController.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/controller/FilesController.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/controller/FilesController.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
