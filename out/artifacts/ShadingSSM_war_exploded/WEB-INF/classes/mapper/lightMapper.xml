@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoming.dao.lightMapper">
+  <resultMap id="BaseResultMap" type="com.xiaoming.model.light">
+    <constructor>
+      <idArg column="Light_ID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="Light_title" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="Light_Type" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="Light_Position_X" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="Light_Position_Y" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="Light_Position_Z" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="Light_Color" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="Light_Intensity" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="Create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="Update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    Light_ID, Light_title, Light_Type, Light_Position_X, Light_Position_Y, Light_Position_Z, 
+    Light_Color, Light_Intensity, Create_time, Update_time
+  </sql>
+  <select id="selectByExample" parameterType="com.xiaoming.model.lightExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from light
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from light
+    where Light_ID = #{lightId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from light
+    where Light_ID = #{lightId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xiaoming.model.lightExample">
+    delete from light
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xiaoming.model.light">
+    insert into light (Light_ID, Light_title, Light_Type, 
+      Light_Position_X, Light_Position_Y, Light_Position_Z, 
+      Light_Color, Light_Intensity, Create_time, 
+      Update_time)
+    values (#{lightId,jdbcType=INTEGER}, #{lightTitle,jdbcType=VARCHAR}, #{lightType,jdbcType=VARCHAR}, 
+      #{lightPositionX,jdbcType=VARCHAR}, #{lightPositionY,jdbcType=VARCHAR}, #{lightPositionZ,jdbcType=VARCHAR}, 
+      #{lightColor,jdbcType=VARCHAR}, #{lightIntensity,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xiaoming.model.light">
+    insert into light
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="lightId != null">
+        Light_ID,
+      </if>
+      <if test="lightTitle != null">
+        Light_title,
+      </if>
+      <if test="lightType != null">
+        Light_Type,
+      </if>
+      <if test="lightPositionX != null">
+        Light_Position_X,
+      </if>
+      <if test="lightPositionY != null">
+        Light_Position_Y,
+      </if>
+      <if test="lightPositionZ != null">
+        Light_Position_Z,
+      </if>
+      <if test="lightColor != null">
+        Light_Color,
+      </if>
+      <if test="lightIntensity != null">
+        Light_Intensity,
+      </if>
+      <if test="createTime != null">
+        Create_time,
+      </if>
+      <if test="updateTime != null">
+        Update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="lightId != null">
+        #{lightId,jdbcType=INTEGER},
+      </if>
+      <if test="lightTitle != null">
+        #{lightTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="lightType != null">
+        #{lightType,jdbcType=VARCHAR},
+      </if>
+      <if test="lightPositionX != null">
+        #{lightPositionX,jdbcType=VARCHAR},
+      </if>
+      <if test="lightPositionY != null">
+        #{lightPositionY,jdbcType=VARCHAR},
+      </if>
+      <if test="lightPositionZ != null">
+        #{lightPositionZ,jdbcType=VARCHAR},
+      </if>
+      <if test="lightColor != null">
+        #{lightColor,jdbcType=VARCHAR},
+      </if>
+      <if test="lightIntensity != null">
+        #{lightIntensity,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xiaoming.model.lightExample" resultType="java.lang.Long">
+    select count(*) from light
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update light
+    <set>
+      <if test="record.lightId != null">
+        Light_ID = #{record.lightId,jdbcType=INTEGER},
+      </if>
+      <if test="record.lightTitle != null">
+        Light_title = #{record.lightTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lightType != null">
+        Light_Type = #{record.lightType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lightPositionX != null">
+        Light_Position_X = #{record.lightPositionX,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lightPositionY != null">
+        Light_Position_Y = #{record.lightPositionY,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lightPositionZ != null">
+        Light_Position_Z = #{record.lightPositionZ,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lightColor != null">
+        Light_Color = #{record.lightColor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lightIntensity != null">
+        Light_Intensity = #{record.lightIntensity,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        Create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        Update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update light
+    set Light_ID = #{record.lightId,jdbcType=INTEGER},
+      Light_title = #{record.lightTitle,jdbcType=VARCHAR},
+      Light_Type = #{record.lightType,jdbcType=VARCHAR},
+      Light_Position_X = #{record.lightPositionX,jdbcType=VARCHAR},
+      Light_Position_Y = #{record.lightPositionY,jdbcType=VARCHAR},
+      Light_Position_Z = #{record.lightPositionZ,jdbcType=VARCHAR},
+      Light_Color = #{record.lightColor,jdbcType=VARCHAR},
+      Light_Intensity = #{record.lightIntensity,jdbcType=INTEGER},
+      Create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      Update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xiaoming.model.light">
+    update light
+    <set>
+      <if test="lightTitle != null">
+        Light_title = #{lightTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="lightType != null">
+        Light_Type = #{lightType,jdbcType=VARCHAR},
+      </if>
+      <if test="lightPositionX != null">
+        Light_Position_X = #{lightPositionX,jdbcType=VARCHAR},
+      </if>
+      <if test="lightPositionY != null">
+        Light_Position_Y = #{lightPositionY,jdbcType=VARCHAR},
+      </if>
+      <if test="lightPositionZ != null">
+        Light_Position_Z = #{lightPositionZ,jdbcType=VARCHAR},
+      </if>
+      <if test="lightColor != null">
+        Light_Color = #{lightColor,jdbcType=VARCHAR},
+      </if>
+      <if test="lightIntensity != null">
+        Light_Intensity = #{lightIntensity,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        Create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        Update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Light_ID = #{lightId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xiaoming.model.light">
+    update light
+    set Light_title = #{lightTitle,jdbcType=VARCHAR},
+      Light_Type = #{lightType,jdbcType=VARCHAR},
+      Light_Position_X = #{lightPositionX,jdbcType=VARCHAR},
+      Light_Position_Y = #{lightPositionY,jdbcType=VARCHAR},
+      Light_Position_Z = #{lightPositionZ,jdbcType=VARCHAR},
+      Light_Color = #{lightColor,jdbcType=VARCHAR},
+      Light_Intensity = #{lightIntensity,jdbcType=INTEGER},
+      Create_time = #{createTime,jdbcType=TIMESTAMP},
+      Update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where Light_ID = #{lightId,jdbcType=INTEGER}
+  </update>
+</mapper>
