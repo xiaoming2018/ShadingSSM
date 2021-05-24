@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -27,24 +28,25 @@ public class FilesController {
 
     @ResponseBody
     @RequestMapping("files/upload")
-    public Msg fileUpload(MultipartFile file, HttpSession session){
+    public Msg fileUpload(MultipartFile file, HttpSession session, HttpServletRequest request){
         /**
          * 文件上传处理
          * return 文件路径
          * test 数据库
          */
 
-        String ModelFilePath = "resource/modelFile/";
+        String ModelFilePath = "E:\\upload";
         String ModelFileIndex;
         String filePath;
         try{
-            filePath = fileProcess.uploadFiles(file, session);
+            filePath = fileProcess.myUploadfile(file, request);
             String[] suffixNameArr = filePath.split("\\.");
             ModelFileIndex = suffixNameArr[suffixNameArr.length - 1];
             if (ModelFileIndex.equals("mtl") || ModelFileIndex.equals("obj") || ModelFileIndex.equals("doc")) {
                 String sufferBuffer = suffixNameArr[0];
                 String []paths = sufferBuffer.split("\\\\");
                 ModelFileIndex = paths[paths.length - 1];
+                //ModelFilePath = paths[0];
             }else {
                 ModelFileIndex = "";
             }
@@ -55,8 +57,12 @@ public class FilesController {
             return Msg.fail();
         }
 
+        // 数据库更新操作
+        // 需要做数据库重复性校验-操作入库
         model model = new model();
         model.setModelId(1);
+        model.setModelFileindex(ModelFileIndex); // 文件名前缀
+        model.setModelFilepath(ModelFilePath);   // 相对路径下的文件路径 -- resource/modelfile/  
 
         try{
             int count = modelService.insertSelectiveModel(model);

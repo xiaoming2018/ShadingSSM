@@ -43,5 +43,10 @@
         <property name="maxUploadSize" value="103116800" />
         <property name="maxInMemorySize" value="4096" />
     </bean>
+    
+    <!--    文件路径配置    -->
+    <bean id="fileUpLoader" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="location" value="classpath:fileUpload.properties"/>
+    </bean> 
 
 </beans>
