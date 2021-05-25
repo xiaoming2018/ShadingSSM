@@ -9,14 +9,15 @@ import javax.annotation.Resource;
 /**
  *
  */
-@Service("ModelService")
+@Service("ModelsService")
 public class ModelServiceImpl {
 
     @Resource
     private ModelsMapper modelMapper;
 
+    // 插入
     public int insertSelectiveModel(Models model){
         return modelMapper.insertSelective(model);
     }
-
+    
 }

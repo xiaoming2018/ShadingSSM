@@ -1,5 +1,6 @@
 package com.xiaoming.controller;
 
+import com.xiaoming.model.ModelTypes;
 import com.xiaoming.service.Impl.ModelTypeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,10 +16,9 @@ public class PageController {
     @Autowired
     private ModelTypeServiceImpl modelTypeService;
     
-    
     @RequestMapping("/getModelAdd")
     public String getModelAdd(Model model) {
-        List<modelType> modelTypeList = modelTypeService.selectAll();
+        List<ModelTypes> modelTypeList = modelTypeService.selectAll();
         model.addAttribute("modelTypeList", modelTypeList);
         return "ModelBaseAdd";
     }
