@@ -22,7 +22,7 @@
         <div class="layui-logo">layout demo</div>
         <!-- 头部区域（可配合layui 已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="">模型加载</a></li>
+            <li class="layui-nav-item"><button type="button" class="layui-btn" id="modelLoad">模型加载</button></li>
             <li class="layui-nav-item"><button type="button" class="layui-btn" id="upload">文件上传</button></li>
             <li class="layui-nav-item"><a href="">nav 2</a></li>
             <li class="layui-nav-item"><a href="">nav 3</a></li>
@@ -184,10 +184,6 @@
         <!-- 后台请求处理测试 -->
         <input type="text" id="ins">
         <button id="s">ajax</button>
-        
-        <div class="layui-btn-container">
-            <button class="layui-btn layui-btn-normal" data-method="offset" data-type="auto">居中弹出</button>
-        </div>
 
         <!-- 文件上传进度条位置 -->
         <div style="width: 95px;">
@@ -227,6 +223,7 @@
 </div>
 </div>
 <script type="text/javascript">
+    <!-- 页面加载完成后 进行渲染展示  -->
     window.onload = function () {
         draw();
         draw2();
@@ -243,6 +240,18 @@
             form = layui.form;
 
         // 弹出层显示
+        $("#modelLoad").click(function () {
+           layer.open({
+               type: 2,
+               area: ['500px', '600px'],
+               title: '模型加载',
+               content: 'page/getModelAdd',
+               maxmin: 'true',
+               end: function () {
+                   location.reload();
+               }
+           }); 
+        });
         
         
         // 场景的默认显示：
@@ -307,9 +316,8 @@
                             } else if (type === 'update') { //修改节点
                                 console.log(elem.find('.layui-tree-txt').html()); //得到修改后的内容
                             } else if (type === 'del') { //删除节点
-
-                            }
-                            ;
+                                
+                            };
                         }
                     })
                 },
@@ -355,8 +363,8 @@
                 }
             }
         });
-    })
-
+    });
+    
 </script>
 </body>
 </html>

@@ -1,7 +1,6 @@
 package com.xiaoming.controller;
 
-import com.sun.javaws.IconUtil;
-import com.xiaoming.model.model;
+import com.xiaoming.model.Models;
 import com.xiaoming.service.Impl.ModelServiceImpl;
 import com.xiaoming.utils.FileProcess;
 import com.xiaoming.utils.Msg;
@@ -28,7 +27,7 @@ public class FilesController {
 
     @ResponseBody
     @RequestMapping("files/upload")
-    public Msg fileUpload(MultipartFile file, HttpSession session, HttpServletRequest request){
+    public Msg fileUpload(MultipartFile modelfile, HttpSession session, HttpServletRequest request){
         /**
          * 文件上传处理
          * return 文件路径
@@ -39,7 +38,7 @@ public class FilesController {
         String ModelFileIndex;
         String filePath;
         try{
-            filePath = fileProcess.myUploadfile(file, request);
+            filePath = fileProcess.myUploadfile(modelfile, request);
             String[] suffixNameArr = filePath.split("\\.");
             ModelFileIndex = suffixNameArr[suffixNameArr.length - 1];
             if (ModelFileIndex.equals("mtl") || ModelFileIndex.equals("obj") || ModelFileIndex.equals("doc")) {
@@ -59,7 +58,7 @@ public class FilesController {
 
         // 数据库更新操作
         // 需要做数据库重复性校验-操作入库
-        model model = new model();
+        Models model = new Models();
         model.setModelId(1);
         model.setModelFileindex(ModelFileIndex); // 文件名前缀
         model.setModelFilepath(ModelFilePath);   // 相对路径下的文件路径 -- resource/modelfile/  
