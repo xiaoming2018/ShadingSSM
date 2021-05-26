@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoming.dao.MyCameraMapper">
+  <resultMap id="BaseResultMap" type="com.xiaoming.model.MyCamera">
+    <constructor>
+      <idArg column="Camera_ID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="Camera_Title" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="Camera_Type" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="Camera_near" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="Camera_Far" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="Camera_Visibility" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="Camera_Position_X" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="Camera_Position_Y" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="Camera_Position_Z" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="Create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="Update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="Scene_ID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="Field_of_View" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    Camera_ID, Camera_Title, Camera_Type, Camera_near, Camera_Far, Camera_Visibility, 
+    Camera_Position_X, Camera_Position_Y, Camera_Position_Z, Create_time, Update_time, 
+    Scene_ID, Field_of_View
+  </sql>
+  <select id="selectByExample" parameterType="com.xiaoming.model.MyCameraExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from camera
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from camera
+    where Camera_ID = #{cameraId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from camera
+    where Camera_ID = #{cameraId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xiaoming.model.MyCameraExample">
+    delete from camera
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xiaoming.model.MyCamera">
+    insert into camera (Camera_ID, Camera_Title, Camera_Type, 
+      Camera_near, Camera_Far, Camera_Visibility, 
+      Camera_Position_X, Camera_Position_Y, Camera_Position_Z, 
+      Create_time, Update_time, Scene_ID, 
+      Field_of_View)
+    values (#{cameraId,jdbcType=INTEGER}, #{cameraTitle,jdbcType=VARCHAR}, #{cameraType,jdbcType=VARCHAR}, 
+      #{cameraNear,jdbcType=INTEGER}, #{cameraFar,jdbcType=INTEGER}, #{cameraVisibility,jdbcType=CHAR}, 
+      #{cameraPositionX,jdbcType=REAL}, #{cameraPositionY,jdbcType=REAL}, #{cameraPositionZ,jdbcType=REAL}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{sceneId,jdbcType=INTEGER}, 
+      #{fieldOfView,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xiaoming.model.MyCamera">
+    insert into camera
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cameraId != null">
+        Camera_ID,
+      </if>
+      <if test="cameraTitle != null">
+        Camera_Title,
+      </if>
+      <if test="cameraType != null">
+        Camera_Type,
+      </if>
+      <if test="cameraNear != null">
+        Camera_near,
+      </if>
+      <if test="cameraFar != null">
+        Camera_Far,
+      </if>
+      <if test="cameraVisibility != null">
+        Camera_Visibility,
+      </if>
+      <if test="cameraPositionX != null">
+        Camera_Position_X,
+      </if>
+      <if test="cameraPositionY != null">
+        Camera_Position_Y,
+      </if>
+      <if test="cameraPositionZ != null">
+        Camera_Position_Z,
+      </if>
+      <if test="createTime != null">
+        Create_time,
+      </if>
+      <if test="updateTime != null">
+        Update_time,
+      </if>
+      <if test="sceneId != null">
+        Scene_ID,
+      </if>
+      <if test="fieldOfView != null">
+        Field_of_View,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cameraId != null">
+        #{cameraId,jdbcType=INTEGER},
+      </if>
+      <if test="cameraTitle != null">
+        #{cameraTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="cameraType != null">
+        #{cameraType,jdbcType=VARCHAR},
+      </if>
+      <if test="cameraNear != null">
+        #{cameraNear,jdbcType=INTEGER},
+      </if>
+      <if test="cameraFar != null">
+        #{cameraFar,jdbcType=INTEGER},
+      </if>
+      <if test="cameraVisibility != null">
+        #{cameraVisibility,jdbcType=CHAR},
+      </if>
+      <if test="cameraPositionX != null">
+        #{cameraPositionX,jdbcType=REAL},
+      </if>
+      <if test="cameraPositionY != null">
+        #{cameraPositionY,jdbcType=REAL},
+      </if>
+      <if test="cameraPositionZ != null">
+        #{cameraPositionZ,jdbcType=REAL},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sceneId != null">
+        #{sceneId,jdbcType=INTEGER},
+      </if>
+      <if test="fieldOfView != null">
+        #{fieldOfView,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xiaoming.model.MyCameraExample" resultType="java.lang.Long">
+    select count(*) from camera
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update camera
+    <set>
+      <if test="record.cameraId != null">
+        Camera_ID = #{record.cameraId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cameraTitle != null">
+        Camera_Title = #{record.cameraTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cameraType != null">
+        Camera_Type = #{record.cameraType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cameraNear != null">
+        Camera_near = #{record.cameraNear,jdbcType=INTEGER},
+      </if>
+      <if test="record.cameraFar != null">
+        Camera_Far = #{record.cameraFar,jdbcType=INTEGER},
+      </if>
+      <if test="record.cameraVisibility != null">
+        Camera_Visibility = #{record.cameraVisibility,jdbcType=CHAR},
+      </if>
+      <if test="record.cameraPositionX != null">
+        Camera_Position_X = #{record.cameraPositionX,jdbcType=REAL},
+      </if>
+      <if test="record.cameraPositionY != null">
+        Camera_Position_Y = #{record.cameraPositionY,jdbcType=REAL},
+      </if>
+      <if test="record.cameraPositionZ != null">
+        Camera_Position_Z = #{record.cameraPositionZ,jdbcType=REAL},
+      </if>
+      <if test="record.createTime != null">
+        Create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        Update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.sceneId != null">
+        Scene_ID = #{record.sceneId,jdbcType=INTEGER},
+      </if>
+      <if test="record.fieldOfView != null">
+        Field_of_View = #{record.fieldOfView,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update camera
+    set Camera_ID = #{record.cameraId,jdbcType=INTEGER},
+      Camera_Title = #{record.cameraTitle,jdbcType=VARCHAR},
+      Camera_Type = #{record.cameraType,jdbcType=VARCHAR},
+      Camera_near = #{record.cameraNear,jdbcType=INTEGER},
+      Camera_Far = #{record.cameraFar,jdbcType=INTEGER},
+      Camera_Visibility = #{record.cameraVisibility,jdbcType=CHAR},
+      Camera_Position_X = #{record.cameraPositionX,jdbcType=REAL},
+      Camera_Position_Y = #{record.cameraPositionY,jdbcType=REAL},
+      Camera_Position_Z = #{record.cameraPositionZ,jdbcType=REAL},
+      Create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      Update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      Scene_ID = #{record.sceneId,jdbcType=INTEGER},
+      Field_of_View = #{record.fieldOfView,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xiaoming.model.MyCamera">
+    update camera
+    <set>
+      <if test="cameraTitle != null">
+        Camera_Title = #{cameraTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="cameraType != null">
+        Camera_Type = #{cameraType,jdbcType=VARCHAR},
+      </if>
+      <if test="cameraNear != null">
+        Camera_near = #{cameraNear,jdbcType=INTEGER},
+      </if>
+      <if test="cameraFar != null">
+        Camera_Far = #{cameraFar,jdbcType=INTEGER},
+      </if>
+      <if test="cameraVisibility != null">
+        Camera_Visibility = #{cameraVisibility,jdbcType=CHAR},
+      </if>
+      <if test="cameraPositionX != null">
+        Camera_Position_X = #{cameraPositionX,jdbcType=REAL},
+      </if>
+      <if test="cameraPositionY != null">
+        Camera_Position_Y = #{cameraPositionY,jdbcType=REAL},
+      </if>
+      <if test="cameraPositionZ != null">
+        Camera_Position_Z = #{cameraPositionZ,jdbcType=REAL},
+      </if>
+      <if test="createTime != null">
+        Create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        Update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sceneId != null">
+        Scene_ID = #{sceneId,jdbcType=INTEGER},
+      </if>
+      <if test="fieldOfView != null">
+        Field_of_View = #{fieldOfView,jdbcType=INTEGER},
+      </if>
+    </set>
+    where Camera_ID = #{cameraId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xiaoming.model.MyCamera">
+    update camera
+    set Camera_Title = #{cameraTitle,jdbcType=VARCHAR},
+      Camera_Type = #{cameraType,jdbcType=VARCHAR},
+      Camera_near = #{cameraNear,jdbcType=INTEGER},
+      Camera_Far = #{cameraFar,jdbcType=INTEGER},
+      Camera_Visibility = #{cameraVisibility,jdbcType=CHAR},
+      Camera_Position_X = #{cameraPositionX,jdbcType=REAL},
+      Camera_Position_Y = #{cameraPositionY,jdbcType=REAL},
+      Camera_Position_Z = #{cameraPositionZ,jdbcType=REAL},
+      Create_time = #{createTime,jdbcType=TIMESTAMP},
+      Update_time = #{updateTime,jdbcType=TIMESTAMP},
+      Scene_ID = #{sceneId,jdbcType=INTEGER},
+      Field_of_View = #{fieldOfView,jdbcType=INTEGER}
+    where Camera_ID = #{cameraId,jdbcType=INTEGER}
+  </update>
+</mapper>
