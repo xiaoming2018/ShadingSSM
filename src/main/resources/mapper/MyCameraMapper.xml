@@ -6,10 +6,6 @@
       <idArg column="Camera_ID" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="Camera_Title" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="Camera_Type" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="Camera_Left" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="Camera_Right" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="Camera_Top" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="Camera_Bottom" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="Camera_near" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="Camera_Far" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="Camera_Visibility" javaType="java.lang.String" jdbcType="CHAR" />
@@ -19,6 +15,7 @@
       <arg column="Create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="Update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="Scene_ID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="Field_of_View" javaType="java.lang.Integer" jdbcType="INTEGER" />
     </constructor>
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -80,9 +77,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    Camera_ID, Camera_Title, Camera_Type, Camera_Left, Camera_Right, Camera_Top, Camera_Bottom, 
-    Camera_near, Camera_Far, Camera_Visibility, Camera_Position_X, Camera_Position_Y, 
-    Camera_Position_Z, Create_time, Update_time, Scene_ID
+    Camera_ID, Camera_Title, Camera_Type, Camera_near, Camera_Far, Camera_Visibility, 
+    Camera_Position_X, Camera_Position_Y, Camera_Position_Z, Create_time, Update_time, 
+    Scene_ID, Field_of_View
   </sql>
   <select id="selectByExample" parameterType="com.xiaoming.model.MyCameraExample" resultMap="BaseResultMap">
     select
@@ -117,17 +114,15 @@
   </delete>
   <insert id="insert" parameterType="com.xiaoming.model.MyCamera">
     insert into camera (Camera_ID, Camera_Title, Camera_Type, 
-      Camera_Left, Camera_Right, Camera_Top, 
-      Camera_Bottom, Camera_near, Camera_Far, 
-      Camera_Visibility, Camera_Position_X, Camera_Position_Y, 
-      Camera_Position_Z, Create_time, Update_time, 
-      Scene_ID)
+      Camera_near, Camera_Far, Camera_Visibility, 
+      Camera_Position_X, Camera_Position_Y, Camera_Position_Z, 
+      Create_time, Update_time, Scene_ID, 
+      Field_of_View)
     values (#{cameraId,jdbcType=INTEGER}, #{cameraTitle,jdbcType=VARCHAR}, #{cameraType,jdbcType=VARCHAR}, 
-      #{cameraLeft,jdbcType=INTEGER}, #{cameraRight,jdbcType=INTEGER}, #{cameraTop,jdbcType=INTEGER}, 
-      #{cameraBottom,jdbcType=INTEGER}, #{cameraNear,jdbcType=INTEGER}, #{cameraFar,jdbcType=INTEGER}, 
-      #{cameraVisibility,jdbcType=CHAR}, #{cameraPositionX,jdbcType=REAL}, #{cameraPositionY,jdbcType=REAL}, 
-      #{cameraPositionZ,jdbcType=REAL}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{sceneId,jdbcType=INTEGER})
+      #{cameraNear,jdbcType=INTEGER}, #{cameraFar,jdbcType=INTEGER}, #{cameraVisibility,jdbcType=CHAR}, 
+      #{cameraPositionX,jdbcType=REAL}, #{cameraPositionY,jdbcType=REAL}, #{cameraPositionZ,jdbcType=REAL}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{sceneId,jdbcType=INTEGER}, 
+      #{fieldOfView,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.xiaoming.model.MyCamera">
     insert into camera
@@ -140,18 +135,6 @@
       </if>
       <if test="cameraType != null">
         Camera_Type,
-      </if>
-      <if test="cameraLeft != null">
-        Camera_Left,
-      </if>
-      <if test="cameraRight != null">
-        Camera_Right,
-      </if>
-      <if test="cameraTop != null">
-        Camera_Top,
-      </if>
-      <if test="cameraBottom != null">
-        Camera_Bottom,
       </if>
       <if test="cameraNear != null">
         Camera_near,
@@ -180,6 +163,9 @@
       <if test="sceneId != null">
         Scene_ID,
       </if>
+      <if test="fieldOfView != null">
+        Field_of_View,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="cameraId != null">
@@ -190,18 +176,6 @@
       </if>
       <if test="cameraType != null">
         #{cameraType,jdbcType=VARCHAR},
-      </if>
-      <if test="cameraLeft != null">
-        #{cameraLeft,jdbcType=INTEGER},
-      </if>
-      <if test="cameraRight != null">
-        #{cameraRight,jdbcType=INTEGER},
-      </if>
-      <if test="cameraTop != null">
-        #{cameraTop,jdbcType=INTEGER},
-      </if>
-      <if test="cameraBottom != null">
-        #{cameraBottom,jdbcType=INTEGER},
       </if>
       <if test="cameraNear != null">
         #{cameraNear,jdbcType=INTEGER},
@@ -230,6 +204,9 @@
       <if test="sceneId != null">
         #{sceneId,jdbcType=INTEGER},
       </if>
+      <if test="fieldOfView != null">
+        #{fieldOfView,jdbcType=INTEGER},
+      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.xiaoming.model.MyCameraExample" resultType="java.lang.Long">
@@ -249,18 +226,6 @@
       </if>
       <if test="record.cameraType != null">
         Camera_Type = #{record.cameraType,jdbcType=VARCHAR},
-      </if>
-      <if test="record.cameraLeft != null">
-        Camera_Left = #{record.cameraLeft,jdbcType=INTEGER},
-      </if>
-      <if test="record.cameraRight != null">
-        Camera_Right = #{record.cameraRight,jdbcType=INTEGER},
-      </if>
-      <if test="record.cameraTop != null">
-        Camera_Top = #{record.cameraTop,jdbcType=INTEGER},
-      </if>
-      <if test="record.cameraBottom != null">
-        Camera_Bottom = #{record.cameraBottom,jdbcType=INTEGER},
       </if>
       <if test="record.cameraNear != null">
         Camera_near = #{record.cameraNear,jdbcType=INTEGER},
@@ -289,6 +254,9 @@
       <if test="record.sceneId != null">
         Scene_ID = #{record.sceneId,jdbcType=INTEGER},
       </if>
+      <if test="record.fieldOfView != null">
+        Field_of_View = #{record.fieldOfView,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -299,10 +267,6 @@
     set Camera_ID = #{record.cameraId,jdbcType=INTEGER},
       Camera_Title = #{record.cameraTitle,jdbcType=VARCHAR},
       Camera_Type = #{record.cameraType,jdbcType=VARCHAR},
-      Camera_Left = #{record.cameraLeft,jdbcType=INTEGER},
-      Camera_Right = #{record.cameraRight,jdbcType=INTEGER},
-      Camera_Top = #{record.cameraTop,jdbcType=INTEGER},
-      Camera_Bottom = #{record.cameraBottom,jdbcType=INTEGER},
       Camera_near = #{record.cameraNear,jdbcType=INTEGER},
       Camera_Far = #{record.cameraFar,jdbcType=INTEGER},
       Camera_Visibility = #{record.cameraVisibility,jdbcType=CHAR},
@@ -311,7 +275,8 @@
       Camera_Position_Z = #{record.cameraPositionZ,jdbcType=REAL},
       Create_time = #{record.createTime,jdbcType=TIMESTAMP},
       Update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-      Scene_ID = #{record.sceneId,jdbcType=INTEGER}
+      Scene_ID = #{record.sceneId,jdbcType=INTEGER},
+      Field_of_View = #{record.fieldOfView,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -324,18 +289,6 @@
       </if>
       <if test="cameraType != null">
         Camera_Type = #{cameraType,jdbcType=VARCHAR},
-      </if>
-      <if test="cameraLeft != null">
-        Camera_Left = #{cameraLeft,jdbcType=INTEGER},
-      </if>
-      <if test="cameraRight != null">
-        Camera_Right = #{cameraRight,jdbcType=INTEGER},
-      </if>
-      <if test="cameraTop != null">
-        Camera_Top = #{cameraTop,jdbcType=INTEGER},
-      </if>
-      <if test="cameraBottom != null">
-        Camera_Bottom = #{cameraBottom,jdbcType=INTEGER},
       </if>
       <if test="cameraNear != null">
         Camera_near = #{cameraNear,jdbcType=INTEGER},
@@ -364,6 +317,9 @@
       <if test="sceneId != null">
         Scene_ID = #{sceneId,jdbcType=INTEGER},
       </if>
+      <if test="fieldOfView != null">
+        Field_of_View = #{fieldOfView,jdbcType=INTEGER},
+      </if>
     </set>
     where Camera_ID = #{cameraId,jdbcType=INTEGER}
   </update>
@@ -371,10 +327,6 @@
     update camera
     set Camera_Title = #{cameraTitle,jdbcType=VARCHAR},
       Camera_Type = #{cameraType,jdbcType=VARCHAR},
-      Camera_Left = #{cameraLeft,jdbcType=INTEGER},
-      Camera_Right = #{cameraRight,jdbcType=INTEGER},
-      Camera_Top = #{cameraTop,jdbcType=INTEGER},
-      Camera_Bottom = #{cameraBottom,jdbcType=INTEGER},
       Camera_near = #{cameraNear,jdbcType=INTEGER},
       Camera_Far = #{cameraFar,jdbcType=INTEGER},
       Camera_Visibility = #{cameraVisibility,jdbcType=CHAR},
@@ -383,7 +335,8 @@
       Camera_Position_Z = #{cameraPositionZ,jdbcType=REAL},
       Create_time = #{createTime,jdbcType=TIMESTAMP},
       Update_time = #{updateTime,jdbcType=TIMESTAMP},
-      Scene_ID = #{sceneId,jdbcType=INTEGER}
+      Scene_ID = #{sceneId,jdbcType=INTEGER},
+      Field_of_View = #{fieldOfView,jdbcType=INTEGER}
     where Camera_ID = #{cameraId,jdbcType=INTEGER}
   </update>
 </mapper>

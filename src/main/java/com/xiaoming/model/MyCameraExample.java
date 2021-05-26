@@ -305,246 +305,6 @@ public class MyCameraExample {
             return (Criteria) this;
         }
 
-        public Criteria andCameraLeftIsNull() {
-            addCriterion("Camera_Left is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraLeftIsNotNull() {
-            addCriterion("Camera_Left is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraLeftEqualTo(Integer value) {
-            addCriterion("Camera_Left =", value, "cameraLeft");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraLeftNotEqualTo(Integer value) {
-            addCriterion("Camera_Left <>", value, "cameraLeft");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraLeftGreaterThan(Integer value) {
-            addCriterion("Camera_Left >", value, "cameraLeft");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraLeftGreaterThanOrEqualTo(Integer value) {
-            addCriterion("Camera_Left >=", value, "cameraLeft");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraLeftLessThan(Integer value) {
-            addCriterion("Camera_Left <", value, "cameraLeft");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraLeftLessThanOrEqualTo(Integer value) {
-            addCriterion("Camera_Left <=", value, "cameraLeft");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraLeftIn(List<Integer> values) {
-            addCriterion("Camera_Left in", values, "cameraLeft");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraLeftNotIn(List<Integer> values) {
-            addCriterion("Camera_Left not in", values, "cameraLeft");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraLeftBetween(Integer value1, Integer value2) {
-            addCriterion("Camera_Left between", value1, value2, "cameraLeft");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraLeftNotBetween(Integer value1, Integer value2) {
-            addCriterion("Camera_Left not between", value1, value2, "cameraLeft");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraRightIsNull() {
-            addCriterion("Camera_Right is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraRightIsNotNull() {
-            addCriterion("Camera_Right is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraRightEqualTo(Integer value) {
-            addCriterion("Camera_Right =", value, "cameraRight");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraRightNotEqualTo(Integer value) {
-            addCriterion("Camera_Right <>", value, "cameraRight");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraRightGreaterThan(Integer value) {
-            addCriterion("Camera_Right >", value, "cameraRight");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraRightGreaterThanOrEqualTo(Integer value) {
-            addCriterion("Camera_Right >=", value, "cameraRight");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraRightLessThan(Integer value) {
-            addCriterion("Camera_Right <", value, "cameraRight");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraRightLessThanOrEqualTo(Integer value) {
-            addCriterion("Camera_Right <=", value, "cameraRight");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraRightIn(List<Integer> values) {
-            addCriterion("Camera_Right in", values, "cameraRight");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraRightNotIn(List<Integer> values) {
-            addCriterion("Camera_Right not in", values, "cameraRight");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraRightBetween(Integer value1, Integer value2) {
-            addCriterion("Camera_Right between", value1, value2, "cameraRight");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraRightNotBetween(Integer value1, Integer value2) {
-            addCriterion("Camera_Right not between", value1, value2, "cameraRight");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraTopIsNull() {
-            addCriterion("Camera_Top is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraTopIsNotNull() {
-            addCriterion("Camera_Top is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraTopEqualTo(Integer value) {
-            addCriterion("Camera_Top =", value, "cameraTop");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraTopNotEqualTo(Integer value) {
-            addCriterion("Camera_Top <>", value, "cameraTop");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraTopGreaterThan(Integer value) {
-            addCriterion("Camera_Top >", value, "cameraTop");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraTopGreaterThanOrEqualTo(Integer value) {
-            addCriterion("Camera_Top >=", value, "cameraTop");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraTopLessThan(Integer value) {
-            addCriterion("Camera_Top <", value, "cameraTop");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraTopLessThanOrEqualTo(Integer value) {
-            addCriterion("Camera_Top <=", value, "cameraTop");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraTopIn(List<Integer> values) {
-            addCriterion("Camera_Top in", values, "cameraTop");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraTopNotIn(List<Integer> values) {
-            addCriterion("Camera_Top not in", values, "cameraTop");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraTopBetween(Integer value1, Integer value2) {
-            addCriterion("Camera_Top between", value1, value2, "cameraTop");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraTopNotBetween(Integer value1, Integer value2) {
-            addCriterion("Camera_Top not between", value1, value2, "cameraTop");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraBottomIsNull() {
-            addCriterion("Camera_Bottom is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraBottomIsNotNull() {
-            addCriterion("Camera_Bottom is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraBottomEqualTo(Integer value) {
-            addCriterion("Camera_Bottom =", value, "cameraBottom");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraBottomNotEqualTo(Integer value) {
-            addCriterion("Camera_Bottom <>", value, "cameraBottom");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraBottomGreaterThan(Integer value) {
-            addCriterion("Camera_Bottom >", value, "cameraBottom");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraBottomGreaterThanOrEqualTo(Integer value) {
-            addCriterion("Camera_Bottom >=", value, "cameraBottom");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraBottomLessThan(Integer value) {
-            addCriterion("Camera_Bottom <", value, "cameraBottom");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraBottomLessThanOrEqualTo(Integer value) {
-            addCriterion("Camera_Bottom <=", value, "cameraBottom");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraBottomIn(List<Integer> values) {
-            addCriterion("Camera_Bottom in", values, "cameraBottom");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraBottomNotIn(List<Integer> values) {
-            addCriterion("Camera_Bottom not in", values, "cameraBottom");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraBottomBetween(Integer value1, Integer value2) {
-            addCriterion("Camera_Bottom between", value1, value2, "cameraBottom");
-            return (Criteria) this;
-        }
-
-        public Criteria andCameraBottomNotBetween(Integer value1, Integer value2) {
-            addCriterion("Camera_Bottom not between", value1, value2, "cameraBottom");
-            return (Criteria) this;
-        }
-
         public Criteria andCameraNearIsNull() {
             addCriterion("Camera_near is null");
             return (Criteria) this;
@@ -1092,6 +852,66 @@ public class MyCameraExample {
 
         public Criteria andSceneIdNotBetween(Integer value1, Integer value2) {
             addCriterion("Scene_ID not between", value1, value2, "sceneId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFieldOfViewIsNull() {
+            addCriterion("Field_of_View is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFieldOfViewIsNotNull() {
+            addCriterion("Field_of_View is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFieldOfViewEqualTo(Integer value) {
+            addCriterion("Field_of_View =", value, "fieldOfView");
+            return (Criteria) this;
+        }
+
+        public Criteria andFieldOfViewNotEqualTo(Integer value) {
+            addCriterion("Field_of_View <>", value, "fieldOfView");
+            return (Criteria) this;
+        }
+
+        public Criteria andFieldOfViewGreaterThan(Integer value) {
+            addCriterion("Field_of_View >", value, "fieldOfView");
+            return (Criteria) this;
+        }
+
+        public Criteria andFieldOfViewGreaterThanOrEqualTo(Integer value) {
+            addCriterion("Field_of_View >=", value, "fieldOfView");
+            return (Criteria) this;
+        }
+
+        public Criteria andFieldOfViewLessThan(Integer value) {
+            addCriterion("Field_of_View <", value, "fieldOfView");
+            return (Criteria) this;
+        }
+
+        public Criteria andFieldOfViewLessThanOrEqualTo(Integer value) {
+            addCriterion("Field_of_View <=", value, "fieldOfView");
+            return (Criteria) this;
+        }
+
+        public Criteria andFieldOfViewIn(List<Integer> values) {
+            addCriterion("Field_of_View in", values, "fieldOfView");
+            return (Criteria) this;
+        }
+
+        public Criteria andFieldOfViewNotIn(List<Integer> values) {
+            addCriterion("Field_of_View not in", values, "fieldOfView");
+            return (Criteria) this;
+        }
+
+        public Criteria andFieldOfViewBetween(Integer value1, Integer value2) {
+            addCriterion("Field_of_View between", value1, value2, "fieldOfView");
+            return (Criteria) this;
+        }
+
+        public Criteria andFieldOfViewNotBetween(Integer value1, Integer value2) {
+            addCriterion("Field_of_View not between", value1, value2, "fieldOfView");
             return (Criteria) this;
         }
     }

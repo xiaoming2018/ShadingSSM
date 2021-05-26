@@ -1,79 +1,116 @@
 package com.xiaoming.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.xiaoming.model.MyModelType;
-import com.xiaoming.service.Impl.ModelTypeServiceImpl;
+import com.xiaoming.model.*;
+import com.xiaoming.service.Impl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @RequestMapping("page")
 public class PageController {
-    
+
     @Autowired
     private ModelTypeServiceImpl modelTypeService;
 
-    // 场景 scene
+    // 场景 scene serviceImpl
+    @Autowired
+    private SceneServiceImpl sceneService;
+
+    @Autowired
+    private ModelServiceImpl modelService;
+
+    @Autowired
+    private CameraServiceImpl cameraService;
     
+    @Autowired
+    private LightServiceImpl lightService;
 
     /**
      * 获取页面参数
      */
     @RequestMapping("/toIndex")
-    public String ToIndexJSP(Model model){
-        // layui tree data package
-        
-        // model 数据打包
-//        List<JSONObject> modellist = new ArrayList<>();
-//        JSONObject model1 = new JSONObject();
-//        model1.put("id", "201");
-//        model1.put("title", "模型1");
-//        JSONObject model2 = new JSONObject();
-//        model2.put("id", "202");
-//        model2.put("title", "模型2");
-//        modellist.add(model1);
-//        modellist.add(model2);
-//
-//        JSONObject model = new JSONObject();
-//        model.put("id","模型");
-//        model.put("title", "模型");
-//        model.put("spread", true);
-//        model.put("children", modellist);
-//
-//        List<JSONObject> cameraList = new ArrayList<>();
-//        JSONObject camera1 = new JSONObject();
-//        camera1.put("id", "211");
-//        camera1.put("title", "相机1");
-//        cameraList.add(camera1);
-//
-//        JSONObject camera = new JSONObject();
-//        camera.put("id", "220");
-//        camera.put("title", "相机");
-//        camera.put("children", cameraList);
-//
-//
-//        List<JSONObject> ls = new ArrayList<>();
-//        ls.add(model);
-//        ls.add(camera);
-//
-//        JSONObject scene = new JSONObject();
-//        scene.put("id", "101"); // scene id
-//        scene.put("title", "默认场景"); // scene title
-//        scene.put("spread", true); //
-//        scene.put("children", ls);
-        
-        JSONObject treeData = new JSONObject();
-        model.addAttribute("treeData", treeData);
+    public String ToIndexJSP(Model model) {
+        List<JSONObject> sceneList = new ArrayList<>();
+        List<MyScene> scenes = sceneService.getScence();
+        for (MyScene tmpScene : scenes) {
+            JSONObject sce = new JSONObject();
+            sce.put("id", tmpScene.getSceneId()); // 场景id
+            sce.put("title", tmpScene.getSceneTitle()); // 场景title
+            sce.put("spread", true);
+            List<JSONObject> tmp = getSceneChildenByID(tmpScene.getSceneId());
+            sce.put("children", tmp);
+            sceneList.add(sce);
+        }
+        model.addAttribute("treeData", sceneList);
         return "index";
     }
-    
+
+    public List<JSONObject> getSceneChildenByID(Integer sceneID) {
+        List<JSONObject> ls = new ArrayList<>(); // 基础包含三组数据
+        // 封装 model package
+        List<JSONObject> modelList = new ArrayList<>();
+        List<MyModel> models = modelService.getModelBySceneID(sceneID);
+        for (MyModel tmpModel : models) {
+            JSONObject mol = new JSONObject();
+            mol.put("id", tmpModel.getModelId());
+            mol.put("title", tmpModel.getModelTitle());
+            mol.put("spread", true);
+            modelList.add(mol);
+        }
+
+        JSONObject model = new JSONObject();
+        model.put("id", 101);
+        model.put("title", "模型文件");
+        model.put("spread", true);
+        model.put("children", modelList);
+        ls.add(model);
+
+        // 封装 camera package
+        List<JSONObject> cameraList = new ArrayList<>();
+        List<MyCamera> cameras = cameraService.getCameraBySceneID(sceneID);
+        for (MyCamera tmpCam : cameras){
+            JSONObject came = new JSONObject();
+            came.put("id", tmpCam.getCameraId());
+            came.put("title", tmpCam.getCameraTitle());
+            came.put("spread", true);
+            cameraList.add(came);
+        }
+        
+        JSONObject camera = new JSONObject();
+        camera.put("id", 201);
+        camera.put("title", "相机");
+        camera.put("spread", true);
+        camera.put("children", cameraList);
+        ls.add(camera);
+        
+        // 封装 light package
+        List<JSONObject> lightList = new ArrayList<>();
+        List<MyLight> lights = lightService.getLightBySceneID(sceneID);
+        for(MyLight tmplight: lights){
+            JSONObject lig = new JSONObject();
+            lig.put("id", tmplight.getLightId());
+            lig.put("title", tmplight.getLightTitle());
+            lig.put("spread", true);
+            lightList.add(lig);
+        }
+        JSONObject light = new JSONObject();
+        light.put("id", 301);
+        light.put("title", "光源");
+        light.put("spread", true);
+        light.put("children", lightList);
+        ls.add(light);
+        return ls;
+    }
     
     /**
      * 请求模型文件添加页面
+     *
      * @param model
      * @return 模型添加明细页面
      */

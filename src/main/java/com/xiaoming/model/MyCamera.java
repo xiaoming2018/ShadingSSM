@@ -9,14 +9,6 @@ public class MyCamera {
 
     private String cameraType;
 
-    private Integer cameraLeft;
-
-    private Integer cameraRight;
-
-    private Integer cameraTop;
-
-    private Integer cameraBottom;
-
     private Integer cameraNear;
 
     private Integer cameraFar;
@@ -35,14 +27,12 @@ public class MyCamera {
 
     private Integer sceneId;
 
-    public MyCamera(Integer cameraId, String cameraTitle, String cameraType, Integer cameraLeft, Integer cameraRight, Integer cameraTop, Integer cameraBottom, Integer cameraNear, Integer cameraFar, String cameraVisibility, Float cameraPositionX, Float cameraPositionY, Float cameraPositionZ, Date createTime, Date updateTime, Integer sceneId) {
+    private Integer fieldOfView;
+
+    public MyCamera(Integer cameraId, String cameraTitle, String cameraType, Integer cameraNear, Integer cameraFar, String cameraVisibility, Float cameraPositionX, Float cameraPositionY, Float cameraPositionZ, Date createTime, Date updateTime, Integer sceneId, Integer fieldOfView) {
         this.cameraId = cameraId;
         this.cameraTitle = cameraTitle;
         this.cameraType = cameraType;
-        this.cameraLeft = cameraLeft;
-        this.cameraRight = cameraRight;
-        this.cameraTop = cameraTop;
-        this.cameraBottom = cameraBottom;
         this.cameraNear = cameraNear;
         this.cameraFar = cameraFar;
         this.cameraVisibility = cameraVisibility;
@@ -52,6 +42,7 @@ public class MyCamera {
         this.createTime = createTime;
         this.updateTime = updateTime;
         this.sceneId = sceneId;
+        this.fieldOfView = fieldOfView;
     }
 
     public MyCamera() {
@@ -80,38 +71,6 @@ public class MyCamera {
 
     public void setCameraType(String cameraType) {
         this.cameraType = cameraType == null ? null : cameraType.trim();
-    }
-
-    public Integer getCameraLeft() {
-        return cameraLeft;
-    }
-
-    public void setCameraLeft(Integer cameraLeft) {
-        this.cameraLeft = cameraLeft;
-    }
-
-    public Integer getCameraRight() {
-        return cameraRight;
-    }
-
-    public void setCameraRight(Integer cameraRight) {
-        this.cameraRight = cameraRight;
-    }
-
-    public Integer getCameraTop() {
-        return cameraTop;
-    }
-
-    public void setCameraTop(Integer cameraTop) {
-        this.cameraTop = cameraTop;
-    }
-
-    public Integer getCameraBottom() {
-        return cameraBottom;
-    }
-
-    public void setCameraBottom(Integer cameraBottom) {
-        this.cameraBottom = cameraBottom;
     }
 
     public Integer getCameraNear() {
@@ -184,5 +143,13 @@ public class MyCamera {
 
     public void setSceneId(Integer sceneId) {
         this.sceneId = sceneId;
+    }
+
+    public Integer getFieldOfView() {
+        return fieldOfView;
+    }
+
+    public void setFieldOfView(Integer fieldOfView) {
+        this.fieldOfView = fieldOfView;
     }
 }

@@ -28,8 +28,8 @@ function initCamera(){
 function initScene(){
     // 天空盒纹理
     var cubeTextureLoader = new THREE.CubeTextureLoader();
-    cubeTextureLoader.setPath('static/textures/cube/space/');
-
+    var path = temp + '/static/textures/cube/space/';
+    cubeTextureLoader.setPath(path);
     var cubeTexture = cubeTextureLoader.load([
         'right.jpg', 'left.jpg',
         'top.jpg','bottom.jpg',

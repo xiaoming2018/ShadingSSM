@@ -94,9 +94,6 @@
         var uploadInst = upload.render({
             elem: '#test1',
             url: '<%=path%>/files/upload',
-            // acceptMime: 'image/*',
-            //auto:false,
-            //bindAction:'#submit',
             accept: "file",
             field: 'modelfile',  // 图片字段名 与 后台接受参数名对应一致
             done: function (res) {

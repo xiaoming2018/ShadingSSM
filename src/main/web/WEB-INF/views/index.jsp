@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -7,6 +8,9 @@
     <link rel="stylesheet" href="<%=path%>/static/css/ShadowEditor.css">
 </head>
 <body>
+<script type="text/javascript" >
+    var temp = '<%= path%>'
+</script>
 <!--导入 所需 js-->
 <script src="<%=path%>/static/js/three.js"></script>
 <script src="<%=path%>/static/js/JQuery3.6.0.js"></script>
@@ -181,9 +185,6 @@
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">绘制预览区域</div>
-        <!-- 后台请求处理测试 -->
-        <input type="text" id="ins">
-        <button id="s">ajax</button>
 
         <!-- 文件上传进度条位置 -->
         <div style="width: 95px;">
@@ -228,7 +229,7 @@
         draw2();
     }
 </script>
-<script src="static/layui/layui.js"></script>
+<script src="<%=path%>/static/layui/layui.js"></script>
 <script>
     layui.use(['upload', 'element', 'layer', 'form', 'tree'], function () {
         var $ = layui.jquery,
@@ -242,77 +243,23 @@
         $("#modelLoad").click(function () {
             layer.open({
                 type: 2,
-                area: ['500px', '600px'],
+                area: ['520px', '400px'],
                 title: '模型加载',
-                content: 'page/getModelAdd',
+                content: '<%=path%>/page/getModelAdd',
                 maxmin: 'true',
                 end: function () {
                     location.reload();
                 }
             });
         });
-
-
+        
         // 场景的默认显示：
         var int = tree.render({
             elem: "#test1",
             spread: true,
-            data:[${treeData}]
+            data:${treeData}
         });
-
-        // 树形组件数据后台请求，对场景组件进行数据更新
-        $("#s").click(function () {
-            var ins = $("#ins").val();
-            $.ajax({
-                url: "user/login",
-                data: {ins: ins},
-                async: true,   // 异步请求
-                type: "POST",
-                dataType: "json", // 后台返回内容设置
-                success: function (result) {
-                    debugger;
-                    console.log(result.extend.data);
-                    var res = [result.extend.data];
-                    console.log(res);
-
-                    tree.render({
-                        elem: '#test1',
-                        edit: ['add', 'update', 'del'],
-                        spread: true,
-                        data: res,
-                        click: function (obj) { // 点击回调
-                            // debugger;
-                            alert(obj.data.title);
-                            // console.log(obj.state); // 当前节点的展开状态： open close normal
-                            // alert(obj.state);
-                            // console.log(obj.elem);  // 获得当前节点元素
-                            // alert(obj.elem);
-                        },
-                        operate: function (obj) { // 节点操作 回调
-                            var type = obj.type; // 得到操作类型 add edit del
-                            var data = obj.data; // 当前节点的数据
-                            var elem = obj.elem; // 得到当前节点元素
-
-                            // ajax 操作
-                            var id = data.id;
-                            if (type === 'add') { //增加节点
-                                //返回 key 值
-                                return 123;
-                            } else if (type === 'update') { //修改节点
-                                console.log(elem.find('.layui-tree-txt').html()); //得到修改后的内容
-                            } else if (type === 'del') { //删除节点
-
-                            };
-                        }
-                    })
-                },
-                error: function (errorInfo) {
-                    debugger;
-                    console.log(errorInfo); // 错误信息展示
-                }
-            })
-        })
-
+        
         //  模型文件上传服务  vtk obj ply等模型解析
         var uploadInst = upload.render({
             elem: '#upload',
@@ -349,9 +296,6 @@
             }
         });
     });
-
 </script>
-
-
 </body>
 </html>
