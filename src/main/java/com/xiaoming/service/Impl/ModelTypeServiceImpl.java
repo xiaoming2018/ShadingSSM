@@ -1,8 +1,8 @@
 package com.xiaoming.service.Impl;
 
-import com.xiaoming.dao.ModelTypesMapper;
-import com.xiaoming.model.ModelTypes;
-import com.xiaoming.model.ModelTypesExample;
+import com.xiaoming.dao.MyModelTypeMapper;
+import com.xiaoming.model.MyModelType;
+import com.xiaoming.model.MyModelTypeExample;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -12,15 +12,15 @@ import java.util.List;
 public class ModelTypeServiceImpl {
     
     @Resource
-    private ModelTypesMapper modelTypeMapper;
+    private MyModelTypeMapper modelTypeMapper;
 
     /**
      * 无参
      * @return 所有的模型类型 List 
      */
-    public List<ModelTypes> selectAll(){
-        ModelTypesExample example = new ModelTypesExample();
-        List<ModelTypes> modelTypeList = modelTypeMapper.selectByExample(example);
+    public List<MyModelType> selectAll(){
+        MyModelTypeExample example = new MyModelTypeExample();
+        List<MyModelType> modelTypeList = modelTypeMapper.selectByExample(example);
         return modelTypeList;
     }
     

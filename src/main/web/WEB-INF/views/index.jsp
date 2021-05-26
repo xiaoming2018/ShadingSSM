@@ -1,20 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>WebGL</title>
-    <link rel="stylesheet" href="static/layui/css/layui.css">
-    <link rel="stylesheet" href="static/css/ShadowEditor.css">
+    <% String path = request.getContextPath(); %>
+    <link rel="stylesheet" href="<%=path%>/static/layui/css/layui.css">
+    <link rel="stylesheet" href="<%=path%>/static/css/ShadowEditor.css">
 </head>
 <body>
 <!--导入 所需 js-->
-<script src="static/js/three.js"></script>
-<script src="static/js/JQuery3.6.0.js"></script>
-<script src="static/js/controls/OrbitControls.js"></script>
-<script src="static/js/libs/stats.min.js"></script>
-<script src="static/js/libs/dat.gui.min.js"></script>
-<script src="static/js/box.js"></script>
-<script src="static/js/box2.js"></script>
+<script src="<%=path%>/static/js/three.js"></script>
+<script src="<%=path%>/static/js/JQuery3.6.0.js"></script>
+<script src="<%=path%>/static/js/controls/OrbitControls.js"></script>
+<script src="<%=path%>/static/js/libs/stats.min.js"></script>
+<script src="<%=path%>/static/js/libs/dat.gui.min.js"></script>
+<script src="<%=path%>/static/js/box.js"></script>
+<script src="<%=path%>/static/js/box2.js"></script>
 
 <div class="layui-layout layui-layout-admin">
     <!--  头部导航栏   -->
@@ -240,38 +240,24 @@
 
         // 弹出层显示
         $("#modelLoad").click(function () {
-           layer.open({
-               type: 2,
-               area: ['500px', '600px'],
-               title: '模型加载',
-               content: 'page/getModelAdd',
-               maxmin: 'true',
-               end: function () {
-                   location.reload();
-               }
-           }); 
+            layer.open({
+                type: 2,
+                area: ['500px', '600px'],
+                title: '模型加载',
+                content: 'page/getModelAdd',
+                maxmin: 'true',
+                end: function () {
+                    location.reload();
+                }
+            });
         });
-        
-        
+
+
         // 场景的默认显示：
         var int = tree.render({
             elem: "#test1",
             spread: true,
-            data:[{
-                id:'101',
-                title:"场景",
-                spread: true,
-                children:[{
-                    id: '201',
-                    title:"模型"
-                },{
-                    id: '202',
-                    title:"相机"
-                },{
-                    id:'203',
-                    title:"光源"
-                }]
-            }]
+            data:[${treeData}]
         });
 
         // 树形组件数据后台请求，对场景组件进行数据更新
@@ -315,7 +301,7 @@
                             } else if (type === 'update') { //修改节点
                                 console.log(elem.find('.layui-tree-txt').html()); //得到修改后的内容
                             } else if (type === 'del') { //删除节点
-                                
+
                             };
                         }
                     })
@@ -363,7 +349,9 @@
             }
         });
     });
-    
+
 </script>
+
+
 </body>
 </html>

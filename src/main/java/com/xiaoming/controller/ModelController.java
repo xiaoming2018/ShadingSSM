@@ -1,6 +1,6 @@
 package com.xiaoming.controller;
 
-import com.xiaoming.model.Models;
+import com.xiaoming.model.MyModel;
 import com.xiaoming.service.Impl.ModelServiceImpl;
 import com.xiaoming.utils.Msg;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class ModelController {
     
     @ResponseBody
     @RequestMapping("/AddModel")
-    public Msg addModel(Models model){
+    public Msg addModel(MyModel model){
         Date date = new Date();
         System.out.println(model);
         model.setCreateTime(date);

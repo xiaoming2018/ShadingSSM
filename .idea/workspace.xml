@@ -9,8 +9,44 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a927a490-f0fb-4ae5-b8c1-82353338dd4b" name="Default Changelist" comment="model add">
+    <list default="true" id="a927a490-f0fb-4ae5-b8c1-82353338dd4b" name="Default Changelist" comment="models Mapper">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/service/Impl/SceneServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/WEB-INF/views/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/classes/com/xiaoming/controller/FilesController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/classes/com/xiaoming/controller/FilesController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/classes/com/xiaoming/model/Models.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/classes/com/xiaoming/model/Models.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/classes/com/xiaoming/model/ModelsExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/classes/com/xiaoming/model/ModelsExample$Criteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/classes/com/xiaoming/model/ModelsExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/classes/com/xiaoming/model/ModelsExample$Criterion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/classes/com/xiaoming/model/ModelsExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/classes/com/xiaoming/model/ModelsExample$GeneratedCriteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/classes/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/classes/generatorConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/classes/mapper/ModelsMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/classes/mapper/ModelsMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/ModelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/ModelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/PageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/PageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/dao/CamerasMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/dao/LightsMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/dao/ModelTypesMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/dao/ModelsMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/dao/ScenesMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/Cameras.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/CamerasExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/Lights.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/LightsExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/ModelTypes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/ModelTypesExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/Models.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/ModelsExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/Scenes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/ScenesExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/service/Impl/ModelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/service/Impl/ModelServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/service/Impl/ModelTypeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/service/Impl/ModelTypeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/CamerasMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/LightsMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ModelTypesMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ModelsMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ScenesMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,9 +57,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="spring-beans.schema" />
-        <option value="Jsp File" />
         <option value="HTML File" />
         <option value="FxmlFile" />
+        <option value="Jsp File" />
         <option value="Class" />
       </list>
     </option>
@@ -92,6 +128,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 8.5.65">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="generated-requests#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -259,7 +308,7 @@
       <workItem from="1621583925910" duration="4055000" />
       <workItem from="1621818796162" duration="15750000" />
       <workItem from="1621905809629" duration="18963000" />
-      <workItem from="1621992078310" duration="943000" />
+      <workItem from="1621992078310" duration="6299000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1620630624571</created>
@@ -366,7 +415,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621933635846</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="models Mapper">
+      <created>1621993853757</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1621993853757</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -394,7 +450,8 @@
     <MESSAGE value="model upload" />
     <MESSAGE value="other file" />
     <MESSAGE value="model add" />
-    <option name="LAST_COMMIT_MESSAGE" value="model add" />
+    <MESSAGE value="models Mapper" />
+    <option name="LAST_COMMIT_MESSAGE" value="models Mapper" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -458,6 +515,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/controller/ModelController.java</url>
           <line>23</line>
           <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/controller/PageController.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
