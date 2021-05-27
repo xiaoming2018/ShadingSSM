@@ -43,7 +43,8 @@ var onProgress = function (xhr) {
         var percentComplete = xhr.loaded / xhr.total * 100;
         console.log(Math.round(percentComplete, 2) + '% downloaded');
     }
-};
+}; 
+
 var onError = function (xhr) {
     console.log(xhr);
 };
