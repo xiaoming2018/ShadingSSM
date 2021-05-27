@@ -29,5 +29,11 @@ public class ModelServiceImpl {
         criteria.andSceneIdEqualTo(sceneID);
         return modelMapper.selectByExample(example);
     }
-    
+
+    /**
+     * 根据 modelid 进行模型获取 
+     */
+    public MyModel getModelByID(Integer modelId){
+        return modelMapper.selectByPrimaryKey(modelId);  
+    }
 }

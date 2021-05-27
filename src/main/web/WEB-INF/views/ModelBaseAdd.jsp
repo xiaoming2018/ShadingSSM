@@ -31,7 +31,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">模型类型：</label>
         <div class="layui-input-block" style="width: 400px">
-            <select name="modelType" lay-verify="required">
+            <select name="modelTypeId" lay-verify="required">
                 <option value=""></option>
                 <c:forEach var="type" items="${modelTypeList}">
                     <option value="${type.modelTypeId}">${type.modelTypeName}</option>

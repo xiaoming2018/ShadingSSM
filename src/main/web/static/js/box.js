@@ -39,12 +39,6 @@ function initScene(){
     scene.background = cubeTexture; // 第一场景
 }
 
-// // 初始化dat.GUI 简化实验流程
-// function initGUI(){
-//     gui = {};
-//     var datGUI = new dat.GUI();
-// }
-
 function initLight(){
     scene.add(new THREE.AmbientLight(0x444444));
 
@@ -86,13 +80,6 @@ function initModel() {
     scene.add(cube3);
 }
 
-// // 初始化性能插件
-// function initStats(){
-//     stats = new Stats();
-//     document.getElementById("display").appendChild(stats.dom);
-//     //document.body.appendChild(stats.dom);
-// }
-
 function initControls(){
     controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
     // 设置控制器的中心点
@@ -116,33 +103,6 @@ function initControls(){
     controls.enablePan = true;
 }
 
-// 每帧额外的运算
-function render() {
-    // 获取到窗口的一般高度和一半宽度
-    let halfwidth = width / 2;
-    let halfheight = height / 2;
-    
-    let vector1 = cube.position.clone().project(camera);
-    let vector2 = cube2.position.clone().project(camera);
-    let vector3 = cube3.position.clone().project(camera);
-
-    // 修改标签 div 位置
-    $("#first").css({
-        left:vector1.x * halfwidth + halfwidth,
-        top:-vector1.y * halfheight + halfheight
-    });
-
-    $(".two").css({
-        left:vector2.x * halfwidth + halfwidth,
-        top:-vector2.y * halfheight + halfheight
-    });
-
-    $(".three").css({
-        left:vector3.x * halfwidth + halfwidth,
-        top:-vector3.y * halfheight + halfheight
-    });
-}
-
 function onWindowResize() {
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
@@ -150,24 +110,18 @@ function onWindowResize() {
 }
 
 function animate() {
-    // 每帧额外的运算
-    render();
-    // 更新性能插件
-    //stats.update();
     controls.update();
     renderer.render(scene, camera);
     requestAnimationFrame(animate);
 }
 
 function draw() {
-    //initGUI();
     initRender();
     initScene();
     initCamera();
     initLight();
     initModel();
     initControls();
-    //initStats();
 
     animate();
     window.onresize = onWindowResize;

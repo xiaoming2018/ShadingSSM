@@ -10,8 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a927a490-f0fb-4ae5-b8c1-82353338dd4b" name="Default Changelist" comment="updata union scene id">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/service/Impl/CameraServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/service/Impl/LightServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/Loaders/DDSLoader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/Loaders/MTLLoader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/Loaders/OBJLoader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/MTL.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/META-INF/MANIFEST.MF" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/classes/applicationContext.xml" beforeDir="false" />
@@ -49,6 +51,8 @@
       <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/classes/com/xiaoming/model/MySceneExample$Criterion.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/classes/com/xiaoming/model/MySceneExample$GeneratedCriteria.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/classes/com/xiaoming/model/MySceneExample.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/classes/com/xiaoming/service/Impl/CameraServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/classes/com/xiaoming/service/Impl/LightServiceImpl.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/classes/com/xiaoming/service/Impl/ModelServiceImpl.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/classes/com/xiaoming/service/Impl/ModelTypeServiceImpl.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/classes/com/xiaoming/service/Impl/SceneServiceImpl.class" beforeDir="false" />
@@ -100,8 +104,9 @@
       <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/views/success.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/views/success.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/index1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/index.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/index1.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/resource/modelfile/box.mtl" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/static/css/ShadowEditor.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/static/js/Detector.js" beforeDir="false" />
@@ -164,18 +169,12 @@
       <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/static/textures/cube/space/left.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/static/textures/cube/space/right.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/ShadingSSM_war_exploded/static/textures/cube/space/top.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/ModelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/ModelController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/PageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/PageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/MyCamera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/MyCamera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/MyCameraExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/MyCameraExample.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/service/Impl/ModelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/service/Impl/ModelServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/MyCameraMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/MyCameraMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/web/WEB-INF/views/ModelBaseAdd.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/WEB-INF/views/ModelBaseAdd.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/web/WEB-INF/views/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/WEB-INF/views/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/web/static/js/box.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/static/js/box.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/web/static/js/box2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/static/js/box2.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/applicationContext.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/xiaoming/controller/FilesController.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/xiaoming/controller/LoginController.class" beforeDir="false" />
@@ -211,6 +210,8 @@
       <change beforePath="$PROJECT_DIR$/target/classes/com/xiaoming/model/MySceneExample$Criterion.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/xiaoming/model/MySceneExample$GeneratedCriteria.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/xiaoming/model/MySceneExample.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/xiaoming/service/Impl/CameraServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/xiaoming/service/Impl/LightServiceImpl.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/xiaoming/service/Impl/ModelServiceImpl.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/xiaoming/service/Impl/ModelTypeServiceImpl.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/xiaoming/service/Impl/SceneServiceImpl.class" beforeDir="false" />
@@ -254,6 +255,13 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/web/WEB-INF/views/index.jsp" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/web/static/js/MTL.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/xiaoming/controller/ModelController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/web/WEB-INF/views/ModelBaseAdd.jsp" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/xiaoming/controller/PageController.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -287,7 +295,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/web" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/web/static/js/Loaders" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.16666667" />
@@ -296,11 +304,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\IDEA Project\ShadingSSM\src\main\web\static\js\Loaders" />
+      <recent name="E:\IDEA Project\ShadingSSM\src\main\web\static\js" />
       <recent name="E:\IDEA Project\ShadingSSM\src\main\web" />
       <recent name="E:\IDEA Project\ShadingSSM\src\main\web\WEB-INF\views" />
       <recent name="E:\IDEA Project\ShadingSSM\src\main\web\resource\modelfile" />
-      <recent name="E:\IDEA Project\ShadingSSM\src\main\web\static\css" />
-      <recent name="E:\IDEA Project\ShadingSSM\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\IDEA Project\ShadingSSM\src\main\resources" />
@@ -362,7 +370,7 @@
         </artifact>
         <file path="$PROJECT_DIR$/../../upload">
           <settings>
-            <option name="CONTEXT_PATH" value="/ShadingSSM/upload" />
+            <option name="CONTEXT_PATH" value="/upload" />
           </settings>
         </file>
       </deployment>
@@ -489,6 +497,8 @@
       <workItem from="1621818796162" duration="15750000" />
       <workItem from="1621905809629" duration="18963000" />
       <workItem from="1621992078310" duration="16727000" />
+      <workItem from="1622078757752" duration="4569000" />
+      <workItem from="1622084155835" duration="14652000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1620630624571</created>
@@ -670,11 +680,6 @@
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/controller/FilesController.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/utils/FileProcess.java</url>
           <line>78</line>
           <option name="timeStamp" value="10" />
@@ -686,23 +691,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/utils/FileProcess.java</url>
-          <line>43</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/utils/FileProcess.java</url>
           <line>54</line>
           <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/utils/FileProcess.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/controller/FilesController.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/utils/FileProcess.java</url>
@@ -710,14 +700,9 @@
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/utils/FileProcess.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/controller/ModelController.java</url>
           <line>23</line>
-          <option name="timeStamp" value="23" />
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

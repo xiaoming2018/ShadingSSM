@@ -24,6 +24,9 @@ public class ModelController {
         System.out.println(model);
         model.setCreateTime(date);
         model.setUpdateTime(date);
+        
+        // 动态获取 场景ID
+        model.setSceneId(1);
         try{
             int flag = modelService.insertSelectiveModel(model);
             if(flag == 1){
@@ -35,5 +38,12 @@ public class ModelController {
             e.printStackTrace();
             return Msg.fail();
         }
+    }
+    
+    @ResponseBody
+    @RequestMapping("/GetModelById")
+    public Msg getModelById(Integer modelId){
+        MyModel model = modelService.getModelByID(modelId);
+        return Msg.success().add("model", model);
     }
 }

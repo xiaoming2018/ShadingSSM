@@ -15,10 +15,17 @@
 <script src="<%=path%>/static/js/three.js"></script>
 <script src="<%=path%>/static/js/JQuery3.6.0.js"></script>
 <script src="<%=path%>/static/js/controls/OrbitControls.js"></script>
+<script src="<%=path%>/static/js/Loaders/OBJLoader.js"></script>
+<script src="<%=path%>/static/js/Loaders/DDSLoader.js"></script>
+<script src="<%=path%>/static/js/Loaders/MTLLoader.js"></script>
+<script src="<%=path%>/static/js/controls/TrackballControls.js"></script>
+<script src="<%=path%>/static/js/controls/DragControls.js"></script>
 <script src="<%=path%>/static/js/libs/stats.min.js"></script>
 <script src="<%=path%>/static/js/libs/dat.gui.min.js"></script>
 <script src="<%=path%>/static/js/box.js"></script>
+<script src="<%=path%>/static/js/MTL.js"></script>
 <script src="<%=path%>/static/js/box2.js"></script>
+
 
 <div class="layui-layout layui-layout-admin">
     <!--  头部导航栏   -->
@@ -226,6 +233,7 @@
     <!-- 页面加载完成后 进行渲染展示  -->
     window.onload = function () {
         draw();
+        //start();
         draw2();
     }
 </script>
@@ -252,15 +260,52 @@
                 }
             });
         });
+
+        /**
+         * tree mode id 
+         * scene  1
+         * model  101
+         * camera 201
+         * light  301
+         */
         
+        var modelFilePath;
         // 场景的默认显示：
         var int = tree.render({
             elem: "#test1",
             spread: true,
-            data:${treeData}
+            data:${treeData},
+            <%--  场景配置点击事件处理 （模型文件路径，属性列表参数设计） --%>
+            click: function (obj){
+                // 点击数据显示
+                alert(obj.data.id + obj.data.title);
+                // 进行单模型加载 [默认 modelId [101-201)]
+                if(obj.data.id >= 101 && obj.data.id < 201){
+                    var modelId = obj.data.id;
+                    // 进行 model 查询 - 进行渲染操作
+                    $.ajax({
+                        url:'<%=path%>/Model/GetModelById',
+                        data: {modelId:modelId},
+                        type: "POST",
+                        success: function (result) {
+                            debugger;
+                            console.log(result);
+                            modelFilePath = result.extend.model.modelFilepath;
+                            $("#display1").empty();
+                            //$("#display1").html("");
+                            start(modelFilePath);
+                        }
+                    })
+                }
+            }
         });
         
-        //  模型文件上传服务  vtk obj ply等模型解析
+        // 属性面板解析
+        function attributeResolution() {
+            
+        }
+        
+        //  模型文件上传服务 
         var uploadInst = upload.render({
             elem: '#upload',
             url: 'files/upload',     // 上传接口

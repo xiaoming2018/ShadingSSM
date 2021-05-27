@@ -51,6 +51,11 @@ public class PageController {
         return "index";
     }
 
+    /**
+     * 根据 sceneID 进行 节点拼装
+     * @param sceneID
+     * @return
+     */
     public List<JSONObject> getSceneChildenByID(Integer sceneID) {
         List<JSONObject> ls = new ArrayList<>(); // 基础包含三组数据
         // 封装 model package
