@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("Model")
@@ -46,4 +47,13 @@ public class ModelController {
         MyModel model = modelService.getModelByID(modelId);
         return Msg.success().add("model", model);
     }
+    
+    @ResponseBody
+    @RequestMapping("/GetAllModels")
+    public Msg getAllModels(){
+        List<MyModel> models = modelService.getAllModels();
+        return Msg.success().add("models", models);
+    }
+    
+    
 }

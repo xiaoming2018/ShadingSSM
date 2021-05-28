@@ -20,9 +20,10 @@
 <script src="<%=path%>/static/js/Loaders/MTLLoader.js"></script>
 <script src="<%=path%>/static/js/controls/TrackballControls.js"></script>
 <script src="<%=path%>/static/js/controls/DragControls.js"></script>
+<script src="<%=path%>/static/js/Detector.js"></script>
 <script src="<%=path%>/static/js/libs/stats.min.js"></script>
 <script src="<%=path%>/static/js/libs/dat.gui.min.js"></script>
-<script src="<%=path%>/static/js/box.js"></script>
+<%--<script src="<%=path%>/static/js/box.js"></script>--%>
 <script src="<%=path%>/static/js/MTL.js"></script>
 <script src="<%=path%>/static/js/box2.js"></script>
 
@@ -232,7 +233,7 @@
 <script type="text/javascript">
     <!-- 页面加载完成后 进行渲染展示  -->
     window.onload = function () {
-        draw();
+        //draw();
         //start();
         draw2();
     }
@@ -270,6 +271,7 @@
          */
         
         var modelFilePath;
+        var models
         // 场景的默认显示：
         var int = tree.render({
             elem: "#test1",
@@ -280,7 +282,7 @@
                 // 点击数据显示
                 alert(obj.data.id + obj.data.title);
                 // 进行单模型加载 [默认 modelId [101-201)]
-                if(obj.data.id >= 101 && obj.data.id < 201){
+                if(obj.data.id > 101 && obj.data.id < 201){
                     var modelId = obj.data.id;
                     // 进行 model 查询 - 进行渲染操作
                     $.ajax({
@@ -291,9 +293,30 @@
                             debugger;
                             console.log(result);
                             modelFilePath = result.extend.model.modelFilepath;
+                            model = result.extend.model;
                             $("#display1").empty();
                             //$("#display1").html("");
-                            start(modelFilePath);
+                            // start(modelFilePath);
+                            start(model);
+                        }
+                    })
+                }
+                
+                // get all models by sceneID
+                if(obj.data.id == 101){
+                    $.ajax({
+                        url:'<%=path%>/Model/GetAllModels',
+                        type: "POST",
+                        success: function (result) {
+                            debugger;
+                            console.log(result);
+                            models = result.extend.models;
+                            console.log(models.length);
+                            
+                            $("#display1").empty();
+                            //$("#display1").html("");
+                            // start(modelFilePath);
+                            start(models);
                         }
                     })
                 }
@@ -341,6 +364,7 @@
             }
         });
     });
+</script>
 </script>
 </body>
 </html>

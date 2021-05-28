@@ -36,4 +36,12 @@ public class ModelServiceImpl {
     public MyModel getModelByID(Integer modelId){
         return modelMapper.selectByPrimaryKey(modelId);  
     }
+
+    /**
+     *  返回所有模型
+     */
+    public List<MyModel> getAllModels(){
+        MyModelExample example = new MyModelExample();
+        return modelMapper.selectByExample(example);
+    }
 }
