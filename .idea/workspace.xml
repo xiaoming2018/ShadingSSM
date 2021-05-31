@@ -9,12 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a927a490-f0fb-4ae5-b8c1-82353338dd4b" name="Default Changelist" comment=".gitignore">
+    <list default="true" id="a927a490-f0fb-4ae5-b8c1-82353338dd4b" name="Default Changelist" comment="多模型加载">
+      <change afterPath="$PROJECT_DIR$/src/main/web/MouseDemo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/MoveDemo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/Mouse.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/Move.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/ThreeJS_Composer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/postprocessing/EffectComposer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/postprocessing/OutlinePass.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/postprocessing/RenderPass.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/postprocessing/ShaderPass.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/shader/CopyShader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/static/js/shader/FXAAShader.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/ModelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/ModelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/service/Impl/ModelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/service/Impl/ModelServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/web/WEB-INF/views/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/WEB-INF/views/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/web/static/js/MTL.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/static/js/MTL.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,10 +32,11 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="spring-beans.schema" />
-        <option value="HTML File" />
         <option value="FxmlFile" />
         <option value="Jsp File" />
         <option value="Class" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -83,7 +91,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/web/static/js/Loaders" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/web/static/js/postprocessing" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.16666667" />
@@ -92,11 +100,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\IDEA Project\ShadingSSM\src\main\web\static\js\postprocessing" />
+      <recent name="E:\IDEA Project\ShadingSSM\src\main\web\static\js\shader" />
       <recent name="E:\IDEA Project\ShadingSSM\src\main\web\static\js\Loaders" />
       <recent name="E:\IDEA Project\ShadingSSM\src\main\web\static\js" />
       <recent name="E:\IDEA Project\ShadingSSM\src\main\web" />
-      <recent name="E:\IDEA Project\ShadingSSM\src\main\web\WEB-INF\views" />
-      <recent name="E:\IDEA Project\ShadingSSM\src\main\web\resource\modelfile" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\IDEA Project\ShadingSSM\src\main\resources" />
@@ -104,13 +112,15 @@
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 8.5.65">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -286,7 +296,8 @@
       <workItem from="1622078757752" duration="4569000" />
       <workItem from="1622084155835" duration="15786000" />
       <workItem from="1622164461334" duration="768000" />
-      <workItem from="1622165876101" duration="17728000" />
+      <workItem from="1622165876101" duration="18508000" />
+      <workItem from="1622423520148" duration="21166000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1620630624571</created>
@@ -456,7 +467,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622167144088</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="多模型加载">
+      <created>1622193376935</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1622193376935</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -489,7 +507,8 @@
     <MESSAGE value="updata union scene id" />
     <MESSAGE value="单模型渲染" />
     <MESSAGE value=".gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value=".gitignore" />
+    <MESSAGE value="多模型加载" />
+    <option name="LAST_COMMIT_MESSAGE" value="多模型加载" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
