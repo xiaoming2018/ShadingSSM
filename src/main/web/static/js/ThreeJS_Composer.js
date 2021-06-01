@@ -35,6 +35,8 @@ THREE.ThreeJs_Composer = function ( _renderer, _scene, _camera, _options, _selec
         raycaster.setFromCamera( mouse, _camera );
         var intersects = raycaster.intersectObjects( [ _scene ], true );
 
+        debugger;
+        
         if(intersects.length == 0){
             $("#label").attr("style","display:none;");//隐藏说明性标签
             return;

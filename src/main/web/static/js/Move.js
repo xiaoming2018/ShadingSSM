@@ -74,18 +74,21 @@ function initContent(){
     var voxel = new THREE.Mesh(cubeGeo, cubeMaterial);
     voxel.position.set(25, 25, 25);
     voxel.name = "货物$1";
+    voxel.modelid = 1001;
     mv_scene.add(voxel);
     objects.push(voxel);
 
     var voxel2 = voxel.clone();
     voxel2.position.set(225, 25, 25);
     voxel2.name = "货物$2";
+    voxel2.modelid = 1002;
     mv_scene.add(voxel2);
     objects.push(voxel2);
 
     var voxel3 = voxel.clone();
     voxel3.position.set(-225, 25, 25);
     voxel3.name = "货物$3";
+    voxel3.modelid = 1003;
     mv_scene.add(voxel3);
     objects.push(voxel3);
 }
