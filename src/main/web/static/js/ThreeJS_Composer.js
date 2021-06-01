@@ -20,9 +20,7 @@ THREE.ThreeJs_Composer = function ( _renderer, _scene, _camera, _options, _selec
 
     window.addEventListener( 'click', onMouseClick);
     window.addEventListener( 'dblclick', onMouseDblClick);
-
-    var door_state_left1 = true; //默认是门是关闭的
-    var door_state_right1 = true; //默认是门是关闭的
+    
     function onMouseClick( event ) {
         var x, y;
         if ( event.changedTouches ) {
@@ -56,43 +54,14 @@ THREE.ThreeJs_Composer = function ( _renderer, _scene, _camera, _options, _selec
 
         var Msg = intersects[0].object.name.split("$");
         if(Msg[0] == "货物") {
-            _options.batchNo = "一个货物";
-            _options.qty = "100";
-            _options.qtyUom = "kg";
-            _options.qty2 = "10";
-            _options.selectObj = intersects[0].object.name;
-            _selectobject.push( intersects[0].object );
+            // _options.batchNo = "一个货物";
+            // _options.qty = "100";
+            // _options.qtyUom = "kg";
+            // _options.qty2 = "10";
+            // _options.selectObj = intersects[0].object.name;
+            // _selectobject.push( intersects[0].object );
         }
-
-        if(intersects[0].object.name == "左门1"){
-            if(door_state_left1){
-                new TWEEN.Tween(intersects[0].object.rotation).to({
-                    y: -0.5*Math.PI
-                }, 5000).easing(TWEEN.Easing.Elastic.Out).onComplete(function(){
-                }).start();
-                door_state_left1 = false;
-            }else{
-                new TWEEN.Tween(intersects[0].object.rotation).to({
-                    y: 0
-                }, 5000).easing(TWEEN.Easing.Elastic.Out).onComplete(function(){
-                }).start();
-                door_state_left1 = true;
-            }
-        }else if(intersects[0].object.name == "右门1"){
-            if(door_state_right1){
-                new TWEEN.Tween(intersects[0].object.rotation).to({
-                    y: 0.5*Math.PI
-                }, 5000).easing(TWEEN.Easing.Elastic.Out).onComplete(function(){
-                }).start();
-                door_state_right1 = false;
-            }else{
-                new TWEEN.Tween(intersects[0].object.rotation).to({
-                    y: 0
-                }, 5000).easing(TWEEN.Easing.Elastic.Out).onComplete(function(){
-                }).start();
-                door_state_right1 = true;
-            }
-        }
+        
     }
 
     function onMouseDblClick( event ) {
@@ -112,21 +81,19 @@ THREE.ThreeJs_Composer = function ( _renderer, _scene, _camera, _options, _selec
         if(intersects.length == 0){
             return;
         }
-
-        var Msg = intersects[0].object.name.split("$");
-        if(Msg[0] == "货物") {
-            var href = "DispatchAction.do?efFormEname=YMIQ083DP&inqu_status-0-storageUnitId=" + Msg[1];
-            EFColorbox({
-                href : href,
-                title:"货物详情",
-                innerWidth:'1200px',
-                innerHeight:'800px',
-                iframe : true,
-                scrolling : false,
-                overlayClose: false
-            });
-        }
+        // var Msg = intersects[0].object.name.split("$");
+        // if(Msg[0] == "货物") {
+        //     var href = "DispatchAction.do?efFormEname=YMIQ083DP&inqu_status-0-storageUnitId=" + Msg[1];
+        //     EFColorbox({
+        //         href : href,
+        //         title:"货物详情",
+        //         innerWidth:'1200px',
+        //         innerHeight:'800px',
+        //         iframe : true,
+        //         scrolling : false,
+        //         overlayClose: false
+        //     });
+        // }
     }
-
     return composer;
 }
