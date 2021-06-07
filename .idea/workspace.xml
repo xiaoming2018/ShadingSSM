@@ -10,10 +10,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a927a490-f0fb-4ae5-b8c1-82353338dd4b" name="Default Changelist" comment="select model position">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/CameraController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/LightController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/WEB-INF/views/CameraBaseAdd.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/web/WEB-INF/views/LightBaseAdd.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/web/MoveDemo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/MoveDemo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/web/static/js/Move.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/static/js/Move.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/web/static/js/ThreeJS_Composer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/static/js/ThreeJS_Composer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/ModelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/ModelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/PageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/PageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/service/Impl/CameraServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/service/Impl/CameraServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/service/Impl/LightServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/service/Impl/LightServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/web/WEB-INF/views/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/WEB-INF/views/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/web/static/js/MTL.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/static/js/MTL.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,9 +35,9 @@
         <option value="spring-beans.schema" />
         <option value="FxmlFile" />
         <option value="Jsp File" />
-        <option value="Class" />
         <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -83,7 +92,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/web/static/js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/web/WEB-INF/views" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.16666667" />
@@ -92,11 +101,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\IDEA Project\ShadingSSM\src\main\web\WEB-INF\views" />
       <recent name="E:\IDEA Project\ShadingSSM\src\main\web\static\js" />
       <recent name="E:\IDEA Project\ShadingSSM\src\main\web\resource\image" />
       <recent name="E:\IDEA Project\ShadingSSM\src\main\web\static\js\controls" />
       <recent name="E:\IDEA Project\ShadingSSM\out\artifacts\ShadingSSM_war_exploded\static\js\postprocessing" />
-      <recent name="E:\IDEA Project\ShadingSSM\src\main\web\static\js\postprocessing" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\IDEA Project\ShadingSSM\src\main\resources" />
@@ -104,13 +113,15 @@
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 8.5.65">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -289,6 +300,9 @@
       <workItem from="1622165876101" duration="18508000" />
       <workItem from="1622423520148" duration="22330000" />
       <workItem from="1622510070158" duration="18343000" />
+      <workItem from="1623028180820" duration="1853000" />
+      <workItem from="1623030414561" duration="14611000" />
+      <workItem from="1623051743035" duration="5263000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1620630624571</created>
@@ -556,11 +570,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/utils/FileProcess.java</url>
           <line>23</line>
           <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/controller/ModelController.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

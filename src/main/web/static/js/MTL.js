@@ -41,12 +41,11 @@ var onError = function (xhr) {
     console.log(xhr);
 };
 
-function loadObject(i, modelFilePath) {
+function loadObject(i, models) {
     debugger;
-    console.log("序号：" + i + " path: " + modelFilePath);
+    console.log("序号：" + i + " path: " + models.modelFilepath);
     var manager = new THREE.LoadingManager();
     manager.addHandler(/\.dds$/i, new THREE.DDSLoader());
-
     // var objLoader = new THREE.OBJLoader(manager);
     // objLoader.load(modelFilePath, function(object){
     //     object.traverse(function (child) {
@@ -67,7 +66,7 @@ function loadObject(i, modelFilePath) {
         materials.preload();
         var objLoader = new THREE.OBJLoader(manager);
         objLoader.setMaterials(materials);
-        objLoader.load(modelFilePath, function (object) {
+        objLoader.load(models.modelFilePath, function (object) {
             object.scale.set(1, 1, 1); // 缩放设置 
             object.traverse(function (child) {
                 if (child instanceof THREE.Mesh) {
@@ -203,9 +202,9 @@ function initControls() {
     controls.enablePan = true;
 }
 
-function start(modelfilepath) {
+function start(models) {
     debugger;
-    console.log(modelfilepath);
+    console.log(models);
     
     //初始化统计对象
     initscene();
@@ -217,7 +216,7 @@ function start(modelfilepath) {
     // 根据传参 进行多模型加载
     for (var i = 0; i < 2; i++){
         debugger;
-        loadObject(i, modelfilepath);
+        loadObject(i, models);
     }
     initLight();
     initControls();

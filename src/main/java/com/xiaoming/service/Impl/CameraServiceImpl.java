@@ -24,4 +24,15 @@ public class CameraServiceImpl {
         return cameraMapper.selectByExample(example);
     }
 
+    /**
+     * add camera
+     */
+    
+    public int insertSelectiveCamera(MyCamera camera){
+        return cameraMapper.insertSelective(camera);
+    }
+
+    public MyCamera getCameraById(Integer cameraId) {
+        return cameraMapper.selectByPrimaryKey(cameraId);
+    }
 }

@@ -3,6 +3,7 @@ package com.xiaoming.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.xiaoming.model.*;
 import com.xiaoming.service.Impl.*;
+import com.xiaoming.utils.Msg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,6 +49,8 @@ public class PageController {
             sceneList.add(sce);
         }
         model.addAttribute("treeData", sceneList);
+        List<MyModel> modelList = modelService.getAllModels();
+        model.addAttribute("models", modelList);
         return "index";
     }
 
@@ -71,7 +74,7 @@ public class PageController {
 
         JSONObject model = new JSONObject();
         model.put("id", 101);
-        model.put("title", "模型文件");
+        model.put("title", "模型");
         model.put("spread", true);
         model.put("children", modelList);
         ls.add(model);
@@ -125,4 +128,13 @@ public class PageController {
         model.addAttribute("modelTypeList", modelTypeList);
         return "ModelBaseAdd";
     }
+
+    /**
+     * 请求相机加载页面
+     */
+    @RequestMapping("/getCameraAdd")
+    public String getCameraAdd(){
+        return "CameraBaseAdd";
+    }
+    
 }

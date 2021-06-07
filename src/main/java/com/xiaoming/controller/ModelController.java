@@ -14,46 +14,50 @@ import java.util.List;
 @Controller
 @RequestMapping("Model")
 public class ModelController {
-    
+
     @Autowired
     private ModelServiceImpl modelService;
-    
+
     @ResponseBody
     @RequestMapping("/AddModel")
-    public Msg addModel(MyModel model){
+    public Msg addModel(MyModel model) {
         Date date = new Date();
-        System.out.println(model);
         model.setCreateTime(date);
         model.setUpdateTime(date);
-        
+
         // 动态获取 场景ID
         model.setSceneId(1);
-        try{
+        try {
             int flag = modelService.insertSelectiveModel(model);
-            if(flag == 1){
+            if (flag == 1) {
                 return Msg.success();
-            }else {
+            } else {
                 return Msg.fail();
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return Msg.fail();
         }
     }
-    
+
     @ResponseBody
     @RequestMapping("/GetModelById")
-    public Msg getModelById(Integer modelId){
+    public Msg getModelById(Integer modelId) {
         MyModel model = modelService.getModelByID(modelId);
-        return Msg.success().add("model", model);
+        if (model != null) {
+            return Msg.success().add("model", model);
+        }else {
+            return Msg.fail().add("message", "no model with this id");
+        }
+
     }
-    
+
     @ResponseBody
     @RequestMapping("/GetAllModels")
-    public Msg getAllModels(){
+    public Msg getAllModels() {
         List<MyModel> models = modelService.getAllModels();
         return Msg.success().add("models", models);
     }
-    
-    
+
+
 }

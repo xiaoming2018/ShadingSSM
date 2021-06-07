@@ -23,5 +23,8 @@ public class LightServiceImpl {
         criteria.andSceneIdEqualTo(sceneID);
         return lightMapper.selectByExample(example);
     }
-    
+
+    public MyLight getLightById(Integer lightId) {
+        return lightMapper.selectByPrimaryKey(lightId);
+    }
 }
