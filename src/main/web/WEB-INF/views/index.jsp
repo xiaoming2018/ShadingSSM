@@ -9,21 +9,35 @@
 </head>
 <body>
 <script type="text/javascript">
-    var temp = '<%= path%>'
+    var temp = '<%= path%>';
 </script>
 <!--导入 所需 js-->
 <script src="<%=path%>/static/js/three.js"></script>
 <script src="<%=path%>/static/js/JQuery3.6.0.js"></script>
 <script src="<%=path%>/static/js/controls/OrbitControls.js"></script>
+<script src="<%=path%>/static/js/controls/TrackballControls.js"></script>
+<script src="<%=path%>/static/js/controls/DragControls.js"></script>
+<script src="<%=path%>/static/js/controls/FirstPersonControls.js"></script>
+<script src="<%=path%>/static/js/controls/TransformControls.js"></script>
+
+<script src="<%=path%>/static/js/postprocessing/EffectComposer.js"></script>
+<script src="<%=path%>/static/js/postprocessing/RenderPass.js"></script>
+<script src="<%=path%>/static/js/postprocessing/OutlinePass.js"></script>
+<script src="<%=path%>/static/js/postprocessing/ShaderPass.js"></script>
+
+<script src="<%=path%>/static/js/shader/FXAAShader.js"></script>
+<script src="<%=path%>/static/js/shader/CopyShader.js"></script>
+<script src="<%=path%>/static/js/ThreeBSP.js"></script>
+<script src="<%=path%>/static/js/ThreeJS_Composer.js"></script>
+
 <script src="<%=path%>/static/js/Loaders/OBJLoader.js"></script>
 <script src="<%=path%>/static/js/Loaders/DDSLoader.js"></script>
 <script src="<%=path%>/static/js/Loaders/MTLLoader.js"></script>
-<script src="<%=path%>/static/js/controls/TrackballControls.js"></script>
-<script src="<%=path%>/static/js/controls/DragControls.js"></script>
 <script src="<%=path%>/static/js/Detector.js"></script>
 <script src="<%=path%>/static/js/libs/stats.min.js"></script>
 <script src="<%=path%>/static/js/libs/dat.gui.min.js"></script>
 <%--<script src="<%=path%>/static/js/box.js"></script>--%>
+
 <script src="<%=path%>/static/js/MTL.js"></script>
 <script src="<%=path%>/static/js/box2.js"></script>
 
@@ -173,8 +187,14 @@
 <script type="text/javascript">
     <!-- 页面加载完成后 进行渲染展示  -->
     window.onload = function () {
-        //draw();
-        //start();
+        var models = new Array();
+        debugger;
+        models = ${models};
+        if(models != null){
+            // 模型记载渲染
+            $("#display1").empty();
+            start(models[0]);
+        }
         draw2();
     }
 </script>
@@ -223,14 +243,6 @@
          * camera 201
          * light  301
          */
-
-        var models;
-        models = ${models};
-        if(modelFilePath != null){
-            // 模型记载渲染
-            $("#display1").empty();
-            start(models);
-        }
         // 场景的默认显示：
         var int = tree.render({
             elem: "#test1",

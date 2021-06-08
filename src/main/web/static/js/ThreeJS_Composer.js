@@ -34,34 +34,17 @@ THREE.ThreeJs_Composer = function ( _renderer, _scene, _camera, _options, _selec
         mouse.y = - ( y / window.innerHeight ) * 2 + 1;
         raycaster.setFromCamera( mouse, _camera );
         var intersects = raycaster.intersectObjects( [ _scene ], true );
-
-        debugger;
         
         if(intersects.length == 0){
             $("#label").attr("style","display:none;");//隐藏说明性标签
             return;
         }
         if(intersects[0].object.name == "地面" || (intersects[0].object.name == "") || (intersects[0].object.name == "墙面")){
-            $("#label").attr("style","display:none;");//隐藏说明性标签
             selectedObjects.pop();
         }else{
-            $("#label").attr("style","display:block;");// 显示说明性标签
-            $("#label").css({left: x, top: y-40});// 修改标签的位置
-            $("#label").text(intersects[0].object.name);// 显示模型信息
-
             selectedObjects.pop();
             selectedObjects.push( intersects[0].object );
             outlinePass.selectedObjects = selectedObjects;//给选中的线条和物体加发光特效
-        }
-
-        var Msg = intersects[0].object.name.split("$");
-        if(Msg[0] == "货物") {
-            // _options.batchNo = "一个货物";
-            // _options.qty = "100";
-            // _options.qtyUom = "kg";
-            // _options.qty2 = "10";
-            // _options.selectObj = intersects[0].object.name;
-            // _selectobject.push( intersects[0].object );
         }
         
     }
@@ -83,19 +66,6 @@ THREE.ThreeJs_Composer = function ( _renderer, _scene, _camera, _options, _selec
         if(intersects.length == 0){
             return;
         }
-        // var Msg = intersects[0].object.name.split("$");
-        // if(Msg[0] == "货物") {
-        //     var href = "DispatchAction.do?efFormEname=YMIQ083DP&inqu_status-0-storageUnitId=" + Msg[1];
-        //     EFColorbox({
-        //         href : href,
-        //         title:"货物详情",
-        //         innerWidth:'1200px',
-        //         innerHeight:'800px',
-        //         iframe : true,
-        //         scrolling : false,
-        //         overlayClose: false
-        //     });
-        // }
     }
     return composer;
 }

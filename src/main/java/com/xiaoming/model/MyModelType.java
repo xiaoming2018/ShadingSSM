@@ -1,5 +1,7 @@
 package com.xiaoming.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class MyModelType {
@@ -38,18 +40,22 @@ public class MyModelType {
         this.modelTypeName = modelTypeName == null ? null : modelTypeName.trim();
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     public Date getModelTypeCreateTime() {
         return modelTypeCreateTime;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     public void setModelTypeCreateTime(Date modelTypeCreateTime) {
         this.modelTypeCreateTime = modelTypeCreateTime;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     public Date getModelTypeUpdataTime() {
         return modelTypeUpdataTime;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     public void setModelTypeUpdataTime(Date modelTypeUpdataTime) {
         this.modelTypeUpdataTime = modelTypeUpdataTime;
     }

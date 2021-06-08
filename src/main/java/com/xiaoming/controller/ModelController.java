@@ -5,6 +5,7 @@ import com.xiaoming.service.Impl.ModelServiceImpl;
 import com.xiaoming.utils.Msg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -58,6 +59,23 @@ public class ModelController {
         List<MyModel> models = modelService.getAllModels();
         return Msg.success().add("models", models);
     }
-
-
+    
+    @ResponseBody
+    @RequestMapping("/Update")
+    public Msg modelUpdate(MyModel model){
+        System.out.println(model);
+        Date date = new Date();
+        model.setUpdateTime(date);
+        try{
+            int flag = modelService.updateModel(model);
+            if(flag == 1){
+                return Msg.success().add("message", "插入成功");
+            } else {
+                return Msg.success().add("message", "未改变");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return Msg.fail().add("message", "插入失败");
+        }
+    }
 }

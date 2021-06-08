@@ -44,4 +44,11 @@ public class ModelServiceImpl {
         MyModelExample example = new MyModelExample();
         return modelMapper.selectByExample(example);
     }
+
+    /**
+     * 模型更新
+     */
+    public int updateModel(MyModel model){
+        return modelMapper.updateByPrimaryKeySelective(model);
+    }
 }

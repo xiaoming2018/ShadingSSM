@@ -1,21 +1,26 @@
-let scene, camera, renderer, controls;
+let scene, camera, renderer, controls, composer, options;
 let width, height;
 let objects = []; // 拖拽控制
-let group = new THREE.Group(); // 记载 object
+let group = new THREE.Group(); // 记载object
 let i, m, x, y, z;
 let dragControls; // 模型拖拽
+
 function initscene() {
     var div = document.getElementById("display");
     width = div.clientWidth || div.offsetWidth;
     height = div.clientHeight || div.offsetHeight;
     i = width / height;
     scene = new THREE.Scene();
+
+    let gridHelper = new THREE.GridHelper(2000, 40);
+    scene.add(gridHelper); // 网格辅助
 }
 
 function initCamera() {
     camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-    camera.position.set(0, 200, 300);
+    camera.position.set(0, 20, 30);
     camera.lookAt(0, 0, 0);
+    scene.add(camera);
 }
 
 function initrenderer() {
@@ -41,84 +46,159 @@ var onError = function (xhr) {
     console.log(xhr);
 };
 
+
 function loadObject(i, models) {
     debugger;
-    console.log("序号：" + i + " path: " + models.modelFilepath);
+    console.log("序号：" + i + " path: " + models[i].modelFilepath);
+    var path = models[i].modelFilepath;
+    console.log(path);
+
     var manager = new THREE.LoadingManager();
     manager.addHandler(/\.dds$/i, new THREE.DDSLoader());
-    // var objLoader = new THREE.OBJLoader(manager);
-    // objLoader.load(modelFilePath, function(object){
-    //     object.traverse(function (child) {
-    //         if(child instanceof  THREE.Mesh){
-    //             child.position.set(0,0,0);
-    //             child.castShadow = true;
-    //             child.receiveShadow = true;
-    //             child.scale.set(0.3,0.3,0.3);
-    //         }
-    //     });
-    //     object.castShadow = true;
-    //     object.receiveShadow = true;
-    //     scene.add(object);
-    // },onProgress, onError)
-
-    var mtlLoader = new THREE.MTLLoader(manager);
-    mtlLoader.load("/upload/box.mtl", function (materials) {
-        materials.preload();
-        var objLoader = new THREE.OBJLoader(manager);
-        objLoader.setMaterials(materials);
-        objLoader.load(models.modelFilePath, function (object) {
-            object.scale.set(1, 1, 1); // 缩放设置 
-            object.traverse(function (child) {
-                if (child instanceof THREE.Mesh) {
-                    child.castShadow = true;
-                    child.receiveShadow = true;
-                }
-            });
-            let bbox = new THREE.Box3().setFromObject(object);
-            x = bbox.max.x - bbox.min.x;
-            y = bbox.max.y - bbox.min.y;
-            z = bbox.max.z - bbox.min.z;
-            
-            debugger;
-            let tempx = -(bbox.max.x - bbox.min.x)/ 2 + (i * 10);
-            console.log(tempx);
-            
-            object.position.set(-(bbox.max.x - bbox.min.x) / 2 + (i * 10),
-                -(bbox.max.y - bbox.min.y) / 2,
-                -(bbox.max.z - bbox.min.z) / 2);
-
-            if (y / x >= i) {
-                let h = y;
-                let fov = camera.fov * Math.PI / 180;
-                m = h / (2 * Math.tan(fov * 0.5));
-                camera.position.y = 0;
-                camera.position.z = 2 * m + (z / 2);
-                camera.position.x = 0;
-            } else {
-                let w = x;
-                let h = w * i;
-                let Fov = camera.fov * Math.PI / 180;
-                m = h / (2 * Math.tan(Fov * 0.5));
-                camera.position.y = 0;
-                camera.position.z = 2 * m + (z / 2);
-                camera.position.x = 0;
+    var objLoader = new THREE.OBJLoader(manager);
+    objLoader.load(path, function (object) {
+        object.traverse(function (child) {
+            if (child instanceof THREE.Mesh) {
+                child.position.set(0, 0, 0);
+                child.castShadow = true;
+                child.receiveShadow = true;
+                child.indexId = i;
+                child.name = models[i].modelTitle;
+                child.modelid = models[i].modelId;
             }
-            group.add(object)
-            scene.add(group);
-        }, onProgress, onError);
+        });
+        object.castShadow = true;
+        object.receiveShadow = true;
+
+        debugger;
+        object.indexId = i; // models 下表索引值
+        object.name = models[i].modelTitle;
+        object.modelid = models[i].modelId;
         
-    });
+        objects.push(object); // 进行控制拖曳控制
+        scene.add(object);
+    }, onProgress, onError);
+
+    // var mtlLoader = new THREE.MTLLoader(manager);
+    // mtlLoader.load("/upload/box.mtl", function (materials) {
+    //     materials.preload();
+    //     var objLoader = new THREE.OBJLoader(manager);
+    //     objLoader.setMaterials(materials);
+    //     objLoader.load(models[i].modelFilepath, function (object) {
+    //         object.scale.set(1, 1, 1); // 缩放设置 
+    //         object.traverse(function (child) {
+    //             if (child instanceof THREE.Mesh) {
+    //                 child.castShadow = true;
+    //                 child.receiveShadow = true;
+    //             }
+    //         });
+    //         let bbox = new THREE.Box3().setFromObject(object);
+    //         x = bbox.max.x - bbox.min.x;
+    //         y = bbox.max.y - bbox.min.y;
+    //         z = bbox.max.z - bbox.min.z;
+    //        
+    //         debugger;
+    //         let tempx = -(bbox.max.x - bbox.min.x)/ 2 + (i * 10);
+    //         console.log(tempx);
+    //        
+    //         object.position.set(-(bbox.max.x - bbox.min.x) / 2 + (i * 10),
+    //             -(bbox.max.y - bbox.min.y) / 2,
+    //             -(bbox.max.z - bbox.min.z) / 2);
+    //        
+    //         debugger;
+    //         object.indexId = i; // models 下表索引值
+    //         object.name = models[i].modelTitle;
+    //         object.modelid = models[i].modelId;
+    //        
+    //         if (y / x >= i) {
+    //             let h = y;
+    //             let fov = camera.fov * Math.PI / 180;
+    //             m = h / (2 * Math.tan(fov * 0.5));
+    //             camera.position.y = 0;
+    //             camera.position.z = 2 * m + (z / 2);
+    //             camera.position.x = 0;
+    //         } else {
+    //             let w = x;
+    //             let h = w * i;
+    //             let Fov = camera.fov * Math.PI / 180;
+    //             m = h / (2 * Math.tan(Fov * 0.5));
+    //             camera.position.y = 0;
+    //             camera.position.z = 2 * m + (z / 2);
+    //             camera.position.x = 0;
+    //         }
+    //         objects.push(object); // 进行控制拖曳控制
+    //         group.add(object);
+    //         scene.add(group);
+    //     }, onProgress, onError);
+    // });
 }
 
-function initDragControls() {
+function initDragControls(models) {
     dragControls = new THREE.DragControls(objects, camera, renderer.domElement);
     dragControls.addEventListener('dragstart', function () {
         controls.enabled = false;
+        isPaused = true;
     });
-    dragControls.addEventListener('dragend', function () {
+    dragControls.addEventListener('dragend', function (event) {
         controls.enabled = true;
+        isPaused = false;
+        getModelPosition(event, models);
     })
 }
+
+// get model positon 更新数据
+/**
+ * event.object
+ *   -- position
+ *   -- quaternion
+ *   -- rotation
+ *   -- scale
+ *   -- up
+ * 
+ * @param event
+ * @param models
+ */
+function getModelPosition(event, models) {
+    debugger;
+    var tmp_object = event.object;
+    console.log(tmp_object);
+    // 进行页面位置更新 与 数据库更新
+    let model = models[tmp_object.indexId];
+    $("#config").css('display', 'block');
+    $("#name").val(model.modelTitle);
+    if (model.modelTypeId == 1) {
+        $("#type").empty().html("OBJ");
+    } else if (model.modelTypeId == 2) {
+        $("#type").empty().html("PLY");
+    } else {
+        $("#type").empty().html("其他");
+    }
+    $("#posX").val(model.modelPositionX);
+    $("#posY").val(model.modelPositionY);
+    $("#posZ").val(model.modelPositionZ);
+
+    // model数据库更新
+    debugger;
+    console.log(model);
+    
+    $.ajax({
+        url: "/ShadingSSM/Model/Update",
+        // data: {
+        //     modelId: 1001,
+        //     modelTitle: "xiaoming"
+        // },
+        data: model,
+        //dataType: 'json',
+        //contentType:'application/json;charset=UTF-8', //contentType很重要
+        type: "post",   
+        success: function (result) {
+            if (result.code == 200) {
+                alert("位置信息更新失败！请重新拖动");
+            }
+        }
+    })
+}
+
 
 function initObject() {
     var manager = new THREE.LoadingManager();
@@ -170,7 +250,7 @@ function initLight() {
 var plane;
 
 function plane_fun() {
-    var planeGeometry = new THREE.PlaneGeometry(20, 20);//平面
+    var planeGeometry = new THREE.PlaneGeometry(200, 200);//平面
     var planeMaterial = new THREE.MeshLambertMaterial({color: 0xffffff});
     plane = new THREE.Mesh(planeGeometry, planeMaterial);
     plane.rotation.x = -0.5 * Math.PI;//将平面沿着x轴进行旋转
@@ -205,22 +285,25 @@ function initControls() {
 function start(models) {
     debugger;
     console.log(models);
-    
+
     //初始化统计对象
     initscene();
     initCamera();
-    plane_fun();
+    //plane_fun();
     initrenderer();
     //initObject();
-    
+
     // 根据传参 进行多模型加载
-    for (var i = 0; i < 2; i++){
+    for (var i = 0; i < models.length; i++) {
         debugger;
         loadObject(i, models);
     }
     initLight();
     initControls();
-    initDragControls();
+
+    composer = new THREE.ThreeJs_Composer(renderer, scene, camera, options);
+
+    initDragControls(models);
     animate();
     document.getElementById('display1').appendChild(renderer.domElement);
 }

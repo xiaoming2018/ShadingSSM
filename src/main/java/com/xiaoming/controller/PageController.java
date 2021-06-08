@@ -1,5 +1,6 @@
 package com.xiaoming.controller;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.xiaoming.model.*;
 import com.xiaoming.service.Impl.*;
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -49,8 +51,14 @@ public class PageController {
             sceneList.add(sce);
         }
         model.addAttribute("treeData", sceneList);
-        List<MyModel> modelList = modelService.getAllModels();
-        model.addAttribute("models", modelList);
+        // List<MyModel> modelList = modelService.getAllModels();
+        
+        List<MyModel> modelList  = new ArrayList<>();
+        MyModel model1 = modelService.getModelByID(101);
+        modelList.add(model1);
+        JSONArray array = new JSONArray(Collections.singletonList(modelList));
+        System.out.println(array);
+        model.addAttribute("models", array);
         return "index";
     }
 
