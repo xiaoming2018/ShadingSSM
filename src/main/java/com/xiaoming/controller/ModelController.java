@@ -63,7 +63,6 @@ public class ModelController {
     @ResponseBody
     @RequestMapping("/Update")
     public Msg modelUpdate(MyModel model){
-        System.out.println(model);
         Date date = new Date();
         model.setUpdateTime(date);
         try{

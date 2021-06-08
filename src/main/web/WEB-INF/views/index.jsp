@@ -58,6 +58,7 @@
                 <button type="button" class="layui-btn" id="shading">渲染展示</button>
             </li>
             <li class="layui-nav-item">
+                <a href="<%=path%>/files/downFile" >导出配置 test </a>
                 <button type="button" class="layui-btn" id="loadConfig">导出配置</button>
             </li>   <li class="layui-nav-item">
                 <button type="button" class="layui-btn" id="reloadConfig">场景加载</button>
@@ -236,6 +237,14 @@
             })
         });
         
+        // loadConfig 配置导出
+        $("#loadConfig").click(function (){
+            $.ajax({
+                url: "<%=path%>/files/downFile",
+                type: "GET"
+            })
+        });
+        
         /**
          * tree mode id
          * scene  1
@@ -290,48 +299,6 @@
                         }
                     })
                 }
-
-                /**
-                 *  点击进行 模型记载显示，应在页面初始化过程处理
-                 */
-                <%--// 进行单模型加载 [默认 modelId [101-201)]--%>
-                <%--if(obj.data.id > 101 && obj.data.id < 201){--%>
-                <%--    var modelId = obj.data.id;--%>
-                <%--    // 进行 model 查询 - 进行渲染操作--%>
-                <%--    $.ajax({--%>
-                <%--        url:'<%=path%>/Model/GetModelById',--%>
-                <%--        data: {modelId:modelId},--%>
-                <%--        type: "POST",--%>
-                <%--        success: function (result) {--%>
-                <%--            debugger;--%>
-                <%--            console.log(result);--%>
-                <%--            modelFilePath = result.extend.model.modelFilepath;--%>
-                <%--            model = result.extend.model;--%>
-                <%--            $("#display1").empty();--%>
-                <%--            //$("#display1").html("");--%>
-                <%--            // start(modelFilePath);--%>
-                <%--            start(model);--%>
-                <%--        }--%>
-                <%--    })--%>
-                <%--}--%>
-                <%--// get all models by sceneID--%>
-                <%--if(obj.data.id == 101){--%>
-                <%--    $.ajax({--%>
-                <%--        url:'<%=path%>/Model/GetAllModels',--%>
-                <%--        type: "POST",--%>
-                <%--        success: function (result) {--%>
-                <%--            debugger;--%>
-                <%--            console.log(result);--%>
-                <%--            models = result.extend.models;--%>
-                <%--            console.log(models.length);--%>
-                <%--            --%>
-                <%--            $("#display1").empty();--%>
-                <%--            //$("#display1").html("");--%>
-                <%--            // start(modelFilePath);--%>
-                <%--            start(models);--%>
-                <%--        }--%>
-                <%--    })--%>
-                <%--}--%>
             }
         });
 
@@ -342,7 +309,7 @@
                 $("#config").css('display', 'block');
                 $("#name").val(data.modelTitle);
                 if (data.modelTypeId == 1) {
-                    $("#type").empty().html("OBJ");
+                    $("#type").empty().html("OBJ"); 
                 } else if (data.modelTypeId == 2) {
                     $("#type").empty().html("PLY");
                 } else {

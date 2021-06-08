@@ -48,10 +48,9 @@ var onError = function (xhr) {
 
 
 function loadObject(i, models) {
-    debugger;
+    debugger
     console.log("序号：" + i + " path: " + models[i].modelFilepath);
     var path = models[i].modelFilepath;
-    console.log(path);
 
     var manager = new THREE.LoadingManager();
     manager.addHandler(/\.dds$/i, new THREE.DDSLoader());
@@ -173,23 +172,21 @@ function getModelPosition(event, models) {
     } else {
         $("#type").empty().html("其他");
     }
-    $("#posX").val(model.modelPositionX);
-    $("#posY").val(model.modelPositionY);
-    $("#posZ").val(model.modelPositionZ);
+    $("#posX").val(tmp_object.position.x);
+    $("#posY").val(tmp_object.position.y);
+    $("#posZ").val(tmp_object.position.z);
 
-    // model数据库更新
-    debugger;
-    console.log(model);
+    model.modelPositionX = tmp_object.position.x;
+    model.modelPositionY = tmp_object.position.y;
+    model.modelPositionZ = tmp_object.position.z;
     
+    // model数据库更新
+    delete model.createTime;
+    delete model.updateTime;
+
     $.ajax({
         url: "/ShadingSSM/Model/Update",
-        // data: {
-        //     modelId: 1001,
-        //     modelTitle: "xiaoming"
-        // },
         data: model,
-        //dataType: 'json',
-        //contentType:'application/json;charset=UTF-8', //contentType很重要
         type: "post",   
         success: function (result) {
             if (result.code == 200) {

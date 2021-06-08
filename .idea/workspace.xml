@@ -9,19 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a927a490-f0fb-4ae5-b8c1-82353338dd4b" name="Default Changelist" comment="attribute config">
+    <list default="true" id="a927a490-f0fb-4ae5-b8c1-82353338dd4b" name="Default Changelist" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/FilesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/FilesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/ModelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/ModelController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/PageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/PageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/MyCamera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/MyCamera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/MyLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/MyLight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/MyModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/MyModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/MyModelType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/MyModelType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/MyScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/MyScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/service/Impl/ModelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/service/Impl/ModelServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/web/WEB-INF/views/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/WEB-INF/views/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/web/static/js/MTL.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/static/js/MTL.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/web/static/js/ThreeJS_Composer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/static/js/ThreeJS_Composer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -301,7 +295,7 @@
       <workItem from="1623030414561" duration="14611000" />
       <workItem from="1623051743035" duration="5581000" />
       <workItem from="1623114820044" duration="1078000" />
-      <workItem from="1623116549390" duration="16678000" />
+      <workItem from="1623116549390" duration="23028000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1620630624571</created>
@@ -506,7 +500,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623057191641</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="update">
+      <created>1623137872380</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1623137872380</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -543,19 +544,20 @@
     <MESSAGE value="mouse select and move" />
     <MESSAGE value="select model position" />
     <MESSAGE value="attribute config" />
-    <option name="LAST_COMMIT_MESSAGE" value="attribute config" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/controller/FilesController.java</url>
-          <line>45</line>
+          <line>73</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/controller/FilesController.java</url>
-          <line>49</line>
+          <line>77</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -579,9 +581,34 @@
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/controller/ModelController.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="21" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/controller/FilesController.java</url>
+          <line>113</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/controller/FilesController.java</url>
+          <line>114</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/controller/FilesController.java</url>
+          <line>141</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/controller/FilesController.java</url>
+          <line>89</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/controller/FilesController.java</url>
+          <line>103</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/controller/FilesController.java</url>
+          <line>100</line>
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
