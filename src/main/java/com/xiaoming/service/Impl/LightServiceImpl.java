@@ -27,4 +27,10 @@ public class LightServiceImpl {
     public MyLight getLightById(Integer lightId) {
         return lightMapper.selectByPrimaryKey(lightId);
     }
+    
+    public int insertSelectiveLight(MyLight light){
+        return lightMapper.insertSelective(light);
+    }
+    
+    
 }

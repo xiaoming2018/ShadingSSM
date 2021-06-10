@@ -1,7 +1,5 @@
 package com.xiaoming.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.util.Date;
 
 public class MyLight {
@@ -11,15 +9,15 @@ public class MyLight {
 
     private String lightType;
 
-    private String lightPositionX;
+    private Float lightPositionX;
 
-    private String lightPositionY;
+    private Float lightPositionY;
 
-    private String lightPositionZ;
+    private Float lightPositionZ;
 
     private String lightColor;
 
-    private Integer lightIntensity;
+    private Float lightIntensity;
 
     private Date createTime;
 
@@ -27,7 +25,7 @@ public class MyLight {
 
     private Integer sceneId;
 
-    public MyLight(Integer lightId, String lightTitle, String lightType, String lightPositionX, String lightPositionY, String lightPositionZ, String lightColor, Integer lightIntensity, Date createTime, Date updateTime, Integer sceneId) {
+    public MyLight(Integer lightId, String lightTitle, String lightType, Float lightPositionX, Float lightPositionY, Float lightPositionZ, String lightColor, Float lightIntensity, Date createTime, Date updateTime, Integer sceneId) {
         this.lightId = lightId;
         this.lightTitle = lightTitle;
         this.lightType = lightType;
@@ -69,28 +67,28 @@ public class MyLight {
         this.lightType = lightType == null ? null : lightType.trim();
     }
 
-    public String getLightPositionX() {
+    public Float getLightPositionX() {
         return lightPositionX;
     }
 
-    public void setLightPositionX(String lightPositionX) {
-        this.lightPositionX = lightPositionX == null ? null : lightPositionX.trim();
+    public void setLightPositionX(Float lightPositionX) {
+        this.lightPositionX = lightPositionX;
     }
 
-    public String getLightPositionY() {
+    public Float getLightPositionY() {
         return lightPositionY;
     }
 
-    public void setLightPositionY(String lightPositionY) {
-        this.lightPositionY = lightPositionY == null ? null : lightPositionY.trim();
+    public void setLightPositionY(Float lightPositionY) {
+        this.lightPositionY = lightPositionY;
     }
 
-    public String getLightPositionZ() {
+    public Float getLightPositionZ() {
         return lightPositionZ;
     }
 
-    public void setLightPositionZ(String lightPositionZ) {
-        this.lightPositionZ = lightPositionZ == null ? null : lightPositionZ.trim();
+    public void setLightPositionZ(Float lightPositionZ) {
+        this.lightPositionZ = lightPositionZ;
     }
 
     public String getLightColor() {
@@ -101,30 +99,26 @@ public class MyLight {
         this.lightColor = lightColor == null ? null : lightColor.trim();
     }
 
-    public Integer getLightIntensity() {
+    public Float getLightIntensity() {
         return lightIntensity;
     }
 
-    public void setLightIntensity(Integer lightIntensity) {
+    public void setLightIntensity(Float lightIntensity) {
         this.lightIntensity = lightIntensity;
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     public Date getCreateTime() {
         return createTime;
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     public Date getUpdateTime() {
         return updateTime;
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }

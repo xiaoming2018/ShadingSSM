@@ -23,7 +23,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">光源名称：</label>
         <div class="layui-input-block">
-            <input type="text" name="cameraTitle" required lay-verify="required"
+            <input type="text" name="lightTitle" required lay-verify="required"
                    placeholder="请输入光源名称" autocomplete="off" class="layui-input" style="width: 400px">
         </div>
     </div>
@@ -31,16 +31,64 @@
     <div class="layui-form-item">
         <label class="layui-form-label">光源类型：</label>
         <div class="layui-input-block" style="width: 400px">
-            <select name="cameraType" lay-verify="required">
+            <select name="lightType" lay-verify="required">
                 <option value=""></option>
-                <c:forEach var="type" items="${modelTypeList}">
-                    <option value="${type.modelTypeId}">${type.modelTypeName}</option>
-                </c:forEach>
+                <option value="AmbientLight">环境光</option>
+                <option value="DirectionalLight">平行光</option>
+                <option value="AreaLight">区域光</option>
+                <option value="PointLight">点光源</option>
+                <option value="SpotLight">聚光灯</option>
+                <option value="HemisphereLight">半球光</option>
             </select>
         </div>
     </div>
-    
 
+    <div class="layui-form-item">
+        <label class="layui-form-label">光源位置：</label>
+        <div class="layui-input-block" style="width: 400px">
+            <div class="layui-row layui-col-space5">
+                <div class="layui-col-md4">
+                    <div class="grid-demo grid-demo-bg1">x:
+                        <input name="lightPositionX">
+                    </div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="grid-demo">y:
+                        <input name="lightPositionY">
+                    </div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="grid-demo grid-demo-bg1">z:
+                        <input name="lightPositionZ">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">光源颜色：</label>
+        <div class="layui-input-block" style="width: 400px">
+            <div class="property ColorProperty">
+                <div class="label">颜色选择</div>
+                <div class="field"><input id="color" name="lightColor" class="Input input" type="color"
+                                          autocomplete="off" value="#ffffff"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">光源强度：</label>
+        <div class="layui-input-block">
+            <div class="property NumberProperty">
+                <div class="label">强度</div>
+                <div class="field"><input id="intensity" name="lightIntensity" class="Input input" type="number"
+                                          autocomplete="off" value="0.24"></div>
+            </div>
+        </div>
+    </div>
+    
+    
     <div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn" lay-submit lay-filter="formDemo" id="submit">立即提交</button>
@@ -58,8 +106,10 @@
         //监听提交
         form.on('submit(formDemo)', function (data) {
             //layer.msg(JSON.stringify(data.field));
+            debugger;
             $.ajax({
-                url: "<%=path%>/Model/AddModel",
+                url: "<%=path%>/Light/AddLight",
+                type:"POST",
                 dataType: 'json',
                 data: data.field,
                 success: function (data) {
@@ -78,37 +128,7 @@
             return false;
         });
     });
-
-    layui.use('upload', function () {
-        var upload = layui.upload;
-        var uploadInst = upload.render({
-            elem: '#test1',
-            url: '<%=path%>/files/upload',
-            accept: "file",
-            field: 'modelfile',  // 图片字段名 与 后台接受参数名对应一致
-            done: function (res) {
-                //如果上传失败
-                if (res.code == 200) {
-                    return layer.msg('文件上传失败');
-                } else {
-                    debugger;
-                    filepath = res.extend.filePath;
-                    $("#pic").val(filepath); // 设置filepath
-                    var span = $("<span style='color: #FF5722;'></span>").append("模型文件上传成功!");
-                    $("#demoText").empty().append(span);
-                    return layer.msg('文件上传成功');
-                }
-            },
-            error: function () {
-                //演示失败状态，并实现重传
-                var demoText = $('#demoText');
-                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
-                demoText.find('.demo-reload').on('click', function () {
-                    uploadInst.upload();
-                });
-            }
-        });
-    })
+    
 </script>
 </body>
 </html>

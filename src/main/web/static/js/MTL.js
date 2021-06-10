@@ -49,8 +49,8 @@ var onError = function (xhr) {
 
 function loadObject(i, models) {
     debugger
-    console.log("序号：" + i + " path: " + models[i].modelFilepath);
-    var path = models[i].modelFilepath;
+    console.log("序号：" + i + " path: " + models[i].modelFilePath);
+    var path = models[i].modelFilePath;
 
     var manager = new THREE.LoadingManager();
     manager.addHandler(/\.dds$/i, new THREE.DDSLoader());
@@ -83,7 +83,7 @@ function loadObject(i, models) {
     //     materials.preload();
     //     var objLoader = new THREE.OBJLoader(manager);
     //     objLoader.setMaterials(materials);
-    //     objLoader.load(models[i].modelFilepath, function (object) {
+    //     objLoader.load(models[i].modelFilePath, function (object) {
     //         object.scale.set(1, 1, 1); // 缩放设置 
     //         object.traverse(function (child) {
     //             if (child instanceof THREE.Mesh) {

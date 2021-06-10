@@ -138,5 +138,13 @@ public class PageController {
     public String getCameraAdd(){
         return "CameraBaseAdd";
     }
-    
+
+    /**
+     * 请求光源加载页面
+     */
+    @RequestMapping("/getLightAdd")
+    public String getLightAdd(){
+        return "LightBaseAdd";
+    }
+
 }

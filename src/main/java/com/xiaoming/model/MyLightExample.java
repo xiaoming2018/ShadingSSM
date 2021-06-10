@@ -315,62 +315,52 @@ public class MyLightExample {
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionXEqualTo(String value) {
+        public Criteria andLightPositionXEqualTo(Float value) {
             addCriterion("Light_Position_X =", value, "lightPositionX");
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionXNotEqualTo(String value) {
+        public Criteria andLightPositionXNotEqualTo(Float value) {
             addCriterion("Light_Position_X <>", value, "lightPositionX");
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionXGreaterThan(String value) {
+        public Criteria andLightPositionXGreaterThan(Float value) {
             addCriterion("Light_Position_X >", value, "lightPositionX");
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionXGreaterThanOrEqualTo(String value) {
+        public Criteria andLightPositionXGreaterThanOrEqualTo(Float value) {
             addCriterion("Light_Position_X >=", value, "lightPositionX");
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionXLessThan(String value) {
+        public Criteria andLightPositionXLessThan(Float value) {
             addCriterion("Light_Position_X <", value, "lightPositionX");
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionXLessThanOrEqualTo(String value) {
+        public Criteria andLightPositionXLessThanOrEqualTo(Float value) {
             addCriterion("Light_Position_X <=", value, "lightPositionX");
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionXLike(String value) {
-            addCriterion("Light_Position_X like", value, "lightPositionX");
-            return (Criteria) this;
-        }
-
-        public Criteria andLightPositionXNotLike(String value) {
-            addCriterion("Light_Position_X not like", value, "lightPositionX");
-            return (Criteria) this;
-        }
-
-        public Criteria andLightPositionXIn(List<String> values) {
+        public Criteria andLightPositionXIn(List<Float> values) {
             addCriterion("Light_Position_X in", values, "lightPositionX");
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionXNotIn(List<String> values) {
+        public Criteria andLightPositionXNotIn(List<Float> values) {
             addCriterion("Light_Position_X not in", values, "lightPositionX");
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionXBetween(String value1, String value2) {
+        public Criteria andLightPositionXBetween(Float value1, Float value2) {
             addCriterion("Light_Position_X between", value1, value2, "lightPositionX");
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionXNotBetween(String value1, String value2) {
+        public Criteria andLightPositionXNotBetween(Float value1, Float value2) {
             addCriterion("Light_Position_X not between", value1, value2, "lightPositionX");
             return (Criteria) this;
         }
@@ -385,62 +375,52 @@ public class MyLightExample {
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionYEqualTo(String value) {
+        public Criteria andLightPositionYEqualTo(Float value) {
             addCriterion("Light_Position_Y =", value, "lightPositionY");
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionYNotEqualTo(String value) {
+        public Criteria andLightPositionYNotEqualTo(Float value) {
             addCriterion("Light_Position_Y <>", value, "lightPositionY");
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionYGreaterThan(String value) {
+        public Criteria andLightPositionYGreaterThan(Float value) {
             addCriterion("Light_Position_Y >", value, "lightPositionY");
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionYGreaterThanOrEqualTo(String value) {
+        public Criteria andLightPositionYGreaterThanOrEqualTo(Float value) {
             addCriterion("Light_Position_Y >=", value, "lightPositionY");
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionYLessThan(String value) {
+        public Criteria andLightPositionYLessThan(Float value) {
             addCriterion("Light_Position_Y <", value, "lightPositionY");
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionYLessThanOrEqualTo(String value) {
+        public Criteria andLightPositionYLessThanOrEqualTo(Float value) {
             addCriterion("Light_Position_Y <=", value, "lightPositionY");
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionYLike(String value) {
-            addCriterion("Light_Position_Y like", value, "lightPositionY");
-            return (Criteria) this;
-        }
-
-        public Criteria andLightPositionYNotLike(String value) {
-            addCriterion("Light_Position_Y not like", value, "lightPositionY");
-            return (Criteria) this;
-        }
-
-        public Criteria andLightPositionYIn(List<String> values) {
+        public Criteria andLightPositionYIn(List<Float> values) {
             addCriterion("Light_Position_Y in", values, "lightPositionY");
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionYNotIn(List<String> values) {
+        public Criteria andLightPositionYNotIn(List<Float> values) {
             addCriterion("Light_Position_Y not in", values, "lightPositionY");
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionYBetween(String value1, String value2) {
+        public Criteria andLightPositionYBetween(Float value1, Float value2) {
             addCriterion("Light_Position_Y between", value1, value2, "lightPositionY");
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionYNotBetween(String value1, String value2) {
+        public Criteria andLightPositionYNotBetween(Float value1, Float value2) {
             addCriterion("Light_Position_Y not between", value1, value2, "lightPositionY");
             return (Criteria) this;
         }
@@ -455,62 +435,52 @@ public class MyLightExample {
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionZEqualTo(String value) {
+        public Criteria andLightPositionZEqualTo(Float value) {
             addCriterion("Light_Position_Z =", value, "lightPositionZ");
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionZNotEqualTo(String value) {
+        public Criteria andLightPositionZNotEqualTo(Float value) {
             addCriterion("Light_Position_Z <>", value, "lightPositionZ");
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionZGreaterThan(String value) {
+        public Criteria andLightPositionZGreaterThan(Float value) {
             addCriterion("Light_Position_Z >", value, "lightPositionZ");
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionZGreaterThanOrEqualTo(String value) {
+        public Criteria andLightPositionZGreaterThanOrEqualTo(Float value) {
             addCriterion("Light_Position_Z >=", value, "lightPositionZ");
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionZLessThan(String value) {
+        public Criteria andLightPositionZLessThan(Float value) {
             addCriterion("Light_Position_Z <", value, "lightPositionZ");
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionZLessThanOrEqualTo(String value) {
+        public Criteria andLightPositionZLessThanOrEqualTo(Float value) {
             addCriterion("Light_Position_Z <=", value, "lightPositionZ");
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionZLike(String value) {
-            addCriterion("Light_Position_Z like", value, "lightPositionZ");
-            return (Criteria) this;
-        }
-
-        public Criteria andLightPositionZNotLike(String value) {
-            addCriterion("Light_Position_Z not like", value, "lightPositionZ");
-            return (Criteria) this;
-        }
-
-        public Criteria andLightPositionZIn(List<String> values) {
+        public Criteria andLightPositionZIn(List<Float> values) {
             addCriterion("Light_Position_Z in", values, "lightPositionZ");
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionZNotIn(List<String> values) {
+        public Criteria andLightPositionZNotIn(List<Float> values) {
             addCriterion("Light_Position_Z not in", values, "lightPositionZ");
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionZBetween(String value1, String value2) {
+        public Criteria andLightPositionZBetween(Float value1, Float value2) {
             addCriterion("Light_Position_Z between", value1, value2, "lightPositionZ");
             return (Criteria) this;
         }
 
-        public Criteria andLightPositionZNotBetween(String value1, String value2) {
+        public Criteria andLightPositionZNotBetween(Float value1, Float value2) {
             addCriterion("Light_Position_Z not between", value1, value2, "lightPositionZ");
             return (Criteria) this;
         }
@@ -595,52 +565,52 @@ public class MyLightExample {
             return (Criteria) this;
         }
 
-        public Criteria andLightIntensityEqualTo(Integer value) {
+        public Criteria andLightIntensityEqualTo(Float value) {
             addCriterion("Light_Intensity =", value, "lightIntensity");
             return (Criteria) this;
         }
 
-        public Criteria andLightIntensityNotEqualTo(Integer value) {
+        public Criteria andLightIntensityNotEqualTo(Float value) {
             addCriterion("Light_Intensity <>", value, "lightIntensity");
             return (Criteria) this;
         }
 
-        public Criteria andLightIntensityGreaterThan(Integer value) {
+        public Criteria andLightIntensityGreaterThan(Float value) {
             addCriterion("Light_Intensity >", value, "lightIntensity");
             return (Criteria) this;
         }
 
-        public Criteria andLightIntensityGreaterThanOrEqualTo(Integer value) {
+        public Criteria andLightIntensityGreaterThanOrEqualTo(Float value) {
             addCriterion("Light_Intensity >=", value, "lightIntensity");
             return (Criteria) this;
         }
 
-        public Criteria andLightIntensityLessThan(Integer value) {
+        public Criteria andLightIntensityLessThan(Float value) {
             addCriterion("Light_Intensity <", value, "lightIntensity");
             return (Criteria) this;
         }
 
-        public Criteria andLightIntensityLessThanOrEqualTo(Integer value) {
+        public Criteria andLightIntensityLessThanOrEqualTo(Float value) {
             addCriterion("Light_Intensity <=", value, "lightIntensity");
             return (Criteria) this;
         }
 
-        public Criteria andLightIntensityIn(List<Integer> values) {
+        public Criteria andLightIntensityIn(List<Float> values) {
             addCriterion("Light_Intensity in", values, "lightIntensity");
             return (Criteria) this;
         }
 
-        public Criteria andLightIntensityNotIn(List<Integer> values) {
+        public Criteria andLightIntensityNotIn(List<Float> values) {
             addCriterion("Light_Intensity not in", values, "lightIntensity");
             return (Criteria) this;
         }
 
-        public Criteria andLightIntensityBetween(Integer value1, Integer value2) {
+        public Criteria andLightIntensityBetween(Float value1, Float value2) {
             addCriterion("Light_Intensity between", value1, value2, "lightIntensity");
             return (Criteria) this;
         }
 
-        public Criteria andLightIntensityNotBetween(Integer value1, Integer value2) {
+        public Criteria andLightIntensityNotBetween(Float value1, Float value2) {
             addCriterion("Light_Intensity not between", value1, value2, "lightIntensity");
             return (Criteria) this;
         }

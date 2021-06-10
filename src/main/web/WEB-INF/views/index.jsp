@@ -52,15 +52,20 @@
                 <button type="button" class="layui-btn" id="modelLoad">模型加载</button>
             </li>
             <li class="layui-nav-item">
+                <button type="button" class="layui-btn" id="lightAdd">光源加载</button>
+            </li>
+
+            <li class="layui-nav-item">
                 <button type="button" class="layui-btn" id="cameraLoad">相机加载</button>
             </li>
+            
             <li class="layui-nav-item">
                 <button type="button" class="layui-btn" id="shading">渲染展示</button>
             </li>
             <li class="layui-nav-item">
                 <a href="<%=path%>/files/downFile" >导出配置 test </a>
-                <button type="button" class="layui-btn" id="loadConfig">导出配置</button>
-            </li>   <li class="layui-nav-item">
+            </li>   
+            <li class="layui-nav-item">
                 <button type="button" class="layui-btn" id="reloadConfig">场景加载</button>
             </li>
         </ul>
@@ -223,7 +228,7 @@
             });
         });
 
-        //  camera load
+        // camera load
         $("#cameraLoad").click(function () {
             layer.open({
                 type: 2,
@@ -236,6 +241,22 @@
                 }
             })
         });
+        
+        // light add
+        $("#lightAdd").click(function () {
+            debugger;
+            layer.open({
+                type: 2,
+                area: ['520px', '600px'],
+                title: '光源添加',
+                content: '<%=path%>/page/getLightAdd',
+                maxmin: 'true',
+                end: function () {
+                    location.reload();
+                }
+            })
+        })
+        
         
         // loadConfig 配置导出
         $("#loadConfig").click(function (){
