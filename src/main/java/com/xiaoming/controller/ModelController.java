@@ -5,7 +5,6 @@ import com.xiaoming.service.Impl.ModelServiceImpl;
 import com.xiaoming.utils.Msg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -22,6 +21,8 @@ public class ModelController {
     @ResponseBody
     @RequestMapping("/AddModel")
     public Msg addModel(MyModel model) {
+        
+        // model file index 
         Date date = new Date();
         model.setCreateTime(date);
         model.setUpdateTime(date);

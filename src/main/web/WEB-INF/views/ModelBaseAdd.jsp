@@ -43,7 +43,8 @@
     <div class="layui-form-item">
         <label class="layui-form-label">模型文件：</label>
         <div class="layui-input-block">
-            <input type="hidden" id="pic" name="modelFilepath" value="" lay-verify="required"/>
+            <input type="hidden" id="pic" name="modelFilePath" value="" lay-verify="required"/>
+            <input type="hidden" id="pic2" name="modelFileIndex" value="" lay-verify="required"/>
             <div class="layui-input-list">
                 <p id="demoText"></p>
                 <button type="button" class="layui-btn" id="test1"><i class="layui-icon">&#xe67c;</i>文件上传</button>
@@ -62,6 +63,7 @@
 <script>
     //Demo
     var filepath;
+    var fileindex;
     var index = parent.layer.getFrameIndex(window.name);
     layui.use('form', function () {
         var form = layui.form;
@@ -103,7 +105,11 @@
                 } else {
                     debugger;
                     filepath = res.extend.filePath;
+                    fileindex = res.extend.fileIndex;
+                    
                     $("#pic").val(filepath); // 设置filepath
+                    $("#pic2").val(fileindex);  // 设置 fileindex;
+                    
                     var span = $("<span style='color: #FF5722;'></span>").append("模型文件上传成功!");
                     $("#demoText").empty().append(span);
                     return layer.msg('文件上传成功');

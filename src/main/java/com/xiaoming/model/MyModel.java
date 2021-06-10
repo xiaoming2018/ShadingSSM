@@ -1,7 +1,5 @@
 package com.xiaoming.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.util.Date;
 
 public class MyModel {
@@ -29,7 +27,7 @@ public class MyModel {
 
     private Float modelScaleZ;
 
-    private String modelFilepath;
+    private String modelFilePath;
 
     private Integer sceneId;
 
@@ -37,7 +35,9 @@ public class MyModel {
 
     private Date updateTime;
 
-    public MyModel(Integer modelId, String modelTitle, Integer modelTypeId, Float modelPositionX, Float modelPositionY, Float modelPositionZ, Float modelRotationX, Float modelRotationY, Float modelRotationZ, Float modelScaleX, Float modelScaleY, Float modelScaleZ, String modelFilepath, Integer sceneId, Date createTime, Date updateTime) {
+    private String modelFileIndex;
+
+    public MyModel(Integer modelId, String modelTitle, Integer modelTypeId, Float modelPositionX, Float modelPositionY, Float modelPositionZ, Float modelRotationX, Float modelRotationY, Float modelRotationZ, Float modelScaleX, Float modelScaleY, Float modelScaleZ, String modelFilePath, Integer sceneId, Date createTime, Date updateTime, String modelFileIndex) {
         this.modelId = modelId;
         this.modelTitle = modelTitle;
         this.modelTypeId = modelTypeId;
@@ -50,10 +50,11 @@ public class MyModel {
         this.modelScaleX = modelScaleX;
         this.modelScaleY = modelScaleY;
         this.modelScaleZ = modelScaleZ;
-        this.modelFilepath = modelFilepath;
+        this.modelFilePath = modelFilePath;
         this.sceneId = sceneId;
         this.createTime = createTime;
         this.updateTime = updateTime;
+        this.modelFileIndex = modelFileIndex;
     }
 
     public MyModel() {
@@ -156,12 +157,12 @@ public class MyModel {
         this.modelScaleZ = modelScaleZ;
     }
 
-    public String getModelFilepath() {
-        return modelFilepath;
+    public String getModelFilePath() {
+        return modelFilePath;
     }
 
-    public void setModelFilepath(String modelFilepath) {
-        this.modelFilepath = modelFilepath == null ? null : modelFilepath.trim();
+    public void setModelFilePath(String modelFilePath) {
+        this.modelFilePath = modelFilePath == null ? null : modelFilePath.trim();
     }
 
     public Integer getSceneId() {
@@ -172,23 +173,27 @@ public class MyModel {
         this.sceneId = sceneId;
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     public Date getCreateTime() {
         return createTime;
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     public Date getUpdateTime() {
         return updateTime;
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getModelFileIndex() {
+        return modelFileIndex;
+    }
+
+    public void setModelFileIndex(String modelFileIndex) {
+        this.modelFileIndex = modelFileIndex == null ? null : modelFileIndex.trim();
     }
 }

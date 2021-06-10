@@ -15,10 +15,11 @@
       <arg column="Model_Scale_X" javaType="java.lang.Float" jdbcType="REAL" />
       <arg column="Model_Scale_Y" javaType="java.lang.Float" jdbcType="REAL" />
       <arg column="Model_Scale_Z" javaType="java.lang.Float" jdbcType="REAL" />
-      <arg column="Model_FilePath" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="Model_File_Path" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="Scene_ID" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="Create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="Update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="Model_File_Index" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -82,7 +83,7 @@
   <sql id="Base_Column_List">
     Model_ID, Model_Title, Model_Type_ID, Model_Position_X, Model_Position_Y, Model_Position_Z, 
     Model_Rotation_X, Model_Rotation_Y, Model_Rotation_Z, Model_Scale_X, Model_Scale_Y, 
-    Model_Scale_Z, Model_FilePath, Scene_ID, Create_time, Update_time
+    Model_Scale_Z, Model_File_Path, Scene_ID, Create_time, Update_time, Model_File_Index
   </sql>
   <select id="selectByExample" parameterType="com.xiaoming.model.MyModelExample" resultMap="BaseResultMap">
     select
@@ -120,14 +121,14 @@
       Model_Position_X, Model_Position_Y, Model_Position_Z, 
       Model_Rotation_X, Model_Rotation_Y, Model_Rotation_Z, 
       Model_Scale_X, Model_Scale_Y, Model_Scale_Z, 
-      Model_FilePath, Scene_ID, Create_time, 
-      Update_time)
+      Model_File_Path, Scene_ID, Create_time, 
+      Update_time, Model_File_Index)
     values (#{modelId,jdbcType=INTEGER}, #{modelTitle,jdbcType=VARCHAR}, #{modelTypeId,jdbcType=INTEGER}, 
       #{modelPositionX,jdbcType=REAL}, #{modelPositionY,jdbcType=REAL}, #{modelPositionZ,jdbcType=REAL}, 
       #{modelRotationX,jdbcType=REAL}, #{modelRotationY,jdbcType=REAL}, #{modelRotationZ,jdbcType=REAL}, 
       #{modelScaleX,jdbcType=REAL}, #{modelScaleY,jdbcType=REAL}, #{modelScaleZ,jdbcType=REAL}, 
-      #{modelFilepath,jdbcType=VARCHAR}, #{sceneId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP})
+      #{modelFilePath,jdbcType=VARCHAR}, #{sceneId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{modelFileIndex,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.xiaoming.model.MyModel">
     insert into model
@@ -168,8 +169,8 @@
       <if test="modelScaleZ != null">
         Model_Scale_Z,
       </if>
-      <if test="modelFilepath != null">
-        Model_FilePath,
+      <if test="modelFilePath != null">
+        Model_File_Path,
       </if>
       <if test="sceneId != null">
         Scene_ID,
@@ -179,6 +180,9 @@
       </if>
       <if test="updateTime != null">
         Update_time,
+      </if>
+      <if test="modelFileIndex != null">
+        Model_File_Index,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -218,8 +222,8 @@
       <if test="modelScaleZ != null">
         #{modelScaleZ,jdbcType=REAL},
       </if>
-      <if test="modelFilepath != null">
-        #{modelFilepath,jdbcType=VARCHAR},
+      <if test="modelFilePath != null">
+        #{modelFilePath,jdbcType=VARCHAR},
       </if>
       <if test="sceneId != null">
         #{sceneId,jdbcType=INTEGER},
@@ -229,6 +233,9 @@
       </if>
       <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modelFileIndex != null">
+        #{modelFileIndex,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -277,8 +284,8 @@
       <if test="record.modelScaleZ != null">
         Model_Scale_Z = #{record.modelScaleZ,jdbcType=REAL},
       </if>
-      <if test="record.modelFilepath != null">
-        Model_FilePath = #{record.modelFilepath,jdbcType=VARCHAR},
+      <if test="record.modelFilePath != null">
+        Model_File_Path = #{record.modelFilePath,jdbcType=VARCHAR},
       </if>
       <if test="record.sceneId != null">
         Scene_ID = #{record.sceneId,jdbcType=INTEGER},
@@ -288,6 +295,9 @@
       </if>
       <if test="record.updateTime != null">
         Update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modelFileIndex != null">
+        Model_File_Index = #{record.modelFileIndex,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -308,10 +318,11 @@
       Model_Scale_X = #{record.modelScaleX,jdbcType=REAL},
       Model_Scale_Y = #{record.modelScaleY,jdbcType=REAL},
       Model_Scale_Z = #{record.modelScaleZ,jdbcType=REAL},
-      Model_FilePath = #{record.modelFilepath,jdbcType=VARCHAR},
+      Model_File_Path = #{record.modelFilePath,jdbcType=VARCHAR},
       Scene_ID = #{record.sceneId,jdbcType=INTEGER},
       Create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      Update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+      Update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      Model_File_Index = #{record.modelFileIndex,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -352,8 +363,8 @@
       <if test="modelScaleZ != null">
         Model_Scale_Z = #{modelScaleZ,jdbcType=REAL},
       </if>
-      <if test="modelFilepath != null">
-        Model_FilePath = #{modelFilepath,jdbcType=VARCHAR},
+      <if test="modelFilePath != null">
+        Model_File_Path = #{modelFilePath,jdbcType=VARCHAR},
       </if>
       <if test="sceneId != null">
         Scene_ID = #{sceneId,jdbcType=INTEGER},
@@ -363,6 +374,9 @@
       </if>
       <if test="updateTime != null">
         Update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modelFileIndex != null">
+        Model_File_Index = #{modelFileIndex,jdbcType=VARCHAR},
       </if>
     </set>
     where Model_ID = #{modelId,jdbcType=INTEGER}
@@ -380,10 +394,11 @@
       Model_Scale_X = #{modelScaleX,jdbcType=REAL},
       Model_Scale_Y = #{modelScaleY,jdbcType=REAL},
       Model_Scale_Z = #{modelScaleZ,jdbcType=REAL},
-      Model_FilePath = #{modelFilepath,jdbcType=VARCHAR},
+      Model_File_Path = #{modelFilePath,jdbcType=VARCHAR},
       Scene_ID = #{sceneId,jdbcType=INTEGER},
       Create_time = #{createTime,jdbcType=TIMESTAMP},
-      Update_time = #{updateTime,jdbcType=TIMESTAMP}
+      Update_time = #{updateTime,jdbcType=TIMESTAMP},
+      Model_File_Index = #{modelFileIndex,jdbcType=VARCHAR}
     where Model_ID = #{modelId,jdbcType=INTEGER}
   </update>
 </mapper>

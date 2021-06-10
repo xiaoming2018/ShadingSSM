@@ -835,73 +835,73 @@ public class MyModelExample {
             return (Criteria) this;
         }
 
-        public Criteria andModelFilepathIsNull() {
-            addCriterion("Model_FilePath is null");
+        public Criteria andModelFilePathIsNull() {
+            addCriterion("Model_File_Path is null");
             return (Criteria) this;
         }
 
-        public Criteria andModelFilepathIsNotNull() {
-            addCriterion("Model_FilePath is not null");
+        public Criteria andModelFilePathIsNotNull() {
+            addCriterion("Model_File_Path is not null");
             return (Criteria) this;
         }
 
-        public Criteria andModelFilepathEqualTo(String value) {
-            addCriterion("Model_FilePath =", value, "modelFilepath");
+        public Criteria andModelFilePathEqualTo(String value) {
+            addCriterion("Model_File_Path =", value, "modelFilePath");
             return (Criteria) this;
         }
 
-        public Criteria andModelFilepathNotEqualTo(String value) {
-            addCriterion("Model_FilePath <>", value, "modelFilepath");
+        public Criteria andModelFilePathNotEqualTo(String value) {
+            addCriterion("Model_File_Path <>", value, "modelFilePath");
             return (Criteria) this;
         }
 
-        public Criteria andModelFilepathGreaterThan(String value) {
-            addCriterion("Model_FilePath >", value, "modelFilepath");
+        public Criteria andModelFilePathGreaterThan(String value) {
+            addCriterion("Model_File_Path >", value, "modelFilePath");
             return (Criteria) this;
         }
 
-        public Criteria andModelFilepathGreaterThanOrEqualTo(String value) {
-            addCriterion("Model_FilePath >=", value, "modelFilepath");
+        public Criteria andModelFilePathGreaterThanOrEqualTo(String value) {
+            addCriterion("Model_File_Path >=", value, "modelFilePath");
             return (Criteria) this;
         }
 
-        public Criteria andModelFilepathLessThan(String value) {
-            addCriterion("Model_FilePath <", value, "modelFilepath");
+        public Criteria andModelFilePathLessThan(String value) {
+            addCriterion("Model_File_Path <", value, "modelFilePath");
             return (Criteria) this;
         }
 
-        public Criteria andModelFilepathLessThanOrEqualTo(String value) {
-            addCriterion("Model_FilePath <=", value, "modelFilepath");
+        public Criteria andModelFilePathLessThanOrEqualTo(String value) {
+            addCriterion("Model_File_Path <=", value, "modelFilePath");
             return (Criteria) this;
         }
 
-        public Criteria andModelFilepathLike(String value) {
-            addCriterion("Model_FilePath like", value, "modelFilepath");
+        public Criteria andModelFilePathLike(String value) {
+            addCriterion("Model_File_Path like", value, "modelFilePath");
             return (Criteria) this;
         }
 
-        public Criteria andModelFilepathNotLike(String value) {
-            addCriterion("Model_FilePath not like", value, "modelFilepath");
+        public Criteria andModelFilePathNotLike(String value) {
+            addCriterion("Model_File_Path not like", value, "modelFilePath");
             return (Criteria) this;
         }
 
-        public Criteria andModelFilepathIn(List<String> values) {
-            addCriterion("Model_FilePath in", values, "modelFilepath");
+        public Criteria andModelFilePathIn(List<String> values) {
+            addCriterion("Model_File_Path in", values, "modelFilePath");
             return (Criteria) this;
         }
 
-        public Criteria andModelFilepathNotIn(List<String> values) {
-            addCriterion("Model_FilePath not in", values, "modelFilepath");
+        public Criteria andModelFilePathNotIn(List<String> values) {
+            addCriterion("Model_File_Path not in", values, "modelFilePath");
             return (Criteria) this;
         }
 
-        public Criteria andModelFilepathBetween(String value1, String value2) {
-            addCriterion("Model_FilePath between", value1, value2, "modelFilepath");
+        public Criteria andModelFilePathBetween(String value1, String value2) {
+            addCriterion("Model_File_Path between", value1, value2, "modelFilePath");
             return (Criteria) this;
         }
 
-        public Criteria andModelFilepathNotBetween(String value1, String value2) {
-            addCriterion("Model_FilePath not between", value1, value2, "modelFilepath");
+        public Criteria andModelFilePathNotBetween(String value1, String value2) {
+            addCriterion("Model_File_Path not between", value1, value2, "modelFilePath");
             return (Criteria) this;
         }
 
@@ -1082,6 +1082,76 @@ public class MyModelExample {
 
         public Criteria andUpdateTimeNotBetween(Date value1, Date value2) {
             addCriterion("Update_time not between", value1, value2, "updateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andModelFileIndexIsNull() {
+            addCriterion("Model_File_Index is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andModelFileIndexIsNotNull() {
+            addCriterion("Model_File_Index is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andModelFileIndexEqualTo(String value) {
+            addCriterion("Model_File_Index =", value, "modelFileIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andModelFileIndexNotEqualTo(String value) {
+            addCriterion("Model_File_Index <>", value, "modelFileIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andModelFileIndexGreaterThan(String value) {
+            addCriterion("Model_File_Index >", value, "modelFileIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andModelFileIndexGreaterThanOrEqualTo(String value) {
+            addCriterion("Model_File_Index >=", value, "modelFileIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andModelFileIndexLessThan(String value) {
+            addCriterion("Model_File_Index <", value, "modelFileIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andModelFileIndexLessThanOrEqualTo(String value) {
+            addCriterion("Model_File_Index <=", value, "modelFileIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andModelFileIndexLike(String value) {
+            addCriterion("Model_File_Index like", value, "modelFileIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andModelFileIndexNotLike(String value) {
+            addCriterion("Model_File_Index not like", value, "modelFileIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andModelFileIndexIn(List<String> values) {
+            addCriterion("Model_File_Index in", values, "modelFileIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andModelFileIndexNotIn(List<String> values) {
+            addCriterion("Model_File_Index not in", values, "modelFileIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andModelFileIndexBetween(String value1, String value2) {
+            addCriterion("Model_File_Index between", value1, value2, "modelFileIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andModelFileIndexNotBetween(String value1, String value2) {
+            addCriterion("Model_File_Index not between", value1, value2, "modelFileIndex");
             return (Criteria) this;
         }
     }

@@ -1,7 +1,6 @@
 package com.xiaoming.controller;
 
 import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import com.xiaoming.model.MyCamera;
 import com.xiaoming.model.MyLight;
 import com.xiaoming.model.MyModel;
@@ -73,7 +72,7 @@ public class FilesController {
             }
             System.out.println(ModelFilePath);
             filePath = "/upload/" + filePath;
-            return Msg.success().add("filePath", filePath);
+            return Msg.success().add("filePath", filePath).add("fileIndex", ModelFileIndex);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return Msg.fail();
@@ -126,6 +125,7 @@ public class FilesController {
        
         // meshs;
         List<MyModel> modelList = modelService.getModelBySceneID(1);
+        
         JSONArray array = new JSONArray(Collections.singletonList(modelList));
         list.add(array);
        
