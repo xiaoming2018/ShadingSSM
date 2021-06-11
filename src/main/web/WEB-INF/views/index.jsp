@@ -58,13 +58,13 @@
             <li class="layui-nav-item">
                 <button type="button" class="layui-btn" id="cameraLoad">相机加载</button>
             </li>
-            
+
             <li class="layui-nav-item">
                 <button type="button" class="layui-btn" id="shading">渲染展示</button>
             </li>
             <li class="layui-nav-item">
-                <a href="<%=path%>/files/downFile" >导出配置 test </a>
-            </li>   
+                <a href="<%=path%>/files/downFile">导出配置 test </a>
+            </li>
             <li class="layui-nav-item">
                 <button type="button" class="layui-btn" id="reloadConfig">场景加载</button>
             </li>
@@ -196,7 +196,7 @@
         var models = new Array();
         debugger;
         models = ${models};
-        if(models != null){
+        if (models != null) {
             // 模型记载渲染
             $("#display1").empty();
             start(models[0]);
@@ -241,10 +241,9 @@
                 }
             })
         });
-        
+
         // light add
         $("#lightAdd").click(function () {
-            debugger;
             layer.open({
                 type: 2,
                 area: ['520px', '600px'],
@@ -256,72 +255,124 @@
                 }
             })
         })
-        
-        
+
         // loadConfig 配置导出
-        $("#loadConfig").click(function (){
+        $("#loadConfig").click(function () {
             $.ajax({
                 url: "<%=path%>/files/downFile",
                 type: "GET"
             })
         });
-        
+
         /**
          * tree mode id
          * scene  1
          * model  101
          * camera 201
-         * light  301
+         * light  301   
          */
-        // 场景的默认显示：
+            // 场景的默认显示：
         var int = tree.render({
-            elem: "#test1",
-            spread: true,
-            data:${treeData},
-            <%--  场景配置点击事件处理 （模型文件路径，属性列表参数设计） --%>
-            click: function (obj) {
-                /**
-                 * 树形结构 数据点击进行 属性面板数据解析
-                 */
-                // 点击数据显示
-                debugger;
-                alert(obj.data.id + obj.data.title);
-                if (obj.data.id >= 101 && obj.data.id < 201) {
-                    // model
-                    var modelId = obj.data.id;
-                    $.ajax({
-                        url: '<%=path%>/Model/GetModelById',
-                        data: {modelId: modelId},
-                        type: "post",
-                        success: function (result) {
-                            attributeResolution("model", result.extend.model);
+                elem: "#test1",
+                spread: true,
+                edit: ['add', 'update', 'del'],
+                data:${treeData},
+                <%--  场景配置点击事件处理 （模型文件路径，属性列表参数设计） --%>
+                click: function (obj) {
+                    /**
+                     * 树形结构 数据点击进行 属性面板数据解析
+                     */
+                    if (obj.data.id >= 101 && obj.data.id < 201) {
+                        // model
+                        var modelId = obj.data.id;
+                        $.ajax({
+                            url: '<%=path%>/Model/GetModelById',
+                            data: {modelId: modelId},
+                            type: "post",
+                            success: function (result) {
+                                attributeResolution("model", result.extend.model);
+                            }
+                        });
+                    } else if (obj.data.id >= 201 && obj.data.id < 301) {
+                        // camera
+                        var cameraId = obj.data.id;
+                        $.ajax({
+                            url: '<%=path%>/Camera/GetCameraById',
+                            data: {cameraId: cameraId},
+                            type: "post",
+                            success: function (result) {
+                                attributeResolution("camera", result.extend.camera);
+                            }
+                        })
+                    } else {
+                        // light
+                        var lightId = obj.data.id;
+                        $.ajax({
+                            url: "<%=path%>/Light/GetLightById",
+                            data: {lightId: lightId},
+                            type: "POST",
+                            success: function (result) {
+                                attributeResolution("light", result.extend.light);
+                            }
+                        })
+                    }
+                },
+                operate: function (obj) { // 节点操作 回调
+                    debugger;
+                    
+                    var type = obj.type; // 得到操作类型 add edit del
+                    var data = obj.data; // 当前节点的数据
+                    var elem = obj.elem; // 得到当前节点元素
+
+                    // ajax 操作
+                    var id = data.id;
+                    console.log(data);
+                    if (type == 'add') { //增加节点
+                        //返回 key 值
+                        if(id == 101) { // 模型
+                            layer.open({
+                                type:2,
+                                area: ['520px','400px'],
+                                title: '模型添加',
+                                content: '<%=path%>/page/getModelAdd',
+                                maxmin: true,
+                                end: function () {
+                                    location.reload();
+                                }
+                            })
+                        } else if(id == 201){
+                            layer.open({
+                                type: 2,
+                                area: ['520px', '400px'],
+                                title: '相机加载',
+                                content: '<%=path%>/page/getCameraAdd',
+                                maxmin: 'true',
+                                end: function () {
+                                    location.reload();
+                                }
+                            })
+                        } else if(id == 301){
+                            layer.open({
+                                type: 2,
+                                area: ['520px', '600px'],
+                                title: '光源添加',
+                                content: '<%=path%>/page/getLightAdd',
+                                maxmin: 'true',
+                                end: function () {
+                                    location.reload();
+                                }
+                            })
+                        } else{
+                            layer.msg("请选择二级菜单");
                         }
-                    });
-                } else if(obj.data.id >= 201 && obj.data.id < 301){
-                    // camera
-                    var cameraId = obj.data.id;
-                    $.ajax({
-                        url:'<%=path%>/Camera/GetCameraById',
-                        data:{cameraId: cameraId},
-                        type:"post",
-                        success: function(result){
-                            attributeResolution("camera", result.extend.camera);
-                        }
-                    })
-                } else {
-                    // light
-                    var lightId = obj.data.id;
-                    $.ajax({
-                        url:"<%=path%>/Light/GetLightById",
-                        data:{lightId: lightId},
-                        type:"POST",
-                        success: function (result){
-                            attributeResolution("light", result.extend.light);
-                        }
-                    })
+                    } else if (type == 'update') { //修改节点
+                        
+                        console.log(elem.find('.layui-tree-txt').html()); //得到修改后的内容
+                    } else if (type == 'del') {  // 删除节点
+                        
+                    };
                 }
-            }
-        });
+            });
 
         // 属性面板解析
         function attributeResolution(type, data) {
@@ -330,7 +381,7 @@
                 $("#config").css('display', 'block');
                 $("#name").val(data.modelTitle);
                 if (data.modelTypeId == 1) {
-                    $("#type").empty().html("OBJ"); 
+                    $("#type").empty().html("OBJ");
                 } else if (data.modelTypeId == 2) {
                     $("#type").empty().html("PLY");
                 } else {
@@ -339,11 +390,11 @@
                 $("#posX").val(data.modelPositionX);
                 $("#posY").val(data.modelPositionY);
                 $("#posZ").val(data.modelPositionZ);
-            }else if(type == "camera"){
+            } else if (type == "camera") {
                 $("#config").css('display', 'block');
                 $("#name").val(data.cameraTitle);
                 $("#type").empty().html(data.cameraType);
-               
+
                 $("#posX").val(data.cameraPositionX);
                 $("#posY").val(data.cameraPositionY);
                 $("#posZ").val(data.cameraPositionZ);
@@ -355,7 +406,7 @@
                 $("#posX").val(data.lightPositionX);
                 $("#posY").val(data.lightPositionY);
                 $("#posZ").val(data.lightPositionZ);
-                
+
                 $("#light").css('display', 'block');
                 $("#color").val(data.lightColor);
                 $("#intensity").val(data.lightIntensity);

@@ -62,6 +62,8 @@
         </div>
     </div>
     
+    <%--  很多参数需要设置  正视相机的 6个参数 透视相机的4个参数(fov,near,far,aspect) aspect 实际窗口纵横比 --%>
+    
     <div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn" lay-submit lay-filter="formDemo" id="submit">立即提交</button>
@@ -71,8 +73,6 @@
 </form>
 
 <script>
-    //Demo
-    var filepath;
     var index = parent.layer.getFrameIndex(window.name);
     layui.use('form', function () {
         var form = layui.form;

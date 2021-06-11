@@ -28,6 +28,10 @@ public class CameraController {
         
         // 获取当前场景id
         camera.setSceneId(1);
+        camera.setCameraNear(10);
+        camera.setCameraFar(1000);
+        camera.setCameraVisibility("true");
+        camera.setFieldOfView(45);
         try{
             int flag = cameraService.insertSelectiveCamera(camera);
             if(flag == 1){

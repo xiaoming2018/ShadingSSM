@@ -29,6 +29,18 @@ public class ModelController {
 
         // 动态获取 场景ID
         model.setSceneId(1);
+        model.setModelPositionX(new Float(0));
+        model.setModelPositionY(new Float(0));
+        model.setModelPositionZ(new Float(0));
+        
+        model.setModelRotationX(new Float(0));
+        model.setModelRotationY(new Float(0));
+        model.setModelRotationZ(new Float(0));
+        
+        model.setModelScaleX(new Float(0));
+        model.setModelScaleY(new Float(0));
+        model.setModelScaleZ(new Float(0));
+        
         try {
             int flag = modelService.insertSelectiveModel(model);
             if (flag == 1) {
