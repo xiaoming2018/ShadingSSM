@@ -21,40 +21,40 @@
 <br>
 <form class="layui-form" id="form_test">
     <div class="layui-form-item">
-        <label class="layui-form-label">相机名称：</label>
+        <label class="layui-form-label">CameraName：</label>
         <div class="layui-input-block">
             <input type="text" name="cameraTitle" required lay-verify="required"
-                   placeholder="请输入相机名称" autocomplete="off" class="layui-input" style="width: 400px">
+                   placeholder="please input the camera name" autocomplete="off" class="layui-input" style="width: 400px">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label">相机类型：</label>
+        <label class="layui-form-label">CameraType：</label>
         <div class="layui-input-block" style="width: 400px">
             <select name="cameraType" lay-verify="required">
                 <option value=""></option>
-                <option value="Orthographic">正投影相机</option>
-                <option value="Perspective">透视投影相机</option>
+                <option value="Orthographic">Orthographic Camera</option>
+                <option value="Perspective">Perspective Camera</option>
             </select>
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label">相机位置：</label>
+        <label class="layui-form-label">CameraPosition：</label>
         <div class="layui-input-block" style="width: 400px">
             <div class="layui-row layui-col-space5">
                 <div class="layui-col-md4">
-                    <div class="grid-demo grid-demo-bg1">x:
+                    <div class="grid-demo grid-demo-bg1">Position X:
                         <input name="cameraPositionX">
                     </div>
                 </div>
                 <div class="layui-col-md4">
-                    <div class="grid-demo">y:
+                    <div class="grid-demo">Position Y:
                         <input name="cameraPositionY">
                     </div>
                 </div>
                 <div class="layui-col-md4">
-                    <div class="grid-demo grid-demo-bg1">z:
+                    <div class="grid-demo grid-demo-bg1">Position Z:
                         <input name="cameraPositionZ">
                     </div>
                 </div>
@@ -66,8 +66,8 @@
     
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn" lay-submit lay-filter="formDemo" id="submit">立即提交</button>
-            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            <button class="layui-btn" lay-submit lay-filter="formDemo" id="submit">Submit</button>
+            <button type="reset" class="layui-btn layui-btn-primary">Reset</button>
         </div>
     </div>
 </form>
@@ -86,17 +86,16 @@
                 data: data.field,
                 success: function (data) {
                     if (data.code == 100) {
-                        layer.msg("添加成功");
+                        layer.msg("add success");
                         parent.layer.close(index);
                     } else {
-                        layer.msg("添加失败，请重新操作！");
+                        layer.msg("add failed and try again!");
                     }
                 },
                 error: function () {
-                    layer.msg("返回数据错误");
+                    layer.msg("return data error!");
                 }
             });
-            // 取消自动提交；
             return false;
         });
     });

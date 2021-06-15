@@ -21,16 +21,16 @@
 <br>
 <form class="layui-form" id="form_test">
     <div class="layui-form-item">
-        <label class="layui-form-label">模型名称：</label>
+        <label class="layui-form-label">ModelName：</label>
         <div class="layui-input-block">
             <input type="text" name="modelTitle" required lay-verify="required"
-                   placeholder="请输入模型名称" autocomplete="off" class="layui-input" style="width: 400px">
+                   placeholder="please input the model name" autocomplete="off" class="layui-input" style="width: 400px">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label">模型类型：</label>
-        <div class="layui-input-block" style="width: 400px">
+        <label class="layui-form-label">ModelType：</label>
+        <div class="layui-input-block">
             <select name="modelTypeId" lay-verify="required">
                 <option value=""></option>
                 <c:forEach var="type" items="${modelTypeList}">
@@ -41,21 +41,21 @@
     </div>
     
     <div class="layui-form-item">
-        <label class="layui-form-label">模型文件：</label>
+        <label class="layui-form-label">ModelFile：</label>
         <div class="layui-input-block">
             <input type="hidden" id="pic" name="modelFilePath" value="" lay-verify="required"/>
             <input type="hidden" id="pic2" name="modelFileIndex" value="" lay-verify="required"/>
             <div class="layui-input-list">
                 <p id="demoText"></p>
-                <button type="button" class="layui-btn" id="test1"><i class="layui-icon">&#xe67c;</i>文件上传</button>
+                <button type="button" class="layui-btn" id="test1"><i class="layui-icon">&#xe67c;</i>File upload</button>
             </div>
         </div>
     </div>
 
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn" lay-submit lay-filter="formDemo" id="submit">立即提交</button>
-            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            <button class="layui-btn" lay-submit lay-filter="formDemo" id="submit">submit</button>
+            <button type="reset" class="layui-btn layui-btn-primary">Reset</button>
         </div>
     </div>
 </form>
@@ -76,14 +76,14 @@
                 data: data.field,
                 success: function (data) {
                     if (data.code == 100) {
-                        layer.msg("添加成功");
+                        layer.msg("Add sucess!");
                         parent.layer.close(index);
                     } else {
-                        layer.msg("添加失败，请重新操作！");
+                            layer.msg("Failed to add, Please try again");
                     }
                 },
                 error: function () {
-                    layer.msg("返回数据错误");
+                    layer.msg("return data error!");
                 }
             });
             // 取消自动提交；
@@ -101,7 +101,7 @@
             done: function (res) {
                 //如果上传失败
                 if (res.code == 200) {
-                    return layer.msg('文件上传失败');
+                    return layer.msg('upload file error!');
                 } else {
                     debugger;
                     filepath = res.extend.filePath;
@@ -110,15 +110,15 @@
                     $("#pic").val(filepath); // 设置filepath
                     $("#pic2").val(fileindex);  // 设置 fileindex;
                     
-                    var span = $("<span style='color: #FF5722;'></span>").append("模型文件上传成功!");
+                    var span = $("<span style='color: #FF5722;'></span>").append("Model file uploaded successfully!");
                     $("#demoText").empty().append(span);
-                    return layer.msg('文件上传成功');
+                    return layer.msg('File Upload Successfully!');
                 }
             },
             error: function () {
                 //演示失败状态，并实现重传
                 var demoText = $('#demoText');
-                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.html('<span style="color: #FF5722;">upload failed</span> <a class="layui-btn layui-btn-xs demo-reload">retry</a>');
                 demoText.find('.demo-reload').on('click', function () {
                     uploadInst.upload();
                 });

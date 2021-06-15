@@ -76,7 +76,7 @@ public class PageController {
 
         JSONObject model = new JSONObject();
         model.put("id", 101);
-        model.put("title", "模型");
+        model.put("title", "Model");
         model.put("spread", true);
         model.put("children", modelList);
         ls.add(model);
@@ -94,7 +94,7 @@ public class PageController {
         
         JSONObject camera = new JSONObject();
         camera.put("id", 201);
-        camera.put("title", "相机");
+        camera.put("title", "Camera");
         camera.put("spread", true);
         camera.put("children", cameraList);
         ls.add(camera);
@@ -111,7 +111,7 @@ public class PageController {
         }
         JSONObject light = new JSONObject();
         light.put("id", 301);
-        light.put("title", "光源");
+        light.put("title", "Lights");
         light.put("spread", true);
         light.put("children", lightList);
         ls.add(light);

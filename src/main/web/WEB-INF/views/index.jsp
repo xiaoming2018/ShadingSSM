@@ -45,28 +45,31 @@
 <div class="layui-layout layui-layout-admin">
     <!--  头部导航栏   -->
     <div class="layui-header">
-        <div class="layui-logo">模型渲染展示</div>
+        <div class="layui-logo">Model Renderding</div>
         <!-- 头部区域（可配合layui 已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
             <li class="layui-nav-item">
-                <button type="button" class="layui-btn" id="modelLoad">模型加载</button>
+                <button type="button" class="layui-btn" id="modelLoad">Model Loading</button>
             </li>
             <li class="layui-nav-item">
-                <button type="button" class="layui-btn" id="lightAdd">光源加载</button>
-            </li>
-
-            <li class="layui-nav-item">
-                <button type="button" class="layui-btn" id="cameraLoad">相机加载</button>
+                <button type="button" class="layui-btn" id="lightAdd">Light Loading</button>
             </li>
 
             <li class="layui-nav-item">
-                <button type="button" class="layui-btn" id="shading">渲染展示</button>
+                <button type="button" class="layui-btn" id="cameraLoad">Camera Loading</button>
+            </li>
+
+            <li class="layui-nav-item">
+                <button type="button" class="layui-btn" id="shading">Renderding</button>
             </li>
             <li class="layui-nav-item">
-                <a href="<%=path%>/files/downFile">导出配置 test </a>
+                <a href="<%=path%>/files/downFile">Configuare Download</a>
             </li>
             <li class="layui-nav-item">
-                <button type="button" class="layui-btn" id="reloadConfig">场景加载</button>
+                <button type="button" class="layui-btn" id="reloadConfig">scene Loading</button>
+            </li>
+            <li class="layui-nav-item">
+                <button type="button" class="layui-btn" id="ImageFusion">Image Fusion</button>
             </li>
         </ul>
     </div>
@@ -74,13 +77,13 @@
     <!--  左侧属性导航栏  -->
     <div class="layui-side layui-bg-gray">
         <div class="layui-side-scroll">
-            <div id="test1">树形组件</div>
+            <div id="test1"></div>
 
             <%-- 属性组件  --%>
             <div class="VBoxLayout EditorSideBar">
                 <div class="TabLayout bottom">
                     <div class="tabs">
-                        <div class="tab selected" tbindex="0">属性</div>
+                        <div class="tab selected" tbindex="0">attributes</div>
                     </div>
 
                     <%--  默认属性信息隐藏  --%>
@@ -90,17 +93,17 @@
                                 <div class="PropertyGroup">
                                     <div class="head" expanded="true">
                                         <div class="icon"><i class="icon-expand"></i></div>
-                                        <div class="title">基本信息</div>
+                                        <div class="title">Basic Information</div>
                                     </div>
                                     <div class="content" style="height: 68px;">
                                         <div class="property TextProperty">
-                                            <div class="label">名称</div>
+                                            <div class="label">Name</div>
                                             <div class="field">
                                                 <input id="name" class="Input input" type="text" autocomplete="off"
                                                        value="环境光"></div>
                                         </div>
                                         <div class="property DisplayProperty">
-                                            <div class="label">类型</div>
+                                            <div class="label">Type</div>
                                             <div class="field">
                                                 <div class="wrap">
                                                     <div class="label" id="type">AmbientLight</div>
@@ -112,21 +115,21 @@
                                 <div class="PropertyGroup">
                                     <div class="head" expanded="true">
                                         <div class="icon"><i class="icon-expand"></i></div>
-                                        <div class="title">位置组件</div>
+                                        <div class="title">Position Component</div>
                                     </div>
                                     <div class="content" style="height: 89px;">
                                         <div class="property NumberProperty">
-                                            <div class="label">位置X</div>
+                                            <div class="label">Position X</div>
                                             <div class="field"><input id="posX" class="Input input" type="number"
                                                                       autocomplete="off" value="0"></div>
                                         </div>
                                         <div class="property NumberProperty">
-                                            <div class="label">位置Y</div>
+                                            <div class="label">Position Y</div>
                                             <div class="field"><input id="posY" class="Input input" type="number"
                                                                       autocomplete="off" value="0"></div>
                                         </div>
                                         <div class="property NumberProperty">
-                                            <div class="label">位置Z</div>
+                                            <div class="label">Position Z</div>
                                             <div class="field"><input id="posZ" class="Input input" type="number"
                                                                       autocomplete="off" value="0"></div>
                                         </div>
@@ -137,16 +140,16 @@
                                 <div class="PropertyGroup" id="light" style="display: none">
                                     <div class="head" expanded="true">
                                         <div class="icon"><i class="icon-expand"></i></div>
-                                        <div class="title">光源组件</div>
+                                        <div class="title">Light Component</div>
                                     </div>
                                     <div class="content" style="height: 42px;">
                                         <div class="property ColorProperty">
-                                            <div class="label">颜色</div>
+                                            <div class="label">Color</div>
                                             <div class="field"><input id="color" class="Input input" type="color"
                                                                       autocomplete="off" value="#ffffff"></div>
                                         </div>
                                         <div class="property NumberProperty">
-                                            <div class="label">强度</div>
+                                            <div class="label">Intensity</div>
                                             <div class="field"><input id="intensity" class="Input input" type="number"
                                                                       autocomplete="off" value="0.24"></div>
                                         </div>
@@ -163,14 +166,14 @@
     <!--  居中内容主题区域  -->
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <div style="padding: 15px;">绘制预览区域</div>
+        <div style="padding: 15px;">Render Preview Area</div>
         <!-- 渲染区 -->
         <div class="layui-fluid">
             <div class="layui-row layui-col-space10">
                 <%--   全局视角    --%>
                 <div class="layui-col-md6">
                     <div class="layui-card">
-                        <div class="layui-card-header">全局视角</div>
+                        <div class="layui-card-header">Global Rendering</div>
                         <div id="display" style="width: 800px; height:580px"
                              class="layui-card-body border:1px solid #F00">
                             <div id="display1"></div>
@@ -180,7 +183,7 @@
                 <%-- 相机渲染展示 --%>
                 <div class="layui-col-md6">
                     <div class="layui-card">
-                        <div class="layui-card-header">单相机视角</div>
+                        <div class="layui-card-header">Partial Rendering</div>
                         <div style="width: 800px; height:580px" class="layui-card-body border:1px solid #F00">
                             <div id="display2"></div>
                         </div>
@@ -219,7 +222,7 @@
             layer.open({
                 type: 2,
                 area: ['520px', '400px'],
-                title: '模型加载',
+                title: 'Model Loading',
                 content: '<%=path%>/page/getModelAdd',
                 maxmin: 'true',
                 end: function () {
@@ -233,7 +236,7 @@
             layer.open({
                 type: 2,
                 area: ['520px', '400px'],
-                title: '相机加载',
+                title: 'Camera Loading',
                 content: '<%=path%>/page/getCameraAdd',
                 maxmin: 'true',
                 end: function () {
@@ -247,7 +250,7 @@
             layer.open({
                 type: 2,
                 area: ['520px', '600px'],
-                title: '光源添加',
+                title: 'Light Loading',
                 content: '<%=path%>/page/getLightAdd',
                 maxmin: 'true',
                 end: function () {
@@ -333,7 +336,7 @@
                             layer.open({
                                 type:2,
                                 area: ['520px','400px'],
-                                title: '模型添加',
+                                title: 'Model Loading',
                                 content: '<%=path%>/page/getModelAdd',
                                 maxmin: true,
                                 end: function () {
@@ -344,7 +347,7 @@
                             layer.open({
                                 type: 2,
                                 area: ['520px', '400px'],
-                                title: '相机加载',
+                                title: 'Camera Loading',
                                 content: '<%=path%>/page/getCameraAdd',
                                 maxmin: 'true',
                                 end: function () {
@@ -355,7 +358,7 @@
                             layer.open({
                                 type: 2,
                                 area: ['520px', '600px'],
-                                title: '光源添加',
+                                title: 'Light Loading',
                                 content: '<%=path%>/page/getLightAdd',
                                 maxmin: 'true',
                                 end: function () {
@@ -363,7 +366,7 @@
                                 }
                             })
                         } else{
-                            layer.msg("请选择二级菜单");
+                            layer.msg("Please select the secondary menu!");
                         }
                     } else if (type == 'update') { //修改节点
                         
@@ -380,12 +383,12 @@
             if (type == 'model') {
                 $("#config").css('display', 'block');
                 $("#name").val(data.modelTitle);
-                if (data.modelTypeId == 1) {
+                if (data.modelTypeId == 401) {
                     $("#type").empty().html("OBJ");
-                } else if (data.modelTypeId == 2) {
+                } else if (data.modelTypeId == 402) {
                     $("#type").empty().html("PLY");
                 } else {
-                    $("#type").empty().html("其他");
+                    $("#type").empty().html("Other");
                 }
                 $("#posX").val(data.modelPositionX);
                 $("#posY").val(data.modelPositionY);

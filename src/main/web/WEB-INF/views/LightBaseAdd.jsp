@@ -21,44 +21,44 @@
 <br>
 <form class="layui-form" id="form_test">
     <div class="layui-form-item">
-        <label class="layui-form-label">光源名称：</label>
+        <label class="layui-form-label">LightName：</label>
         <div class="layui-input-block">
             <input type="text" name="lightTitle" required lay-verify="required"
-                   placeholder="请输入光源名称" autocomplete="off" class="layui-input" style="width: 400px">
+                   placeholder="please input the light name" autocomplete="off" class="layui-input" style="width: 400px">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label">光源类型：</label>
+        <label class="layui-form-label">LightType：</label>
         <div class="layui-input-block" style="width: 400px">
             <select name="lightType" lay-verify="required">
                 <option value=""></option>
-                <option value="AmbientLight">环境光</option>
-                <option value="DirectionalLight">平行光</option>
-                <option value="AreaLight">区域光</option>
-                <option value="PointLight">点光源</option>
-                <option value="SpotLight">聚光灯</option>
-                <option value="HemisphereLight">半球光</option>
+                <option value="AmbientLight">AmbientLight</option>
+                <option value="DirectionalLight">DirectionalLight</option>
+                <option value="AreaLight">AreaLight</option>
+                <option value="PointLight">PointLight</option>
+                <option value="SpotLight">SpotLight</option>
+                <option value="HemisphereLight">HemisphereLight</option>
             </select>
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label">光源位置：</label>
+        <label class="layui-form-label">LightPosition：</label>
         <div class="layui-input-block" style="width: 400px">
             <div class="layui-row layui-col-space5">
                 <div class="layui-col-md4">
-                    <div class="grid-demo grid-demo-bg1">x:
+                    <div class="grid-demo grid-demo-bg1">Position X:
                         <input name="lightPositionX">
                     </div>
                 </div>
                 <div class="layui-col-md4">
-                    <div class="grid-demo">y:
+                    <div class="grid-demo">Position Y:
                         <input name="lightPositionY">
                     </div>
                 </div>
                 <div class="layui-col-md4">
-                    <div class="grid-demo grid-demo-bg1">z:
+                    <div class="grid-demo grid-demo-bg1">Position Z:
                         <input name="lightPositionZ">
                     </div>
                 </div>
@@ -67,10 +67,10 @@
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label">光源颜色：</label>
+        <label class="layui-form-label">LightColor：</label>
         <div class="layui-input-block" style="width: 400px">
             <div class="property ColorProperty">
-                <div class="label">颜色选择</div>
+                <div class="label">Selection of Color</div>
                 <div class="field"><input id="color" name="lightColor" class="Input input" type="color"
                                           autocomplete="off" value="#ffffff"></div>
             </div>
@@ -78,10 +78,10 @@
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label">光源强度：</label>
+        <label class="layui-form-label">LightIntensity：</label>
         <div class="layui-input-block">
             <div class="property NumberProperty">
-                <div class="label">强度</div>
+                <div class="label">Intensity</div>
                 <div class="field"><input id="intensity" name="lightIntensity" class="Input input" type="number"
                                           autocomplete="off" value="0.24"></div>
             </div>
@@ -91,8 +91,8 @@
     
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn" lay-submit lay-filter="formDemo" id="submit">立即提交</button>
-            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            <button class="layui-btn" lay-submit lay-filter="formDemo" id="submit">submit</button>
+            <button type="reset" class="layui-btn layui-btn-primary">Reset</button>
         </div>
     </div>
 </form>
@@ -114,14 +114,14 @@
                 data: data.field,
                 success: function (data) {
                     if (data.code == 100) {
-                        layer.msg("添加成功");
+                        layer.msg("add success!");
                         parent.layer.close(index);
                     } else {
-                        layer.msg("添加失败，请重新操作！");
+                        layer.msg("add failed and try again!");
                     }
                 },
                 error: function () {
-                    layer.msg("返回数据错误");
+                    layer.msg("return data error!");
                 }
             });
             // 取消自动提交；
