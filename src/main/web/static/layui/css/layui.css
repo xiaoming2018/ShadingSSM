@@ -1,3 +1,7 @@
+.custom-tree-item-clicked{
+    color: #ff5722;
+}
+
 .layui-inline, img {
     display: inline-block;
     vertical-align: middle

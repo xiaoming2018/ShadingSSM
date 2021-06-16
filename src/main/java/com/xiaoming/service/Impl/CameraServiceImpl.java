@@ -32,7 +32,27 @@ public class CameraServiceImpl {
         return cameraMapper.insertSelective(camera);
     }
 
+    /**
+     * get camera by id
+     * @param cameraId
+     * @return
+     */
     public MyCamera getCameraById(Integer cameraId) {
         return cameraMapper.selectByPrimaryKey(cameraId);
     }
+
+    /**
+     * update camera
+     */
+    public int updateCamera(MyCamera camera){
+        return cameraMapper.updateByPrimaryKeySelective(camera);
+    }
+
+    /**
+     *  delete cameta by id 
+     */
+    public int deleteCameraById(Integer cameraId){
+        return cameraMapper.deleteByPrimaryKey(cameraId);
+    }
+    
 }

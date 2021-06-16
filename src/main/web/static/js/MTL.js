@@ -165,12 +165,12 @@ function getModelPosition(event, models) {
     let model = models[tmp_object.indexId];
     $("#config").css('display', 'block');
     $("#name").val(model.modelTitle);
-    if (model.modelTypeId == 1) {
+    if (model.modelTypeId == 401) {
         $("#type").empty().html("OBJ");
-    } else if (model.modelTypeId == 2) {
+    } else if (model.modelTypeId == 402) {
         $("#type").empty().html("PLY");
     } else {
-        $("#type").empty().html("其他");
+        $("#type").empty().html("Other");
     }
     $("#posX").val(tmp_object.position.x);
     $("#posY").val(tmp_object.position.y);
@@ -190,7 +190,7 @@ function getModelPosition(event, models) {
         type: "post",   
         success: function (result) {
             if (result.code == 200) {
-                alert("位置信息更新失败！请重新拖动");
+                layer.msg("update position information faield, please try again!");
             }
         }
     })

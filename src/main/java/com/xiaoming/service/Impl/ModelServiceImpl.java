@@ -51,4 +51,12 @@ public class ModelServiceImpl {
     public int updateModel(MyModel model){
         return modelMapper.updateByPrimaryKeySelective(model);
     }
+
+    /**
+     * 根据 模型ID进行删除
+     */
+    public int deleteModelByModelId(Integer modelId){
+        return modelMapper.deleteByPrimaryKey(modelId);
+    }
+
 }

@@ -52,7 +52,7 @@ public class PageController {
         model.addAttribute("treeData", sceneList);
         List<MyModel> modelList = modelService.getAllModels();
         JSONArray array = new JSONArray(Collections.singletonList(modelList));
-        model.addAttribute("models", array);
+        model.addAttribute("models", array); // 
         return "index";
     }
 
@@ -130,6 +130,42 @@ public class PageController {
         model.addAttribute("modelTypeList", modelTypeList);
         return "ModelBaseAdd";
     }
+
+    /**
+     * index 请求模型文件修改页面
+     */
+    @RequestMapping("/getModelEdit")
+    public String getModelEdit(Integer modelId, Model model){
+        System.out.println(modelId);
+        MyModel myModel = modelService.getModelByID(modelId);
+        List<MyModelType> modelTypeList = modelTypeService.selectAll();
+        model.addAttribute("modelTypeList", modelTypeList);
+        model.addAttribute("model", myModel);
+        return "ModelBaseEdit";
+    }
+
+    /**
+     * index 请求camera 修改界面
+     */
+    @RequestMapping("/getCameraEdit")
+    public String getCameraEdit(Integer cameraId, Model model){
+        System.out.println(cameraId);
+        MyCamera myCamera = cameraService.getCameraById(cameraId);
+        model.addAttribute("camera", myCamera);
+        return "CameraBaseEdit";
+    }
+
+    /**
+     * index 请求light 修改页面
+     */
+    @RequestMapping("/getLightEdit")
+    public String getLightEdit(Integer lightId, Model model){
+        System.out.println(lightId);
+        MyLight myLight = lightService.getLightById(lightId);
+        model.addAttribute("light", myLight);
+        return "LightBaseEdit";
+    }
+
 
     /**
      * 请求相机加载页面

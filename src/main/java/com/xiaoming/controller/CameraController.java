@@ -13,45 +13,79 @@ import java.util.Date;
 @Controller
 @RequestMapping("Camera")
 public class CameraController {
-    
+
     @Autowired
     private CameraServiceImpl cameraService;
-    
+
     @ResponseBody
     @RequestMapping("/AddCamera")
-    public Msg addCamera(MyCamera camera){
+    public Msg addCamera(MyCamera camera) {
         Date date = new Date();
         camera.setCreateTime(date);
         camera.setUpdateTime(date);
 
         System.out.println(camera);
-        
+
         // 获取当前场景id
         camera.setSceneId(1);
         camera.setCameraNear(10);
         camera.setCameraFar(1000);
         camera.setCameraVisibility("true");
         camera.setFieldOfView(45);
-        try{
+        try {
             int flag = cameraService.insertSelectiveCamera(camera);
-            if(flag == 1){
+            if (flag == 1) {
                 return Msg.success().add("message", "插入camera成功");
-            }else{
+            } else {
                 return Msg.fail().add("message", "插入数据库失败");
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return Msg.fail().add("message", "添加camera失败");
         }
     }
-    
+
+    @ResponseBody
+    @RequestMapping("/UpdateCamera")
+    public Msg updateCamera(MyCamera camera) {
+        System.out.println(camera.toString());
+        try {
+            int flag = cameraService.updateCamera(camera);
+            if (flag == 1) {
+                return Msg.success().add("message", "update camera success");
+            } else {
+                return Msg.fail().add("message", "update camera failed");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Msg.fail().add("message", "update camera failed");
+        }
+    }
+
+    @ResponseBody
+    @RequestMapping("/DeleteCamera")
+    public Msg deleteCamera(Integer cameraId) {
+        System.out.println(cameraId);
+        try {
+            int flag = cameraService.deleteCameraById(cameraId);
+            if (flag == 1) {
+                return Msg.success().add("message", "delete camera success");
+            } else {
+                return Msg.fail().add("message", "delete camera faield");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Msg.fail().add("message", "delete camera failed");
+        }
+    }
+
     @ResponseBody
     @RequestMapping("/GetCameraById")
-    public Msg getCameraById(Integer cameraId){
+    public Msg getCameraById(Integer cameraId) {
         MyCamera camera = cameraService.getCameraById(cameraId);
-        if(camera != null){
+        if (camera != null) {
             return Msg.success().add("camera", camera);
-        }else{
+        } else {
             return Msg.fail().add("message", "no camera with this id");
         }
     }

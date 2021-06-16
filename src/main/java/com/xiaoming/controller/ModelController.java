@@ -21,7 +21,7 @@ public class ModelController {
     @ResponseBody
     @RequestMapping("/AddModel")
     public Msg addModel(MyModel model) {
-        
+
         // model file index 
         Date date = new Date();
         model.setCreateTime(date);
@@ -32,15 +32,15 @@ public class ModelController {
         model.setModelPositionX(new Float(0));
         model.setModelPositionY(new Float(0));
         model.setModelPositionZ(new Float(0));
-        
+
         model.setModelRotationX(new Float(0));
         model.setModelRotationY(new Float(0));
         model.setModelRotationZ(new Float(0));
-        
+
         model.setModelScaleX(new Float(0));
         model.setModelScaleY(new Float(0));
         model.setModelScaleZ(new Float(0));
-        
+
         try {
             int flag = modelService.insertSelectiveModel(model);
             if (flag == 1) {
@@ -55,15 +55,49 @@ public class ModelController {
     }
 
     @ResponseBody
+    @RequestMapping("UpdateModel")
+    public Msg updateModel(MyModel model) {
+        System.out.println(model);
+        try {
+            int flag = modelService.updateModel(model);
+            if (flag == 1) {
+                return Msg.success().add("meaage", "update model success");
+            } else {
+                return Msg.fail().add("message", "update model failed");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Msg.fail().add("message", "update model error");
+        }
+    }
+
+    @ResponseBody
+    @RequestMapping("DeleteModel")
+    public Msg deleteMode(Integer modelId) {
+        System.out.println(modelId);
+        try {
+            int flag = modelService.deleteModelByModelId(modelId);
+            if (flag == 1) {
+                return Msg.success().add("message", "delete model sucess");
+            } else {
+                return Msg.fail().add("message", "delete model error");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Msg.fail().add("message", "delet model in database error");
+        }
+    }
+
+
+    @ResponseBody
     @RequestMapping("/GetModelById")
     public Msg getModelById(Integer modelId) {
         MyModel model = modelService.getModelByID(modelId);
         if (model != null) {
             return Msg.success().add("model", model);
-        }else {
+        } else {
             return Msg.fail().add("message", "no model with this id");
         }
-
     }
 
     @ResponseBody
@@ -72,20 +106,20 @@ public class ModelController {
         List<MyModel> models = modelService.getAllModels();
         return Msg.success().add("models", models);
     }
-    
+
     @ResponseBody
     @RequestMapping("/Update")
-    public Msg modelUpdate(MyModel model){
+    public Msg modelUpdate(MyModel model) {
         Date date = new Date();
         model.setUpdateTime(date);
-        try{
+        try {
             int flag = modelService.updateModel(model);
-            if(flag == 1){
-                return Msg.success().add("message", "插入成功");
+            if (flag == 1) {
+                return Msg.success().add("message", "insert database success");
             } else {
                 return Msg.success().add("message", "未改变");
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return Msg.fail().add("message", "插入失败");
         }

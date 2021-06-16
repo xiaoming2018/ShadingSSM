@@ -5533,6 +5533,9 @@ layui.define("form", function (e) {
                 }
             } else x = "normal"
         }), k.on("click", function () {
+            // 点击源码变色
+            layui.$("." + p).removeClass("custom-tree-item-clicked");
+            k.addClass("custom-tree-item-clicked");
             var n = i(this);
             n.hasClass(d) || (x = e.hasClass(C) ? t.onlyIconControl ? "open" : "close" : t.onlyIconControl ? "close" : "open", t.click && t.click({
                 elem: e,
@@ -5567,74 +5570,85 @@ layui.define("form", function (e) {
             l.prop("disabled") || (n.setCheckbox(e, a, l), t.oncheck && t.oncheck({elem: e, checked: c, data: a}))
         })
     }, b.prototype.operate = function (e, a) {
-        var t = this, r = t.config, l = e.children("." + p), d = l.children("." + f);
-        l.children(".layui-tree-btnGroup").on("click", ".layui-icon", function (l) {
-            layui.stope(l);
-            var f = i(this).data("type"), b = e.children("." + v), g = {data: a, type: f, elem: e};
-            if ("add" == f) {
-                b[0] || (r.showLine ? (d.find("." + o).addClass("layui-tree-icon"), d.find("." + o).children(".layui-icon").addClass(h).removeClass("layui-icon-file")) : d.find(".layui-tree-iconArrow").removeClass(c), e.append('<div class="layui-tree-pack"></div>'));
-                var w = r.operate && r.operate(g), N = {};
-                if (N.title = r.text.defaultNodeName, N.id = w, t.tree(e.children("." + v), [N]), r.showLine) if (b[0]) b.hasClass(x) || b.addClass(x), e.find("." + v).each(function () {
-                    i(this).children("." + s).last().addClass(k)
-                }), b.children("." + s).last().prev().hasClass(k) ? b.children("." + s).last().prev().removeClass(k) : b.children("." + s).last().removeClass(k), !e.parent("." + v)[0] && e.next()[0] && b.children("." + s).last().removeClass(k); else {
-                    var T = e.siblings("." + s), L = 1, A = e.parent("." + v);
-                    layui.each(T, function (e, a) {
-                        i(a).children("." + v)[0] || (L = 0)
-                    }), 1 == L ? (T.children("." + v).addClass(m), T.children("." + v).children("." + s).removeClass(k), e.children("." + v).addClass(m), A.removeClass(x), A.children("." + s).last().children("." + v).children("." + s).last().addClass(k)) : e.children("." + v).children("." + s).addClass(k)
-                }
-                if (!r.showCheckbox) return;
-                if (d.find('input[same="layuiTreeCheck"]')[0].checked) {
-                    var I = e.children("." + v).children("." + s).last();
-                    I.find('input[same="layuiTreeCheck"]')[0].checked = !0
-                }
-                t.renderForm("checkbox")
-            } else if ("update" == f) {
-                var F = d.children("." + y).html();
-                d.children("." + y).html(""), d.append('<input type="text" class="layui-tree-editInput">'), d.children(".layui-tree-editInput").val(F).focus();
-                var j = function (e) {
-                    var i = e.val().trim();
-                    i = i ? i : r.text.defaultNodeName, e.remove(), d.children("." + y).html(i), g.data.title = i, r.operate && r.operate(g)
-                };
-                d.children(".layui-tree-editInput").blur(function () {
-                    j(i(this))
-                }), d.children(".layui-tree-editInput").on("keydown", function (e) {
-                    13 === e.keyCode && (e.preventDefault(), j(i(this)))
-                })
-            } else n.confirm('确认删除该节点 "<span style="color: #999;">' + (a.title || "") + '</span>" 吗？', function (a) {
-                if (r.operate && r.operate(g), g.status = "remove", n.close(a), !e.prev("." + s)[0] && !e.next("." + s)[0] && !e.parent("." + v)[0]) return e.remove(), void t.elem.append(t.elemNone);
-                if (e.siblings("." + s).children("." + p)[0]) {
-                    if (r.showCheckbox) {
-                        var l = function (e) {
-                            if (e.parents("." + s)[0]) {
-                                var a = e.siblings("." + s).children("." + p), n = e.parent("." + v).prev(),
-                                    r = n.find('input[same="layuiTreeCheck"]')[0], c = 1, d = 0;
-                                0 == r.checked && (a.each(function (e, a) {
-                                    var n = i(a).find('input[same="layuiTreeCheck"]')[0];
-                                    0 != n.checked || n.disabled || (c = 0), n.disabled || (d = 1)
-                                }), 1 == c && 1 == d && (r.checked = !0, t.renderForm("checkbox"), l(n.parent("." + s))))
-                            }
+        var t = this, 
+            r = t.config, 
+            l = e.children("." + p), 
+            d = l.children("." + f);
+            l.children(".layui-tree-btnGroup").on("click", ".layui-icon", function (l) {
+                layui.stope(l);
+                var f = i(this).data("type"), b = e.children("." + v), g = {data: a, type: f, elem: e};
+                
+                if(r.customOperate){
+                    console.log("修改layui源码，进行tree node 节点操作！");
+                    r.operate && r.operate(g);
+                } else{
+                    if ("add" == f) {
+                        b[0] || (r.showLine ? (d.find("." + o).addClass("layui-tree-icon"), d.find("." + o).children(".layui-icon").addClass(h).removeClass("layui-icon-file")) : d.find(".layui-tree-iconArrow").removeClass(c), e.append('<div class="layui-tree-pack"></div>'));
+                        var w = r.operate && r.operate(g), N = {};
+                        if (N.title = r.text.defaultNodeName, N.id = w, t.tree(e.children("." + v), [N]), r.showLine) if (b[0]) b.hasClass(x) || b.addClass(x), e.find("." + v).each(function () {
+                            i(this).children("." + s).last().addClass(k)
+                        }), b.children("." + s).last().prev().hasClass(k) ? b.children("." + s).last().prev().removeClass(k) : b.children("." + s).last().removeClass(k), !e.parent("." + v)[0] && e.next()[0] && b.children("." + s).last().removeClass(k); else {
+                            var T = e.siblings("." + s), L = 1, A = e.parent("." + v);
+                            layui.each(T, function (e, a) {
+                                i(a).children("." + v)[0] || (L = 0)
+                            }), 1 == L ? (T.children("." + v).addClass(m), T.children("." + v).children("." + s).removeClass(k), e.children("." + v).addClass(m), A.removeClass(x), A.children("." + s).last().children("." + v).children("." + s).last().addClass(k)) : e.children("." + v).children("." + s).addClass(k)
+                        }
+                        if (!r.showCheckbox) return;
+                        if (d.find('input[same="layuiTreeCheck"]')[0].checked) {
+                            var I = e.children("." + v).children("." + s).last();
+                            I.find('input[same="layuiTreeCheck"]')[0].checked = !0
+                        }
+                        t.renderForm("checkbox")
+                    }
+                    else if ("update" == f) {
+                        var F = d.children("." + y).html();
+                        d.children("." + y).html(""), d.append('<input type="text" class="layui-tree-editInput">'), d.children(".layui-tree-editInput").val(F).focus();
+                        var j = function (e) {
+                            var i = e.val().trim();
+                            i = i ? i : r.text.defaultNodeName, e.remove(), d.children("." + y).html(i), g.data.title = i, r.operate && r.operate(g)
                         };
-                        l(e)
-                    }
-                    if (r.showLine) {
-                        var d = e.siblings("." + s), h = 1, f = e.parent("." + v);
-                        layui.each(d, function (e, a) {
-                            i(a).children("." + v)[0] || (h = 0)
-                        }), 1 == h ? (b[0] || (f.removeClass(x), d.children("." + v).addClass(m), d.children("." + v).children("." + s).removeClass(k)), e.next()[0] ? f.children("." + s).last().children("." + v).children("." + s).last().addClass(k) : e.prev().children("." + v).children("." + s).last().addClass(k), e.next()[0] || e.parents("." + s)[1] || e.parents("." + s).eq(0).next()[0] || e.prev("." + s).addClass(k)) : !e.next()[0] && e.hasClass(k) && e.prev().addClass(k)
-                    }
-                } else {
-                    var y = e.parent("." + v).prev();
-                    if (r.showLine) {
-                        y.find("." + o).removeClass("layui-tree-icon"), y.find("." + o).children(".layui-icon").removeClass(u).addClass("layui-icon-file");
-                        var w = y.parents("." + v).eq(0);
-                        w.addClass(x), w.children("." + s).each(function () {
-                            i(this).children("." + v).children("." + s).last().addClass(k)
+                        d.children(".layui-tree-editInput").blur(function () {
+                            j(i(this))
+                        }), d.children(".layui-tree-editInput").on("keydown", function (e) {
+                            13 === e.keyCode && (e.preventDefault(), j(i(this)))
                         })
-                    } else y.find(".layui-tree-iconArrow").addClass(c);
-                    e.parents("." + s).eq(0).removeClass(C), e.parent("." + v).remove()
+                    }
+                    else n.confirm('确认删除该节点 "<span style="color: #999;">' + (a.title || "") + '</span>" 吗？', function (a) {
+                            if (r.operate && r.operate(g), g.status = "remove", n.close(a), !e.prev("." + s)[0] && !e.next("." + s)[0] && !e.parent("." + v)[0]) return e.remove(), void t.elem.append(t.elemNone);
+                            if (e.siblings("." + s).children("." + p)[0]) {
+                                if (r.showCheckbox) {
+                                    var l = function (e) {
+                                        if (e.parents("." + s)[0]) {
+                                            var a = e.siblings("." + s).children("." + p), n = e.parent("." + v).prev(),
+                                                r = n.find('input[same="layuiTreeCheck"]')[0], c = 1, d = 0;
+                                            0 == r.checked && (a.each(function (e, a) {
+                                                var n = i(a).find('input[same="layuiTreeCheck"]')[0];
+                                                0 != n.checked || n.disabled || (c = 0), n.disabled || (d = 1)
+                                            }), 1 == c && 1 == d && (r.checked = !0, t.renderForm("checkbox"), l(n.parent("." + s))))
+                                        }
+                                    };
+                                    l(e)
+                                }
+                                if (r.showLine) {
+                                    var d = e.siblings("." + s), h = 1, f = e.parent("." + v);
+                                    layui.each(d, function (e, a) {
+                                        i(a).children("." + v)[0] || (h = 0)
+                                    }), 1 == h ? (b[0] || (f.removeClass(x), d.children("." + v).addClass(m), d.children("." + v).children("." + s).removeClass(k)), e.next()[0] ? f.children("." + s).last().children("." + v).children("." + s).last().addClass(k) : e.prev().children("." + v).children("." + s).last().addClass(k), e.next()[0] || e.parents("." + s)[1] || e.parents("." + s).eq(0).next()[0] || e.prev("." + s).addClass(k)) : !e.next()[0] && e.hasClass(k) && e.prev().addClass(k)
+                                }
+                            } else {
+                                var y = e.parent("." + v).prev();
+                                if (r.showLine) {
+                                    y.find("." + o).removeClass("layui-tree-icon"), y.find("." + o).children(".layui-icon").removeClass(u).addClass("layui-icon-file");
+                                    var w = y.parents("." + v).eq(0);
+                                    w.addClass(x), w.children("." + s).each(function () {
+                                        i(this).children("." + v).children("." + s).last().addClass(k)
+                                    })
+                                } else y.find(".layui-tree-iconArrow").addClass(c);
+                                e.parents("." + s).eq(0).removeClass(C), e.parent("." + v).remove()
+                            }
+                            e.remove()
+                        })
                 }
-                e.remove()
-            })
         })
     }, b.prototype.events = function () {
         var e = this, a = e.config;

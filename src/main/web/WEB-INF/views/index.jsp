@@ -100,7 +100,7 @@
                                             <div class="label">Name</div>
                                             <div class="field">
                                                 <input id="name" class="Input input" type="text" autocomplete="off"
-                                                       value="环境光"></div>
+                                                       value="AmbientLight"></div>
                                         </div>
                                         <div class="property DisplayProperty">
                                             <div class="label">Type</div>
@@ -320,6 +320,8 @@
                         })
                     }
                 },
+                customOperate: true, // 自定义属性
+            
                 operate: function (obj) { // 节点操作 回调
                     debugger;
                     
@@ -332,7 +334,7 @@
                     console.log(data);
                     if (type == 'add') { //增加节点
                         //返回 key 值
-                        if(id == 101) { // 模型
+                        if(id >= 101 && id < 201) { // 模型
                             layer.open({
                                 type:2,
                                 area: ['520px','400px'],
@@ -343,7 +345,7 @@
                                     location.reload();
                                 }
                             })
-                        } else if(id == 201){
+                        } else if(id >= 201 && id < 301){
                             layer.open({
                                 type: 2,
                                 area: ['520px', '400px'],
@@ -354,7 +356,7 @@
                                     location.reload();
                                 }
                             })
-                        } else if(id == 301){
+                        } else if(id >= 301 && id < 401){
                             layer.open({
                                 type: 2,
                                 area: ['520px', '600px'],
@@ -369,10 +371,78 @@
                             layer.msg("Please select the secondary menu!");
                         }
                     } else if (type == 'update') { //修改节点
-                        
+                        if(id >= 101 && id < 201) { // 模型
+                            layer.open({
+                                type:2,
+                                area: ['520px','400px'],
+                                title: 'Model Loading',
+                                content: '<%=path%>/page/getModelEdit?modelId=' + id,
+                                maxmin: true,
+                                end: function () {
+                                    location.reload();
+                                }
+                            })
+                        } else if(id >= 201 && id < 301){
+                            layer.open({
+                                type: 2,
+                                area: ['520px', '400px'],
+                                title: 'Camera Loading',
+                                content: '<%=path%>/page/getCameraEdit?cameraId=' + id,
+                                maxmin: 'true',
+                                end: function () {
+                                    location.reload();
+                                }
+                            })
+                        } else if(id >= 301 && id < 401){
+                            layer.open({
+                                type: 2,
+                                area: ['520px', '600px'],
+                                title: 'Light Loading',
+                                content: '<%=path%>/page/getLightEdit?lightId=' + id,
+                                maxmin: 'true',
+                                end: function () {
+                                    location.reload();
+                                }
+                            })
+                        } else{
+                            layer.msg("Please select the secondary menu!");
+                        }
                         console.log(elem.find('.layui-tree-txt').html()); //得到修改后的内容
                     } else if (type == 'del') {  // 删除节点
-                        
+                        layer.confirm("Are you sure to delete " + data.title + "?", {
+                           btn: ['Confirm', 'Cancel'],
+                           yes: function (index){
+                               var url = "";
+                               if(id >= 101 && id < 201) { // 模型
+                                    url = "<%=path%>/Model/DeleteModel?modelId=" + id;
+                               } else if(id >= 201 && id < 301){
+                                   url = "<%=path%>/Camera/DeleteCamera?cameraId=" + id;
+                               } else if(id >= 301 && id < 401){
+                                   url = "<%=path%>/Light/DeleteLight?lightId=" + id;
+                               } else{
+                                   layer.msg("Please select the secondary menu!");
+                               }
+                               $.ajax({
+                                   url: url,
+                                   async: false,
+                                   success: function (result){
+                                       if(result.code == 100){
+                                           layer.msg("delete success");
+                                           parent.layer.close(index);
+                                           location.reload();
+                                       }else{
+                                           layer.msg("delete failed" + result.extend.message);
+                                       }
+                                   },
+                                   error: function (){
+                                       layer.msg("delete request failed");
+                                   }
+                               })
+                           },
+                            btn2: function (index){
+                               parent.layer.close(index);
+                            }
+                        });
                     };
                 }
             });
