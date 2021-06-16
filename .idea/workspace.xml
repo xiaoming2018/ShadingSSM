@@ -9,22 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a927a490-f0fb-4ae5-b8c1-82353338dd4b" name="Default Changelist" comment="jsp change for english">
-      <change afterPath="$PROJECT_DIR$/src/main/web/WEB-INF/views/CameraBaseEdit.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/web/WEB-INF/views/LightBaseEdit.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/web/WEB-INF/views/ModelBaseEdit.jsp" afterDir="false" />
+    <list default="true" id="a927a490-f0fb-4ae5-b8c1-82353338dd4b" name="Default Changelist" comment="model camera light add edit and delete">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/CameraController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/CameraController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/LightController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/LightController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/ModelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/ModelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/PageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/PageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/service/Impl/CameraServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/service/Impl/CameraServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/service/Impl/LightServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/service/Impl/LightServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/service/Impl/ModelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/service/Impl/ModelServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/web/WEB-INF/views/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/WEB-INF/views/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/web/static/js/MTL.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/static/js/MTL.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/web/static/layui/css/layui.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/static/layui/css/layui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/web/static/layui/layui.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/static/layui/layui.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/web/static/js/Move.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/static/js/Move.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,6 +104,17 @@
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 8.5.65">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="generated-requests#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -299,7 +299,7 @@
       <workItem from="1623390338452" duration="1409000" />
       <workItem from="1623393613792" duration="8439000" />
       <workItem from="1623720741856" duration="6357000" />
-      <workItem from="1623806254962" duration="16383000" />
+      <workItem from="1623806254962" duration="21996000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1620630624571</created>
@@ -532,7 +532,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623748558369</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="model camera light add edit and delete">
+      <created>1623828555906</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1623828555906</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -573,7 +580,8 @@
     <MESSAGE value="mymodel update" />
     <MESSAGE value="shading.sql 数据库备份" />
     <MESSAGE value="jsp change for english" />
-    <option name="LAST_COMMIT_MESSAGE" value="jsp change for english" />
+    <MESSAGE value="model camera light add edit and delete" />
+    <option name="LAST_COMMIT_MESSAGE" value="model camera light add edit and delete" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

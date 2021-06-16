@@ -10,6 +10,8 @@
 <body>
 <script type="text/javascript">
     var temp = '<%= path%>';
+    
+    // box2 中路径导入
 </script>
 <!--导入 所需 js-->
 <script src="<%=path%>/static/js/three.js"></script>
@@ -100,7 +102,7 @@
                                             <div class="label">Name</div>
                                             <div class="field">
                                                 <input id="name" class="Input input" type="text" autocomplete="off"
-                                                       value="AmbientLight"></div>
+                                                       value="AmbientLight" readonly="readonly"></div>
                                         </div>
                                         <div class="property DisplayProperty">
                                             <div class="label">Type</div>
@@ -121,17 +123,20 @@
                                         <div class="property NumberProperty">
                                             <div class="label">Position X</div>
                                             <div class="field"><input id="posX" class="Input input" type="number"
-                                                                      autocomplete="off" value="0"></div>
+                                                                      autocomplete="off" value="0" readonly="readonly">
+                                            </div>
                                         </div>
                                         <div class="property NumberProperty">
                                             <div class="label">Position Y</div>
                                             <div class="field"><input id="posY" class="Input input" type="number"
-                                                                      autocomplete="off" value="0"></div>
+                                                                      autocomplete="off" value="0" readonly="readonly">
+                                            </div>
                                         </div>
                                         <div class="property NumberProperty">
                                             <div class="label">Position Z</div>
                                             <div class="field"><input id="posZ" class="Input input" type="number"
-                                                                      autocomplete="off" value="0"></div>
+                                                                      autocomplete="off" value="0" readonly="readonly">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -146,12 +151,14 @@
                                         <div class="property ColorProperty">
                                             <div class="label">Color</div>
                                             <div class="field"><input id="color" class="Input input" type="color"
-                                                                      autocomplete="off" value="#ffffff"></div>
+                                                                      autocomplete="off" value="#ffffff"
+                                                                      readonly="readonly"></div>
                                         </div>
                                         <div class="property NumberProperty">
                                             <div class="label">Intensity</div>
                                             <div class="field"><input id="intensity" class="Input input" type="number"
-                                                                      autocomplete="off" value="0.24"></div>
+                                                                      autocomplete="off" value="0.24"
+                                                                      readonly="readonly"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -266,13 +273,20 @@
                 type: "GET"
             })
         });
+        
+        // camera shading
+        $("#shading").click(function (){
+            console.log("shading");
+            
+            
+        })
 
         /**
          * tree mode id
          * scene  1
          * model  101
          * camera 201
-         * light  301   
+         * light  301
          */
             // 场景的默认显示：
         var int = tree.render({
@@ -321,10 +335,10 @@
                     }
                 },
                 customOperate: true, // 自定义属性
-            
+
                 operate: function (obj) { // 节点操作 回调
                     debugger;
-                    
+
                     var type = obj.type; // 得到操作类型 add edit del
                     var data = obj.data; // 当前节点的数据
                     var elem = obj.elem; // 得到当前节点元素
@@ -334,10 +348,10 @@
                     console.log(data);
                     if (type == 'add') { //增加节点
                         //返回 key 值
-                        if(id >= 101 && id < 201) { // 模型
+                        if (id >= 101 && id < 201) { // 模型
                             layer.open({
-                                type:2,
-                                area: ['520px','400px'],
+                                type: 2,
+                                area: ['520px', '400px'],
                                 title: 'Model Loading',
                                 content: '<%=path%>/page/getModelAdd',
                                 maxmin: true,
@@ -345,7 +359,7 @@
                                     location.reload();
                                 }
                             })
-                        } else if(id >= 201 && id < 301){
+                        } else if (id >= 201 && id < 301) {
                             layer.open({
                                 type: 2,
                                 area: ['520px', '400px'],
@@ -356,7 +370,7 @@
                                     location.reload();
                                 }
                             })
-                        } else if(id >= 301 && id < 401){
+                        } else if (id >= 301 && id < 401) {
                             layer.open({
                                 type: 2,
                                 area: ['520px', '600px'],
@@ -367,14 +381,14 @@
                                     location.reload();
                                 }
                             })
-                        } else{
+                        } else {
                             layer.msg("Please select the secondary menu!");
                         }
                     } else if (type == 'update') { //修改节点
-                        if(id >= 101 && id < 201) { // 模型
+                        if (id >= 101 && id < 201) { // 模型
                             layer.open({
-                                type:2,
-                                area: ['520px','400px'],
+                                type: 2,
+                                area: ['520px', '400px'],
                                 title: 'Model Loading',
                                 content: '<%=path%>/page/getModelEdit?modelId=' + id,
                                 maxmin: true,
@@ -382,7 +396,7 @@
                                     location.reload();
                                 }
                             })
-                        } else if(id >= 201 && id < 301){
+                        } else if (id >= 201 && id < 301) {
                             layer.open({
                                 type: 2,
                                 area: ['520px', '400px'],
@@ -393,7 +407,7 @@
                                     location.reload();
                                 }
                             })
-                        } else if(id >= 301 && id < 401){
+                        } else if (id >= 301 && id < 401) {
                             layer.open({
                                 type: 2,
                                 area: ['520px', '600px'],
@@ -404,46 +418,47 @@
                                     location.reload();
                                 }
                             })
-                        } else{
+                        } else {
                             layer.msg("Please select the secondary menu!");
                         }
                         console.log(elem.find('.layui-tree-txt').html()); //得到修改后的内容
                     } else if (type == 'del') {  // 删除节点
                         layer.confirm("Are you sure to delete " + data.title + "?", {
-                           btn: ['Confirm', 'Cancel'],
-                           yes: function (index){
-                               var url = "";
-                               if(id >= 101 && id < 201) { // 模型
+                            btn: ['Confirm', 'Cancel'],
+                            yes: function (index) {
+                                var url = "";
+                                if (id >= 101 && id < 201) { // 模型
                                     url = "<%=path%>/Model/DeleteModel?modelId=" + id;
-                               } else if(id >= 201 && id < 301){
-                                   url = "<%=path%>/Camera/DeleteCamera?cameraId=" + id;
-                               } else if(id >= 301 && id < 401){
-                                   url = "<%=path%>/Light/DeleteLight?lightId=" + id;
-                               } else{
-                                   layer.msg("Please select the secondary menu!");
-                               }
-                               $.ajax({
-                                   url: url,
-                                   async: false,
-                                   success: function (result){
-                                       if(result.code == 100){
-                                           layer.msg("delete success");
-                                           parent.layer.close(index);
-                                           location.reload();
-                                       }else{
-                                           layer.msg("delete failed" + result.extend.message);
-                                       }
-                                   },
-                                   error: function (){
-                                       layer.msg("delete request failed");
-                                   }
-                               })
-                           },
-                            btn2: function (index){
-                               parent.layer.close(index);
+                                } else if (id >= 201 && id < 301) {
+                                    url = "<%=path%>/Camera/DeleteCamera?cameraId=" + id;
+                                } else if (id >= 301 && id < 401) {
+                                    url = "<%=path%>/Light/DeleteLight?lightId=" + id;
+                                } else {
+                                    layer.msg("Please select the secondary menu!");
+                                }
+                                $.ajax({
+                                    url: url,
+                                    async: false,
+                                    success: function (result) {
+                                        if (result.code == 100) {
+                                            layer.msg("delete success");
+                                            parent.layer.close(index);
+                                            location.reload();
+                                        } else {
+                                            layer.msg("delete failed" + result.extend.message);
+                                        }
+                                    },
+                                    error: function () {
+                                        layer.msg("delete request failed");
+                                    }
+                                })
+                            },
+                            btn2: function (index) {
+                                parent.layer.close(index);
                             }
                         });
-                    };
+                    }
+                    ;
                 }
             });
 
