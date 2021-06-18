@@ -130,7 +130,7 @@ function myCameraTween(camera, angle, segs, during){
     let v1 = new THREE.Vector3(x, y, z);
     
     // 求旋转轴， v1的垂直单位向量， x = 1, y = 1, z = -(v1.x + v1.y) / v1.z;
-    var n = (new THREE.Vector3(1, 0, -1.0 * v1.x / v1.z)).normalize();
+    var n = (new THREE.Vector3(1, 1, -1.0 * v1.x / v1.z)).normalize();
     
     var endPosArray = new Array();
     var perAngle = angle / segs;
@@ -141,20 +141,29 @@ function myCameraTween(camera, angle, segs, during){
     for(let i = 1; i <= segs; i++){
         //  phi - OC 与 世界坐标系 y 轴夹角
         //  theta - OC 与 世界坐标系 z 轴夹角
-        /** +++++++++++++++++++++++++++++++++++++++ 数据初始化  */ 
+        /** +++++++++++++++++++++++++++++++++++++++ 数据初始化  */
+        // vector = camera.getWorldDirection();
+        // theta = Math.atan2(vector.x, vector.z);
+        // phi = Math.sqrt((vector.x * vector.x) + (vector.z * vector.z));
+        // pitch = Math.atan2(phi, vector.y);
+
         var phi ;
         var theta ; 
         
-        var endPos = updateAngles(r, phi, theta);
+        //var endPos = updateAngles(r, phi, theta);
         
-        // var sinDelta = Math.sin(THREE.Math.degToRad(i * perAngle));
-        // var cosDelta = Math.cos(THREE.Math.degToRad(i * perAngle));
-        //
-        // var tempX = x * (n.x * n.x * (1 - cosDelta) + cosDelta) + y * (n.x * n.y * (1 - cosDelta) - n.z * sinDelta) + z * (n.x * n.z * (1 - cosDelta) + n.y * sinDelta);
-        // var tempY = x * (n.x * n.y * (1 - cosDelta) + n.z * sinDelta) + y * (n.y * n.y * (1 - cosDelta) + cosDelta) + z * (n.y * n.z * (1 - cosDelta) - n.x * sinDelta);
-        // var tempZ = x * (n.x * n.z * (1 - cosDelta) - n.y * sinDelta) + y * (n.y * n.z * (1 - cosDelta) + n.x * sinDelta) + z * (n.z * n.z * (1 - cosDelta) + cosDelta);
-        //
-        // var endPos = { "x": tempX, "y": tempY, "z": tempZ };
+        var sinDelta = Math.sin(THREE.Math.degToRad(i * perAngle));
+        var cosDelta = Math.cos(THREE.Math.degToRad(i * perAngle));
+
+        var tempX = x * (n.x * n.x * (1 - cosDelta) + cosDelta) + y * (n.x * n.y * (1 - cosDelta) - n.z * sinDelta) + z * (n.x * n.z * (1 - cosDelta) + n.y * sinDelta);
+        //var tempY = x * (n.x * n.y * (1 - cosDelta) + n.z * sinDelta) + y * (n.y * n.y * (1 - cosDelta) + cosDelta) + z * (n.y * n.z * (1 - cosDelta) - n.x * sinDelta);
+        var tempZ = x * (n.x * n.z * (1 - cosDelta) - n.y * sinDelta) + y * (n.y * n.z * (1 - cosDelta) + n.x * sinDelta) + z * (n.z * n.z * (1 - cosDelta) + cosDelta);
+        var tempY = 1;
+        
+        debugger;
+        console.log("x :" + tempX + "y :" + tempY + "z: " + tempZ);
+        
+        var endPos = { "x": tempX, "y": tempY, "z": tempZ };
         endPosArray.push(endPos);
     }
     
@@ -180,10 +189,9 @@ function init(){
     initContent();
     initCamera();
     initLight();
-
-    debugger;
+    
     // 相机绕轴 旋转
-    myCameraTween(mv_camera,180, 600, 10000);
+    //myCameraTween(mv_camera,180, 600, 10000);
     
     initStats();
     initControls();
@@ -216,6 +224,7 @@ function onWindowResize(){
 function animate() {
     requestAnimationFrame(animate);
     mv_renderer.render(mv_scene, mv_camera);
+    //objects[0].rotateZ(0.01); 
     mv_composer.render();
     update();
 }

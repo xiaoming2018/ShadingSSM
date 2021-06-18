@@ -9,9 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a927a490-f0fb-4ae5-b8c1-82353338dd4b" name="Default Changelist" comment="model camera light add edit and delete">
+    <list default="true" id="a927a490-f0fb-4ae5-b8c1-82353338dd4b" name="Default Changelist" comment="test for cameta shading">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/web/WEB-INF/views/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/WEB-INF/views/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/web/static/js/Move.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/static/js/Move.js" afterDir="false" />
     </list>
@@ -104,17 +103,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 8.5.65">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="generated-requests#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -299,7 +287,8 @@
       <workItem from="1623390338452" duration="1409000" />
       <workItem from="1623393613792" duration="8439000" />
       <workItem from="1623720741856" duration="6357000" />
-      <workItem from="1623806254962" duration="21996000" />
+      <workItem from="1623806254962" duration="22396000" />
+      <workItem from="1623892515566" duration="8921000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1620630624571</created>
@@ -539,7 +528,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623828555906</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="test for cameta shading">
+      <created>1623834768049</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1623834768049</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -581,7 +577,8 @@
     <MESSAGE value="shading.sql 数据库备份" />
     <MESSAGE value="jsp change for english" />
     <MESSAGE value="model camera light add edit and delete" />
-    <option name="LAST_COMMIT_MESSAGE" value="model camera light add edit and delete" />
+    <MESSAGE value="test for cameta shading" />
+    <option name="LAST_COMMIT_MESSAGE" value="test for cameta shading" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
