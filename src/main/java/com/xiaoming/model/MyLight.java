@@ -9,6 +9,8 @@ public class MyLight {
 
     private String lightType;
 
+    private String lightCastsShadow;
+
     private Float lightPositionX;
 
     private Float lightPositionY;
@@ -19,24 +21,25 @@ public class MyLight {
 
     private Float lightIntensity;
 
+    private Integer sceneId;
+
     private Date createTime;
 
     private Date updateTime;
 
-    private Integer sceneId;
-
-    public MyLight(Integer lightId, String lightTitle, String lightType, Float lightPositionX, Float lightPositionY, Float lightPositionZ, String lightColor, Float lightIntensity, Date createTime, Date updateTime, Integer sceneId) {
+    public MyLight(Integer lightId, String lightTitle, String lightType, String lightCastsShadow, Float lightPositionX, Float lightPositionY, Float lightPositionZ, String lightColor, Float lightIntensity, Integer sceneId, Date createTime, Date updateTime) {
         this.lightId = lightId;
         this.lightTitle = lightTitle;
         this.lightType = lightType;
+        this.lightCastsShadow = lightCastsShadow;
         this.lightPositionX = lightPositionX;
         this.lightPositionY = lightPositionY;
         this.lightPositionZ = lightPositionZ;
         this.lightColor = lightColor;
         this.lightIntensity = lightIntensity;
+        this.sceneId = sceneId;
         this.createTime = createTime;
         this.updateTime = updateTime;
-        this.sceneId = sceneId;
     }
 
     public MyLight() {
@@ -65,6 +68,14 @@ public class MyLight {
 
     public void setLightType(String lightType) {
         this.lightType = lightType == null ? null : lightType.trim();
+    }
+
+    public String getLightCastsShadow() {
+        return lightCastsShadow;
+    }
+
+    public void setLightCastsShadow(String lightCastsShadow) {
+        this.lightCastsShadow = lightCastsShadow == null ? null : lightCastsShadow.trim();
     }
 
     public Float getLightPositionX() {
@@ -107,6 +118,14 @@ public class MyLight {
         this.lightIntensity = lightIntensity;
     }
 
+    public Integer getSceneId() {
+        return sceneId;
+    }
+
+    public void setSceneId(Integer sceneId) {
+        this.sceneId = sceneId;
+    }
+
     public Date getCreateTime() {
         return createTime;
     }
@@ -121,13 +140,5 @@ public class MyLight {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
-    }
-
-    public Integer getSceneId() {
-        return sceneId;
-    }
-
-    public void setSceneId(Integer sceneId) {
-        this.sceneId = sceneId;
     }
 }

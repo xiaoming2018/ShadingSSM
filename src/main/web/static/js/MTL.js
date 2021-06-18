@@ -11,7 +11,6 @@ function initscene() {
     height = div.clientHeight || div.offsetHeight;
     i = width / height;
     scene = new THREE.Scene();
-
     let gridHelper = new THREE.GridHelper(2000, 40);
     scene.add(gridHelper); // 网格辅助
 }
@@ -20,6 +19,7 @@ function initCamera() {
     camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
     camera.position.set(0, 20, 30);
     camera.lookAt(0, 0, 0);
+    camera.up.set(0,1,0);
     scene.add(camera);
 }
 

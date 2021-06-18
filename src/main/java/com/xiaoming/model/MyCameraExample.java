@@ -675,243 +675,603 @@ public class MyCameraExample {
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeIsNull() {
-            addCriterion("Create_time is null");
+        public Criteria andCameraUpXIsNull() {
+            addCriterion("Camera_Up_X is null");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeIsNotNull() {
-            addCriterion("Create_time is not null");
+        public Criteria andCameraUpXIsNotNull() {
+            addCriterion("Camera_Up_X is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeEqualTo(Date value) {
-            addCriterion("Create_time =", value, "createTime");
+        public Criteria andCameraUpXEqualTo(Float value) {
+            addCriterion("Camera_Up_X =", value, "cameraUpX");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeNotEqualTo(Date value) {
-            addCriterion("Create_time <>", value, "createTime");
+        public Criteria andCameraUpXNotEqualTo(Float value) {
+            addCriterion("Camera_Up_X <>", value, "cameraUpX");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeGreaterThan(Date value) {
-            addCriterion("Create_time >", value, "createTime");
+        public Criteria andCameraUpXGreaterThan(Float value) {
+            addCriterion("Camera_Up_X >", value, "cameraUpX");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("Create_time >=", value, "createTime");
+        public Criteria andCameraUpXGreaterThanOrEqualTo(Float value) {
+            addCriterion("Camera_Up_X >=", value, "cameraUpX");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeLessThan(Date value) {
-            addCriterion("Create_time <", value, "createTime");
+        public Criteria andCameraUpXLessThan(Float value) {
+            addCriterion("Camera_Up_X <", value, "cameraUpX");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeLessThanOrEqualTo(Date value) {
-            addCriterion("Create_time <=", value, "createTime");
+        public Criteria andCameraUpXLessThanOrEqualTo(Float value) {
+            addCriterion("Camera_Up_X <=", value, "cameraUpX");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeIn(List<Date> values) {
-            addCriterion("Create_time in", values, "createTime");
+        public Criteria andCameraUpXIn(List<Float> values) {
+            addCriterion("Camera_Up_X in", values, "cameraUpX");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeNotIn(List<Date> values) {
-            addCriterion("Create_time not in", values, "createTime");
+        public Criteria andCameraUpXNotIn(List<Float> values) {
+            addCriterion("Camera_Up_X not in", values, "cameraUpX");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeBetween(Date value1, Date value2) {
-            addCriterion("Create_time between", value1, value2, "createTime");
+        public Criteria andCameraUpXBetween(Float value1, Float value2) {
+            addCriterion("Camera_Up_X between", value1, value2, "cameraUpX");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeNotBetween(Date value1, Date value2) {
-            addCriterion("Create_time not between", value1, value2, "createTime");
+        public Criteria andCameraUpXNotBetween(Float value1, Float value2) {
+            addCriterion("Camera_Up_X not between", value1, value2, "cameraUpX");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeIsNull() {
-            addCriterion("Update_time is null");
+        public Criteria andCameraUpYIsNull() {
+            addCriterion("Camera_Up_Y is null");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeIsNotNull() {
-            addCriterion("Update_time is not null");
+        public Criteria andCameraUpYIsNotNull() {
+            addCriterion("Camera_Up_Y is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeEqualTo(Date value) {
-            addCriterion("Update_time =", value, "updateTime");
+        public Criteria andCameraUpYEqualTo(Float value) {
+            addCriterion("Camera_Up_Y =", value, "cameraUpY");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeNotEqualTo(Date value) {
-            addCriterion("Update_time <>", value, "updateTime");
+        public Criteria andCameraUpYNotEqualTo(Float value) {
+            addCriterion("Camera_Up_Y <>", value, "cameraUpY");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeGreaterThan(Date value) {
-            addCriterion("Update_time >", value, "updateTime");
+        public Criteria andCameraUpYGreaterThan(Float value) {
+            addCriterion("Camera_Up_Y >", value, "cameraUpY");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("Update_time >=", value, "updateTime");
+        public Criteria andCameraUpYGreaterThanOrEqualTo(Float value) {
+            addCriterion("Camera_Up_Y >=", value, "cameraUpY");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeLessThan(Date value) {
-            addCriterion("Update_time <", value, "updateTime");
+        public Criteria andCameraUpYLessThan(Float value) {
+            addCriterion("Camera_Up_Y <", value, "cameraUpY");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeLessThanOrEqualTo(Date value) {
-            addCriterion("Update_time <=", value, "updateTime");
+        public Criteria andCameraUpYLessThanOrEqualTo(Float value) {
+            addCriterion("Camera_Up_Y <=", value, "cameraUpY");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeIn(List<Date> values) {
-            addCriterion("Update_time in", values, "updateTime");
+        public Criteria andCameraUpYIn(List<Float> values) {
+            addCriterion("Camera_Up_Y in", values, "cameraUpY");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeNotIn(List<Date> values) {
-            addCriterion("Update_time not in", values, "updateTime");
+        public Criteria andCameraUpYNotIn(List<Float> values) {
+            addCriterion("Camera_Up_Y not in", values, "cameraUpY");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeBetween(Date value1, Date value2) {
-            addCriterion("Update_time between", value1, value2, "updateTime");
+        public Criteria andCameraUpYBetween(Float value1, Float value2) {
+            addCriterion("Camera_Up_Y between", value1, value2, "cameraUpY");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeNotBetween(Date value1, Date value2) {
-            addCriterion("Update_time not between", value1, value2, "updateTime");
+        public Criteria andCameraUpYNotBetween(Float value1, Float value2) {
+            addCriterion("Camera_Up_Y not between", value1, value2, "cameraUpY");
+            return (Criteria) this;
+        }
+
+        public Criteria andCmaeraUpZIsNull() {
+            addCriterion("Cmaera_Up_Z is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCmaeraUpZIsNotNull() {
+            addCriterion("Cmaera_Up_Z is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCmaeraUpZEqualTo(Float value) {
+            addCriterion("Cmaera_Up_Z =", value, "cmaeraUpZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andCmaeraUpZNotEqualTo(Float value) {
+            addCriterion("Cmaera_Up_Z <>", value, "cmaeraUpZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andCmaeraUpZGreaterThan(Float value) {
+            addCriterion("Cmaera_Up_Z >", value, "cmaeraUpZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andCmaeraUpZGreaterThanOrEqualTo(Float value) {
+            addCriterion("Cmaera_Up_Z >=", value, "cmaeraUpZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andCmaeraUpZLessThan(Float value) {
+            addCriterion("Cmaera_Up_Z <", value, "cmaeraUpZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andCmaeraUpZLessThanOrEqualTo(Float value) {
+            addCriterion("Cmaera_Up_Z <=", value, "cmaeraUpZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andCmaeraUpZIn(List<Float> values) {
+            addCriterion("Cmaera_Up_Z in", values, "cmaeraUpZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andCmaeraUpZNotIn(List<Float> values) {
+            addCriterion("Cmaera_Up_Z not in", values, "cmaeraUpZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andCmaeraUpZBetween(Float value1, Float value2) {
+            addCriterion("Cmaera_Up_Z between", value1, value2, "cmaeraUpZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andCmaeraUpZNotBetween(Float value1, Float value2) {
+            addCriterion("Cmaera_Up_Z not between", value1, value2, "cmaeraUpZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatXIsNull() {
+            addCriterion("Camera_LookAt_X is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatXIsNotNull() {
+            addCriterion("Camera_LookAt_X is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatXEqualTo(Float value) {
+            addCriterion("Camera_LookAt_X =", value, "cameraLookatX");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatXNotEqualTo(Float value) {
+            addCriterion("Camera_LookAt_X <>", value, "cameraLookatX");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatXGreaterThan(Float value) {
+            addCriterion("Camera_LookAt_X >", value, "cameraLookatX");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatXGreaterThanOrEqualTo(Float value) {
+            addCriterion("Camera_LookAt_X >=", value, "cameraLookatX");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatXLessThan(Float value) {
+            addCriterion("Camera_LookAt_X <", value, "cameraLookatX");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatXLessThanOrEqualTo(Float value) {
+            addCriterion("Camera_LookAt_X <=", value, "cameraLookatX");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatXIn(List<Float> values) {
+            addCriterion("Camera_LookAt_X in", values, "cameraLookatX");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatXNotIn(List<Float> values) {
+            addCriterion("Camera_LookAt_X not in", values, "cameraLookatX");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatXBetween(Float value1, Float value2) {
+            addCriterion("Camera_LookAt_X between", value1, value2, "cameraLookatX");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatXNotBetween(Float value1, Float value2) {
+            addCriterion("Camera_LookAt_X not between", value1, value2, "cameraLookatX");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatYIsNull() {
+            addCriterion("Camera_LookAt_Y is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatYIsNotNull() {
+            addCriterion("Camera_LookAt_Y is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatYEqualTo(Float value) {
+            addCriterion("Camera_LookAt_Y =", value, "cameraLookatY");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatYNotEqualTo(Float value) {
+            addCriterion("Camera_LookAt_Y <>", value, "cameraLookatY");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatYGreaterThan(Float value) {
+            addCriterion("Camera_LookAt_Y >", value, "cameraLookatY");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatYGreaterThanOrEqualTo(Float value) {
+            addCriterion("Camera_LookAt_Y >=", value, "cameraLookatY");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatYLessThan(Float value) {
+            addCriterion("Camera_LookAt_Y <", value, "cameraLookatY");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatYLessThanOrEqualTo(Float value) {
+            addCriterion("Camera_LookAt_Y <=", value, "cameraLookatY");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatYIn(List<Float> values) {
+            addCriterion("Camera_LookAt_Y in", values, "cameraLookatY");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatYNotIn(List<Float> values) {
+            addCriterion("Camera_LookAt_Y not in", values, "cameraLookatY");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatYBetween(Float value1, Float value2) {
+            addCriterion("Camera_LookAt_Y between", value1, value2, "cameraLookatY");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatYNotBetween(Float value1, Float value2) {
+            addCriterion("Camera_LookAt_Y not between", value1, value2, "cameraLookatY");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatZIsNull() {
+            addCriterion("Camera_LookAt_Z is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatZIsNotNull() {
+            addCriterion("Camera_LookAt_Z is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatZEqualTo(Float value) {
+            addCriterion("Camera_LookAt_Z =", value, "cameraLookatZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatZNotEqualTo(Float value) {
+            addCriterion("Camera_LookAt_Z <>", value, "cameraLookatZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatZGreaterThan(Float value) {
+            addCriterion("Camera_LookAt_Z >", value, "cameraLookatZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatZGreaterThanOrEqualTo(Float value) {
+            addCriterion("Camera_LookAt_Z >=", value, "cameraLookatZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatZLessThan(Float value) {
+            addCriterion("Camera_LookAt_Z <", value, "cameraLookatZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatZLessThanOrEqualTo(Float value) {
+            addCriterion("Camera_LookAt_Z <=", value, "cameraLookatZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatZIn(List<Float> values) {
+            addCriterion("Camera_LookAt_Z in", values, "cameraLookatZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatZNotIn(List<Float> values) {
+            addCriterion("Camera_LookAt_Z not in", values, "cameraLookatZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatZBetween(Float value1, Float value2) {
+            addCriterion("Camera_LookAt_Z between", value1, value2, "cameraLookatZ");
+            return (Criteria) this;
+        }
+
+        public Criteria andCameraLookatZNotBetween(Float value1, Float value2) {
+            addCriterion("Camera_LookAt_Z not between", value1, value2, "cameraLookatZ");
             return (Criteria) this;
         }
 
         public Criteria andSceneIdIsNull() {
-            addCriterion("Scene_ID is null");
+            addCriterion("scene_id is null");
             return (Criteria) this;
         }
 
         public Criteria andSceneIdIsNotNull() {
-            addCriterion("Scene_ID is not null");
+            addCriterion("scene_id is not null");
             return (Criteria) this;
         }
 
         public Criteria andSceneIdEqualTo(Integer value) {
-            addCriterion("Scene_ID =", value, "sceneId");
+            addCriterion("scene_id =", value, "sceneId");
             return (Criteria) this;
         }
 
         public Criteria andSceneIdNotEqualTo(Integer value) {
-            addCriterion("Scene_ID <>", value, "sceneId");
+            addCriterion("scene_id <>", value, "sceneId");
             return (Criteria) this;
         }
 
         public Criteria andSceneIdGreaterThan(Integer value) {
-            addCriterion("Scene_ID >", value, "sceneId");
+            addCriterion("scene_id >", value, "sceneId");
             return (Criteria) this;
         }
 
         public Criteria andSceneIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("Scene_ID >=", value, "sceneId");
+            addCriterion("scene_id >=", value, "sceneId");
             return (Criteria) this;
         }
 
         public Criteria andSceneIdLessThan(Integer value) {
-            addCriterion("Scene_ID <", value, "sceneId");
+            addCriterion("scene_id <", value, "sceneId");
             return (Criteria) this;
         }
 
         public Criteria andSceneIdLessThanOrEqualTo(Integer value) {
-            addCriterion("Scene_ID <=", value, "sceneId");
+            addCriterion("scene_id <=", value, "sceneId");
             return (Criteria) this;
         }
 
         public Criteria andSceneIdIn(List<Integer> values) {
-            addCriterion("Scene_ID in", values, "sceneId");
+            addCriterion("scene_id in", values, "sceneId");
             return (Criteria) this;
         }
 
         public Criteria andSceneIdNotIn(List<Integer> values) {
-            addCriterion("Scene_ID not in", values, "sceneId");
+            addCriterion("scene_id not in", values, "sceneId");
             return (Criteria) this;
         }
 
         public Criteria andSceneIdBetween(Integer value1, Integer value2) {
-            addCriterion("Scene_ID between", value1, value2, "sceneId");
+            addCriterion("scene_id between", value1, value2, "sceneId");
             return (Criteria) this;
         }
 
         public Criteria andSceneIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("Scene_ID not between", value1, value2, "sceneId");
+            addCriterion("scene_id not between", value1, value2, "sceneId");
             return (Criteria) this;
         }
 
         public Criteria andFieldOfViewIsNull() {
-            addCriterion("Field_of_View is null");
+            addCriterion("field_of_view is null");
             return (Criteria) this;
         }
 
         public Criteria andFieldOfViewIsNotNull() {
-            addCriterion("Field_of_View is not null");
+            addCriterion("field_of_view is not null");
             return (Criteria) this;
         }
 
         public Criteria andFieldOfViewEqualTo(Integer value) {
-            addCriterion("Field_of_View =", value, "fieldOfView");
+            addCriterion("field_of_view =", value, "fieldOfView");
             return (Criteria) this;
         }
 
         public Criteria andFieldOfViewNotEqualTo(Integer value) {
-            addCriterion("Field_of_View <>", value, "fieldOfView");
+            addCriterion("field_of_view <>", value, "fieldOfView");
             return (Criteria) this;
         }
 
         public Criteria andFieldOfViewGreaterThan(Integer value) {
-            addCriterion("Field_of_View >", value, "fieldOfView");
+            addCriterion("field_of_view >", value, "fieldOfView");
             return (Criteria) this;
         }
 
         public Criteria andFieldOfViewGreaterThanOrEqualTo(Integer value) {
-            addCriterion("Field_of_View >=", value, "fieldOfView");
+            addCriterion("field_of_view >=", value, "fieldOfView");
             return (Criteria) this;
         }
 
         public Criteria andFieldOfViewLessThan(Integer value) {
-            addCriterion("Field_of_View <", value, "fieldOfView");
+            addCriterion("field_of_view <", value, "fieldOfView");
             return (Criteria) this;
         }
 
         public Criteria andFieldOfViewLessThanOrEqualTo(Integer value) {
-            addCriterion("Field_of_View <=", value, "fieldOfView");
+            addCriterion("field_of_view <=", value, "fieldOfView");
             return (Criteria) this;
         }
 
         public Criteria andFieldOfViewIn(List<Integer> values) {
-            addCriterion("Field_of_View in", values, "fieldOfView");
+            addCriterion("field_of_view in", values, "fieldOfView");
             return (Criteria) this;
         }
 
         public Criteria andFieldOfViewNotIn(List<Integer> values) {
-            addCriterion("Field_of_View not in", values, "fieldOfView");
+            addCriterion("field_of_view not in", values, "fieldOfView");
             return (Criteria) this;
         }
 
         public Criteria andFieldOfViewBetween(Integer value1, Integer value2) {
-            addCriterion("Field_of_View between", value1, value2, "fieldOfView");
+            addCriterion("field_of_view between", value1, value2, "fieldOfView");
             return (Criteria) this;
         }
 
         public Criteria andFieldOfViewNotBetween(Integer value1, Integer value2) {
-            addCriterion("Field_of_View not between", value1, value2, "fieldOfView");
+            addCriterion("field_of_view not between", value1, value2, "fieldOfView");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeIsNull() {
+            addCriterion("create_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeIsNotNull() {
+            addCriterion("create_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeEqualTo(Date value) {
+            addCriterion("create_time =", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeNotEqualTo(Date value) {
+            addCriterion("create_time <>", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeGreaterThan(Date value) {
+            addCriterion("create_time >", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("create_time >=", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeLessThan(Date value) {
+            addCriterion("create_time <", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeLessThanOrEqualTo(Date value) {
+            addCriterion("create_time <=", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeIn(List<Date> values) {
+            addCriterion("create_time in", values, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeNotIn(List<Date> values) {
+            addCriterion("create_time not in", values, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeBetween(Date value1, Date value2) {
+            addCriterion("create_time between", value1, value2, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeNotBetween(Date value1, Date value2) {
+            addCriterion("create_time not between", value1, value2, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpdateTimeIsNull() {
+            addCriterion("update_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpdateTimeIsNotNull() {
+            addCriterion("update_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpdateTimeEqualTo(Date value) {
+            addCriterion("update_time =", value, "updateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpdateTimeNotEqualTo(Date value) {
+            addCriterion("update_time <>", value, "updateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpdateTimeGreaterThan(Date value) {
+            addCriterion("update_time >", value, "updateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpdateTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("update_time >=", value, "updateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpdateTimeLessThan(Date value) {
+            addCriterion("update_time <", value, "updateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpdateTimeLessThanOrEqualTo(Date value) {
+            addCriterion("update_time <=", value, "updateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpdateTimeIn(List<Date> values) {
+            addCriterion("update_time in", values, "updateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpdateTimeNotIn(List<Date> values) {
+            addCriterion("update_time not in", values, "updateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpdateTimeBetween(Date value1, Date value2) {
+            addCriterion("update_time between", value1, value2, "updateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpdateTimeNotBetween(Date value1, Date value2) {
+            addCriterion("update_time not between", value1, value2, "updateTime");
             return (Criteria) this;
         }
     }

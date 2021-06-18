@@ -56,7 +56,6 @@
             <li class="layui-nav-item">
                 <button type="button" class="layui-btn" id="lightAdd">Light Loading</button>
             </li>
-
             <li class="layui-nav-item">
                 <button type="button" class="layui-btn" id="cameraLoad">Camera Loading</button>
             </li>
@@ -65,13 +64,13 @@
                 <button type="button" class="layui-btn" id="shading">Renderding</button>
             </li>
             <li class="layui-nav-item">
-                <a href="<%=path%>/files/downFile">Configuare Download</a>
-            </li>
-            <li class="layui-nav-item">
                 <button type="button" class="layui-btn" id="reloadConfig">scene Loading</button>
             </li>
             <li class="layui-nav-item">
                 <button type="button" class="layui-btn" id="ImageFusion">Image Fusion</button>
+            </li>
+            <li class="layui-nav-item">
+                <a href="<%=path%>/files/downFile">Configuare Download</a>
             </li>
         </ul>
     </div>
@@ -276,9 +275,7 @@
         
         // camera shading
         $("#shading").click(function (){
-            console.log("shading");
-            
-            
+            layer.msg("camera shading");
         })
 
         /**
@@ -335,7 +332,6 @@
                     }
                 },
                 customOperate: true, // 自定义属性
-
                 operate: function (obj) { // 节点操作 回调
                     debugger;
 
@@ -423,19 +419,21 @@
                         }
                         console.log(elem.find('.layui-tree-txt').html()); //得到修改后的内容
                     } else if (type == 'del') {  // 删除节点
+
+                        var url = "";
+                        if (id >= 101 && id < 201) { // 模型
+                            url = "<%=path%>/Model/DeleteModel?modelId=" + id;
+                        } else if (id >= 201 && id < 301) {
+                            url = "<%=path%>/Camera/DeleteCamera?cameraId=" + id;
+                        } else if (id >= 301 && id < 401) {
+                            url = "<%=path%>/Light/DeleteLight?lightId=" + id;
+                        } else {
+                            layer.msg("Please select the secondary menu!");
+                            return;
+                        }
                         layer.confirm("Are you sure to delete " + data.title + "?", {
                             btn: ['Confirm', 'Cancel'],
                             yes: function (index) {
-                                var url = "";
-                                if (id >= 101 && id < 201) { // 模型
-                                    url = "<%=path%>/Model/DeleteModel?modelId=" + id;
-                                } else if (id >= 201 && id < 301) {
-                                    url = "<%=path%>/Camera/DeleteCamera?cameraId=" + id;
-                                } else if (id >= 301 && id < 401) {
-                                    url = "<%=path%>/Light/DeleteLight?lightId=" + id;
-                                } else {
-                                    layer.msg("Please select the secondary menu!");
-                                }
                                 $.ajax({
                                     url: url,
                                     async: false,

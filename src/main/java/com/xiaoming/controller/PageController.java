@@ -39,6 +39,18 @@ public class PageController {
     @RequestMapping("/toIndex")
     public String ToIndexJSP(Model model) {
         List<JSONObject> sceneList = new ArrayList<>();
+
+        // 默认相机设置
+        JSONObject initcamera = new JSONObject();
+        MyCamera initcam = cameraService.getCameraById(1101);
+        if(initcam == null){
+            model.addAttribute("message", "get init camera error");
+            return "error";
+        }
+        initcamera.put("id", initcam.getCameraId());
+        initcamera.put("title", initcam.getCameraTitle());
+        sceneList.add(initcamera);
+        
         List<MyScene> scenes = sceneService.getScence();
         for (MyScene tmpScene : scenes) {
             JSONObject sce = new JSONObject();
@@ -85,6 +97,8 @@ public class PageController {
         List<JSONObject> cameraList = new ArrayList<>();
         List<MyCamera> cameras = cameraService.getCameraBySceneID(sceneID);
         for (MyCamera tmpCam : cameras){
+            if(tmpCam.getCameraId() == 1101)
+                continue;
             JSONObject came = new JSONObject();
             came.put("id", tmpCam.getCameraId());
             came.put("title", tmpCam.getCameraTitle());

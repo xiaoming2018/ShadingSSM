@@ -3,17 +3,18 @@
 <mapper namespace="com.xiaoming.dao.MyLightMapper">
   <resultMap id="BaseResultMap" type="com.xiaoming.model.MyLight">
     <constructor>
-      <idArg column="Light_ID" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="Light_title" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="Light_Type" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="Light_Position_X" javaType="java.lang.Float" jdbcType="REAL" />
-      <arg column="Light_Position_Y" javaType="java.lang.Float" jdbcType="REAL" />
-      <arg column="Light_Position_Z" javaType="java.lang.Float" jdbcType="REAL" />
-      <arg column="Light_Color" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="Light_Intensity" javaType="java.lang.Float" jdbcType="REAL" />
-      <arg column="Create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-      <arg column="Update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-      <arg column="Scene_ID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <idArg column="light_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="light_title" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="light_type" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="light_casts_shadow" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="light_position_x" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="light_position_y" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="light_position_z" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="light_color" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="light_intensity" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="scene_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
     </constructor>
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -75,8 +76,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    Light_ID, Light_title, Light_Type, Light_Position_X, Light_Position_Y, Light_Position_Z, 
-    Light_Color, Light_Intensity, Create_time, Update_time, Scene_ID
+    light_id, light_title, light_type, light_casts_shadow, light_position_x, light_position_y, 
+    light_position_z, light_color, light_intensity, scene_id, create_time, update_time
   </sql>
   <select id="selectByExample" parameterType="com.xiaoming.model.MyLightExample" resultMap="BaseResultMap">
     select
@@ -97,11 +98,11 @@
     select 
     <include refid="Base_Column_List" />
     from light
-    where Light_ID = #{lightId,jdbcType=INTEGER}
+    where light_id = #{lightId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from light
-    where Light_ID = #{lightId,jdbcType=INTEGER}
+    where light_id = #{lightId,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.xiaoming.model.MyLightExample">
     delete from light
@@ -110,50 +111,55 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.xiaoming.model.MyLight">
-    insert into light (Light_ID, Light_title, Light_Type, 
-      Light_Position_X, Light_Position_Y, Light_Position_Z, 
-      Light_Color, Light_Intensity, Create_time, 
-      Update_time, Scene_ID)
+    insert into light (light_id, light_title, light_type, 
+      light_casts_shadow, light_position_x, light_position_y, 
+      light_position_z, light_color, light_intensity, 
+      scene_id, create_time, update_time
+      )
     values (#{lightId,jdbcType=INTEGER}, #{lightTitle,jdbcType=VARCHAR}, #{lightType,jdbcType=VARCHAR}, 
-      #{lightPositionX,jdbcType=REAL}, #{lightPositionY,jdbcType=REAL}, #{lightPositionZ,jdbcType=REAL}, 
-      #{lightColor,jdbcType=VARCHAR}, #{lightIntensity,jdbcType=REAL}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{sceneId,jdbcType=INTEGER})
+      #{lightCastsShadow,jdbcType=CHAR}, #{lightPositionX,jdbcType=REAL}, #{lightPositionY,jdbcType=REAL}, 
+      #{lightPositionZ,jdbcType=REAL}, #{lightColor,jdbcType=VARCHAR}, #{lightIntensity,jdbcType=REAL}, 
+      #{sceneId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.xiaoming.model.MyLight">
     insert into light
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="lightId != null">
-        Light_ID,
+        light_id,
       </if>
       <if test="lightTitle != null">
-        Light_title,
+        light_title,
       </if>
       <if test="lightType != null">
-        Light_Type,
+        light_type,
+      </if>
+      <if test="lightCastsShadow != null">
+        light_casts_shadow,
       </if>
       <if test="lightPositionX != null">
-        Light_Position_X,
+        light_position_x,
       </if>
       <if test="lightPositionY != null">
-        Light_Position_Y,
+        light_position_y,
       </if>
       <if test="lightPositionZ != null">
-        Light_Position_Z,
+        light_position_z,
       </if>
       <if test="lightColor != null">
-        Light_Color,
+        light_color,
       </if>
       <if test="lightIntensity != null">
-        Light_Intensity,
-      </if>
-      <if test="createTime != null">
-        Create_time,
-      </if>
-      <if test="updateTime != null">
-        Update_time,
+        light_intensity,
       </if>
       <if test="sceneId != null">
-        Scene_ID,
+        scene_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -165,6 +171,9 @@
       </if>
       <if test="lightType != null">
         #{lightType,jdbcType=VARCHAR},
+      </if>
+      <if test="lightCastsShadow != null">
+        #{lightCastsShadow,jdbcType=CHAR},
       </if>
       <if test="lightPositionX != null">
         #{lightPositionX,jdbcType=REAL},
@@ -181,14 +190,14 @@
       <if test="lightIntensity != null">
         #{lightIntensity,jdbcType=REAL},
       </if>
+      <if test="sceneId != null">
+        #{sceneId,jdbcType=INTEGER},
+      </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="sceneId != null">
-        #{sceneId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -202,37 +211,40 @@
     update light
     <set>
       <if test="record.lightId != null">
-        Light_ID = #{record.lightId,jdbcType=INTEGER},
+        light_id = #{record.lightId,jdbcType=INTEGER},
       </if>
       <if test="record.lightTitle != null">
-        Light_title = #{record.lightTitle,jdbcType=VARCHAR},
+        light_title = #{record.lightTitle,jdbcType=VARCHAR},
       </if>
       <if test="record.lightType != null">
-        Light_Type = #{record.lightType,jdbcType=VARCHAR},
+        light_type = #{record.lightType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lightCastsShadow != null">
+        light_casts_shadow = #{record.lightCastsShadow,jdbcType=CHAR},
       </if>
       <if test="record.lightPositionX != null">
-        Light_Position_X = #{record.lightPositionX,jdbcType=REAL},
+        light_position_x = #{record.lightPositionX,jdbcType=REAL},
       </if>
       <if test="record.lightPositionY != null">
-        Light_Position_Y = #{record.lightPositionY,jdbcType=REAL},
+        light_position_y = #{record.lightPositionY,jdbcType=REAL},
       </if>
       <if test="record.lightPositionZ != null">
-        Light_Position_Z = #{record.lightPositionZ,jdbcType=REAL},
+        light_position_z = #{record.lightPositionZ,jdbcType=REAL},
       </if>
       <if test="record.lightColor != null">
-        Light_Color = #{record.lightColor,jdbcType=VARCHAR},
+        light_color = #{record.lightColor,jdbcType=VARCHAR},
       </if>
       <if test="record.lightIntensity != null">
-        Light_Intensity = #{record.lightIntensity,jdbcType=REAL},
-      </if>
-      <if test="record.createTime != null">
-        Create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.updateTime != null">
-        Update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+        light_intensity = #{record.lightIntensity,jdbcType=REAL},
       </if>
       <if test="record.sceneId != null">
-        Scene_ID = #{record.sceneId,jdbcType=INTEGER},
+        scene_id = #{record.sceneId,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -241,17 +253,18 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update light
-    set Light_ID = #{record.lightId,jdbcType=INTEGER},
-      Light_title = #{record.lightTitle,jdbcType=VARCHAR},
-      Light_Type = #{record.lightType,jdbcType=VARCHAR},
-      Light_Position_X = #{record.lightPositionX,jdbcType=REAL},
-      Light_Position_Y = #{record.lightPositionY,jdbcType=REAL},
-      Light_Position_Z = #{record.lightPositionZ,jdbcType=REAL},
-      Light_Color = #{record.lightColor,jdbcType=VARCHAR},
-      Light_Intensity = #{record.lightIntensity,jdbcType=REAL},
-      Create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      Update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-      Scene_ID = #{record.sceneId,jdbcType=INTEGER}
+    set light_id = #{record.lightId,jdbcType=INTEGER},
+      light_title = #{record.lightTitle,jdbcType=VARCHAR},
+      light_type = #{record.lightType,jdbcType=VARCHAR},
+      light_casts_shadow = #{record.lightCastsShadow,jdbcType=CHAR},
+      light_position_x = #{record.lightPositionX,jdbcType=REAL},
+      light_position_y = #{record.lightPositionY,jdbcType=REAL},
+      light_position_z = #{record.lightPositionZ,jdbcType=REAL},
+      light_color = #{record.lightColor,jdbcType=VARCHAR},
+      light_intensity = #{record.lightIntensity,jdbcType=REAL},
+      scene_id = #{record.sceneId,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -260,50 +273,54 @@
     update light
     <set>
       <if test="lightTitle != null">
-        Light_title = #{lightTitle,jdbcType=VARCHAR},
+        light_title = #{lightTitle,jdbcType=VARCHAR},
       </if>
       <if test="lightType != null">
-        Light_Type = #{lightType,jdbcType=VARCHAR},
+        light_type = #{lightType,jdbcType=VARCHAR},
+      </if>
+      <if test="lightCastsShadow != null">
+        light_casts_shadow = #{lightCastsShadow,jdbcType=CHAR},
       </if>
       <if test="lightPositionX != null">
-        Light_Position_X = #{lightPositionX,jdbcType=REAL},
+        light_position_x = #{lightPositionX,jdbcType=REAL},
       </if>
       <if test="lightPositionY != null">
-        Light_Position_Y = #{lightPositionY,jdbcType=REAL},
+        light_position_y = #{lightPositionY,jdbcType=REAL},
       </if>
       <if test="lightPositionZ != null">
-        Light_Position_Z = #{lightPositionZ,jdbcType=REAL},
+        light_position_z = #{lightPositionZ,jdbcType=REAL},
       </if>
       <if test="lightColor != null">
-        Light_Color = #{lightColor,jdbcType=VARCHAR},
+        light_color = #{lightColor,jdbcType=VARCHAR},
       </if>
       <if test="lightIntensity != null">
-        Light_Intensity = #{lightIntensity,jdbcType=REAL},
-      </if>
-      <if test="createTime != null">
-        Create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        Update_time = #{updateTime,jdbcType=TIMESTAMP},
+        light_intensity = #{lightIntensity,jdbcType=REAL},
       </if>
       <if test="sceneId != null">
-        Scene_ID = #{sceneId,jdbcType=INTEGER},
+        scene_id = #{sceneId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where Light_ID = #{lightId,jdbcType=INTEGER}
+    where light_id = #{lightId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xiaoming.model.MyLight">
     update light
-    set Light_title = #{lightTitle,jdbcType=VARCHAR},
-      Light_Type = #{lightType,jdbcType=VARCHAR},
-      Light_Position_X = #{lightPositionX,jdbcType=REAL},
-      Light_Position_Y = #{lightPositionY,jdbcType=REAL},
-      Light_Position_Z = #{lightPositionZ,jdbcType=REAL},
-      Light_Color = #{lightColor,jdbcType=VARCHAR},
-      Light_Intensity = #{lightIntensity,jdbcType=REAL},
-      Create_time = #{createTime,jdbcType=TIMESTAMP},
-      Update_time = #{updateTime,jdbcType=TIMESTAMP},
-      Scene_ID = #{sceneId,jdbcType=INTEGER}
-    where Light_ID = #{lightId,jdbcType=INTEGER}
+    set light_title = #{lightTitle,jdbcType=VARCHAR},
+      light_type = #{lightType,jdbcType=VARCHAR},
+      light_casts_shadow = #{lightCastsShadow,jdbcType=CHAR},
+      light_position_x = #{lightPositionX,jdbcType=REAL},
+      light_position_y = #{lightPositionY,jdbcType=REAL},
+      light_position_z = #{lightPositionZ,jdbcType=REAL},
+      light_color = #{lightColor,jdbcType=VARCHAR},
+      light_intensity = #{lightIntensity,jdbcType=REAL},
+      scene_id = #{sceneId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where light_id = #{lightId,jdbcType=INTEGER}
   </update>
 </mapper>

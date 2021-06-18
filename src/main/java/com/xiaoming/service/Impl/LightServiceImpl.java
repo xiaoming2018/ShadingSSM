@@ -4,7 +4,6 @@ import com.xiaoming.dao.MyLightMapper;
 import com.xiaoming.model.MyLight;
 import com.xiaoming.model.MyLightExample;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import javax.annotation.Resource;
 import java.util.List;

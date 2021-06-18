@@ -1,7 +1,5 @@
 package com.xiaoming.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.util.Date;
 
 public class MyCamera {
@@ -23,15 +21,27 @@ public class MyCamera {
 
     private Float cameraPositionZ;
 
-    private Date createTime;
+    private Float cameraUpX;
 
-    private Date updateTime;
+    private Float cameraUpY;
+
+    private Float cmaeraUpZ;
+
+    private Float cameraLookatX;
+
+    private Float cameraLookatY;
+
+    private Float cameraLookatZ;
 
     private Integer sceneId;
 
     private Integer fieldOfView;
 
-    public MyCamera(Integer cameraId, String cameraTitle, String cameraType, Integer cameraNear, Integer cameraFar, String cameraVisibility, Float cameraPositionX, Float cameraPositionY, Float cameraPositionZ, Date createTime, Date updateTime, Integer sceneId, Integer fieldOfView) {
+    private Date createTime;
+
+    private Date updateTime;
+
+    public MyCamera(Integer cameraId, String cameraTitle, String cameraType, Integer cameraNear, Integer cameraFar, String cameraVisibility, Float cameraPositionX, Float cameraPositionY, Float cameraPositionZ, Float cameraUpX, Float cameraUpY, Float cmaeraUpZ, Float cameraLookatX, Float cameraLookatY, Float cameraLookatZ, Integer sceneId, Integer fieldOfView, Date createTime, Date updateTime) {
         this.cameraId = cameraId;
         this.cameraTitle = cameraTitle;
         this.cameraType = cameraType;
@@ -41,10 +51,16 @@ public class MyCamera {
         this.cameraPositionX = cameraPositionX;
         this.cameraPositionY = cameraPositionY;
         this.cameraPositionZ = cameraPositionZ;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
+        this.cameraUpX = cameraUpX;
+        this.cameraUpY = cameraUpY;
+        this.cmaeraUpZ = cmaeraUpZ;
+        this.cameraLookatX = cameraLookatX;
+        this.cameraLookatY = cameraLookatY;
+        this.cameraLookatZ = cameraLookatZ;
         this.sceneId = sceneId;
         this.fieldOfView = fieldOfView;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
     }
 
     public MyCamera() {
@@ -123,24 +139,52 @@ public class MyCamera {
         this.cameraPositionZ = cameraPositionZ;
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
-    public Date getCreateTime() {
-        return createTime;
+    public Float getCameraUpX() {
+        return cameraUpX;
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCameraUpX(Float cameraUpX) {
+        this.cameraUpX = cameraUpX;
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
-    public Date getUpdateTime() {
-        return updateTime;
+    public Float getCameraUpY() {
+        return cameraUpY;
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setCameraUpY(Float cameraUpY) {
+        this.cameraUpY = cameraUpY;
+    }
+
+    public Float getCmaeraUpZ() {
+        return cmaeraUpZ;
+    }
+
+    public void setCmaeraUpZ(Float cmaeraUpZ) {
+        this.cmaeraUpZ = cmaeraUpZ;
+    }
+
+    public Float getCameraLookatX() {
+        return cameraLookatX;
+    }
+
+    public void setCameraLookatX(Float cameraLookatX) {
+        this.cameraLookatX = cameraLookatX;
+    }
+
+    public Float getCameraLookatY() {
+        return cameraLookatY;
+    }
+
+    public void setCameraLookatY(Float cameraLookatY) {
+        this.cameraLookatY = cameraLookatY;
+    }
+
+    public Float getCameraLookatZ() {
+        return cameraLookatZ;
+    }
+
+    public void setCameraLookatZ(Float cameraLookatZ) {
+        this.cameraLookatZ = cameraLookatZ;
     }
 
     public Integer getSceneId() {
@@ -157,5 +201,21 @@ public class MyCamera {
 
     public void setFieldOfView(Integer fieldOfView) {
         this.fieldOfView = fieldOfView;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }

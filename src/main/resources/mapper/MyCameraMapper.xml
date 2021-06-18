@@ -12,10 +12,16 @@
       <arg column="Camera_Position_X" javaType="java.lang.Float" jdbcType="REAL" />
       <arg column="Camera_Position_Y" javaType="java.lang.Float" jdbcType="REAL" />
       <arg column="Camera_Position_Z" javaType="java.lang.Float" jdbcType="REAL" />
-      <arg column="Create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-      <arg column="Update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-      <arg column="Scene_ID" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="Field_of_View" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="Camera_Up_X" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="Camera_Up_Y" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="Cmaera_Up_Z" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="Camera_LookAt_X" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="Camera_LookAt_Y" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="Camera_LookAt_Z" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="scene_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="field_of_view" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
     </constructor>
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -78,8 +84,9 @@
   </sql>
   <sql id="Base_Column_List">
     Camera_ID, Camera_Title, Camera_Type, Camera_near, Camera_Far, Camera_Visibility, 
-    Camera_Position_X, Camera_Position_Y, Camera_Position_Z, Create_time, Update_time, 
-    Scene_ID, Field_of_View
+    Camera_Position_X, Camera_Position_Y, Camera_Position_Z, Camera_Up_X, Camera_Up_Y, 
+    Cmaera_Up_Z, Camera_LookAt_X, Camera_LookAt_Y, Camera_LookAt_Z, scene_id, field_of_view, 
+    create_time, update_time
   </sql>
   <select id="selectByExample" parameterType="com.xiaoming.model.MyCameraExample" resultMap="BaseResultMap">
     select
@@ -116,13 +123,17 @@
     insert into camera (Camera_ID, Camera_Title, Camera_Type, 
       Camera_near, Camera_Far, Camera_Visibility, 
       Camera_Position_X, Camera_Position_Y, Camera_Position_Z, 
-      Create_time, Update_time, Scene_ID, 
-      Field_of_View)
+      Camera_Up_X, Camera_Up_Y, Cmaera_Up_Z, 
+      Camera_LookAt_X, Camera_LookAt_Y, Camera_LookAt_Z, 
+      scene_id, field_of_view, create_time, 
+      update_time)
     values (#{cameraId,jdbcType=INTEGER}, #{cameraTitle,jdbcType=VARCHAR}, #{cameraType,jdbcType=VARCHAR}, 
       #{cameraNear,jdbcType=INTEGER}, #{cameraFar,jdbcType=INTEGER}, #{cameraVisibility,jdbcType=CHAR}, 
       #{cameraPositionX,jdbcType=REAL}, #{cameraPositionY,jdbcType=REAL}, #{cameraPositionZ,jdbcType=REAL}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{sceneId,jdbcType=INTEGER}, 
-      #{fieldOfView,jdbcType=INTEGER})
+      #{cameraUpX,jdbcType=REAL}, #{cameraUpY,jdbcType=REAL}, #{cmaeraUpZ,jdbcType=REAL}, 
+      #{cameraLookatX,jdbcType=REAL}, #{cameraLookatY,jdbcType=REAL}, #{cameraLookatZ,jdbcType=REAL}, 
+      #{sceneId,jdbcType=INTEGER}, #{fieldOfView,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.xiaoming.model.MyCamera">
     insert into camera
@@ -154,17 +165,35 @@
       <if test="cameraPositionZ != null">
         Camera_Position_Z,
       </if>
-      <if test="createTime != null">
-        Create_time,
+      <if test="cameraUpX != null">
+        Camera_Up_X,
       </if>
-      <if test="updateTime != null">
-        Update_time,
+      <if test="cameraUpY != null">
+        Camera_Up_Y,
+      </if>
+      <if test="cmaeraUpZ != null">
+        Cmaera_Up_Z,
+      </if>
+      <if test="cameraLookatX != null">
+        Camera_LookAt_X,
+      </if>
+      <if test="cameraLookatY != null">
+        Camera_LookAt_Y,
+      </if>
+      <if test="cameraLookatZ != null">
+        Camera_LookAt_Z,
       </if>
       <if test="sceneId != null">
-        Scene_ID,
+        scene_id,
       </if>
       <if test="fieldOfView != null">
-        Field_of_View,
+        field_of_view,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -195,17 +224,35 @@
       <if test="cameraPositionZ != null">
         #{cameraPositionZ,jdbcType=REAL},
       </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
+      <if test="cameraUpX != null">
+        #{cameraUpX,jdbcType=REAL},
       </if>
-      <if test="updateTime != null">
-        #{updateTime,jdbcType=TIMESTAMP},
+      <if test="cameraUpY != null">
+        #{cameraUpY,jdbcType=REAL},
+      </if>
+      <if test="cmaeraUpZ != null">
+        #{cmaeraUpZ,jdbcType=REAL},
+      </if>
+      <if test="cameraLookatX != null">
+        #{cameraLookatX,jdbcType=REAL},
+      </if>
+      <if test="cameraLookatY != null">
+        #{cameraLookatY,jdbcType=REAL},
+      </if>
+      <if test="cameraLookatZ != null">
+        #{cameraLookatZ,jdbcType=REAL},
       </if>
       <if test="sceneId != null">
         #{sceneId,jdbcType=INTEGER},
       </if>
       <if test="fieldOfView != null">
         #{fieldOfView,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -245,17 +292,35 @@
       <if test="record.cameraPositionZ != null">
         Camera_Position_Z = #{record.cameraPositionZ,jdbcType=REAL},
       </if>
-      <if test="record.createTime != null">
-        Create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      <if test="record.cameraUpX != null">
+        Camera_Up_X = #{record.cameraUpX,jdbcType=REAL},
       </if>
-      <if test="record.updateTime != null">
-        Update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      <if test="record.cameraUpY != null">
+        Camera_Up_Y = #{record.cameraUpY,jdbcType=REAL},
+      </if>
+      <if test="record.cmaeraUpZ != null">
+        Cmaera_Up_Z = #{record.cmaeraUpZ,jdbcType=REAL},
+      </if>
+      <if test="record.cameraLookatX != null">
+        Camera_LookAt_X = #{record.cameraLookatX,jdbcType=REAL},
+      </if>
+      <if test="record.cameraLookatY != null">
+        Camera_LookAt_Y = #{record.cameraLookatY,jdbcType=REAL},
+      </if>
+      <if test="record.cameraLookatZ != null">
+        Camera_LookAt_Z = #{record.cameraLookatZ,jdbcType=REAL},
       </if>
       <if test="record.sceneId != null">
-        Scene_ID = #{record.sceneId,jdbcType=INTEGER},
+        scene_id = #{record.sceneId,jdbcType=INTEGER},
       </if>
       <if test="record.fieldOfView != null">
-        Field_of_View = #{record.fieldOfView,jdbcType=INTEGER},
+        field_of_view = #{record.fieldOfView,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -273,10 +338,16 @@
       Camera_Position_X = #{record.cameraPositionX,jdbcType=REAL},
       Camera_Position_Y = #{record.cameraPositionY,jdbcType=REAL},
       Camera_Position_Z = #{record.cameraPositionZ,jdbcType=REAL},
-      Create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      Update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-      Scene_ID = #{record.sceneId,jdbcType=INTEGER},
-      Field_of_View = #{record.fieldOfView,jdbcType=INTEGER}
+      Camera_Up_X = #{record.cameraUpX,jdbcType=REAL},
+      Camera_Up_Y = #{record.cameraUpY,jdbcType=REAL},
+      Cmaera_Up_Z = #{record.cmaeraUpZ,jdbcType=REAL},
+      Camera_LookAt_X = #{record.cameraLookatX,jdbcType=REAL},
+      Camera_LookAt_Y = #{record.cameraLookatY,jdbcType=REAL},
+      Camera_LookAt_Z = #{record.cameraLookatZ,jdbcType=REAL},
+      scene_id = #{record.sceneId,jdbcType=INTEGER},
+      field_of_view = #{record.fieldOfView,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -308,17 +379,35 @@
       <if test="cameraPositionZ != null">
         Camera_Position_Z = #{cameraPositionZ,jdbcType=REAL},
       </if>
-      <if test="createTime != null">
-        Create_time = #{createTime,jdbcType=TIMESTAMP},
+      <if test="cameraUpX != null">
+        Camera_Up_X = #{cameraUpX,jdbcType=REAL},
       </if>
-      <if test="updateTime != null">
-        Update_time = #{updateTime,jdbcType=TIMESTAMP},
+      <if test="cameraUpY != null">
+        Camera_Up_Y = #{cameraUpY,jdbcType=REAL},
+      </if>
+      <if test="cmaeraUpZ != null">
+        Cmaera_Up_Z = #{cmaeraUpZ,jdbcType=REAL},
+      </if>
+      <if test="cameraLookatX != null">
+        Camera_LookAt_X = #{cameraLookatX,jdbcType=REAL},
+      </if>
+      <if test="cameraLookatY != null">
+        Camera_LookAt_Y = #{cameraLookatY,jdbcType=REAL},
+      </if>
+      <if test="cameraLookatZ != null">
+        Camera_LookAt_Z = #{cameraLookatZ,jdbcType=REAL},
       </if>
       <if test="sceneId != null">
-        Scene_ID = #{sceneId,jdbcType=INTEGER},
+        scene_id = #{sceneId,jdbcType=INTEGER},
       </if>
       <if test="fieldOfView != null">
-        Field_of_View = #{fieldOfView,jdbcType=INTEGER},
+        field_of_view = #{fieldOfView,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where Camera_ID = #{cameraId,jdbcType=INTEGER}
@@ -333,10 +422,16 @@
       Camera_Position_X = #{cameraPositionX,jdbcType=REAL},
       Camera_Position_Y = #{cameraPositionY,jdbcType=REAL},
       Camera_Position_Z = #{cameraPositionZ,jdbcType=REAL},
-      Create_time = #{createTime,jdbcType=TIMESTAMP},
-      Update_time = #{updateTime,jdbcType=TIMESTAMP},
-      Scene_ID = #{sceneId,jdbcType=INTEGER},
-      Field_of_View = #{fieldOfView,jdbcType=INTEGER}
+      Camera_Up_X = #{cameraUpX,jdbcType=REAL},
+      Camera_Up_Y = #{cameraUpY,jdbcType=REAL},
+      Cmaera_Up_Z = #{cmaeraUpZ,jdbcType=REAL},
+      Camera_LookAt_X = #{cameraLookatX,jdbcType=REAL},
+      Camera_LookAt_Y = #{cameraLookatY,jdbcType=REAL},
+      Camera_LookAt_Z = #{cameraLookatZ,jdbcType=REAL},
+      scene_id = #{sceneId,jdbcType=INTEGER},
+      field_of_view = #{fieldOfView,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
     where Camera_ID = #{cameraId,jdbcType=INTEGER}
   </update>
 </mapper>
