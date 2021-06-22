@@ -179,7 +179,7 @@
                 <%--   全局视角    --%>
                 <div class="layui-col-md6">
                     <div class="layui-card">
-                        <div class="layui-card-header">Global Rendering</div>
+                        <div class="layui-card-header">User Rendering</div>
                         <div id="display" style="width: 800px; height:580px"
                              class="layui-card-body border:1px solid #F00">
                             <div id="display1"></div>
@@ -189,7 +189,7 @@
                 <%-- 相机渲染展示 --%>
                 <div class="layui-col-md6">
                     <div class="layui-card">
-                        <div class="layui-card-header">Partial Rendering</div>
+                        <div class="layui-card-header">Camera Rendering</div>
                         <div style="width: 800px; height:580px" class="layui-card-body border:1px solid #F00">
                             <div id="display2"></div>
                         </div>

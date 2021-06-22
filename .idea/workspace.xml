@@ -10,19 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a927a490-f0fb-4ae5-b8c1-82353338dd4b" name="Default Changelist" comment="test for cameta shading">
-      <change afterPath="$PROJECT_DIR$/src/main/web/WEB-INF/views/error.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/PageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/PageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/MyCamera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/MyCamera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/MyCameraExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/MyCameraExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/MyLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/MyLight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/MyLightExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/model/MyLightExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/service/Impl/LightServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/service/Impl/LightServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/FilesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/FilesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/service/Impl/CameraServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/service/Impl/CameraServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/MyCameraMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/MyCameraMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/MyLightMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/MyLightMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/web/WEB-INF/views/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/WEB-INF/views/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/web/static/js/MTL.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/static/js/MTL.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,19 +105,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 8.5.65">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="generated-requests#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -312,6 +291,10 @@
       <workItem from="1623720741856" duration="6357000" />
       <workItem from="1623806254962" duration="22396000" />
       <workItem from="1623892515566" duration="20547000" />
+      <workItem from="1624238023593" duration="3794000" />
+      <workItem from="1624242528183" duration="2481000" />
+      <workItem from="1624324506858" duration="151000" />
+      <workItem from="1624325106346" duration="4779000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1620630624571</created>
@@ -645,7 +628,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/controller/FilesController.java</url>
-          <line>165</line>
+          <line>167</line>
           <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

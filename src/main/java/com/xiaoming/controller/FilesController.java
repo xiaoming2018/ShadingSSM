@@ -141,6 +141,8 @@ public class FilesController {
         List<MyCamera> cameraList = cameraService.getCameraBySceneID(1);
         for(MyCamera tmpCam : cameraList){
             JSONObject cam = new JSONObject();
+            if(tmpCam.getCameraId() == 1101)
+                continue;
             cam.put("eye", new Float[]{tmpCam.getCameraPositionX(), tmpCam.getCameraPositionY(), tmpCam.getCameraPositionZ()});
             // 相机 视角中心
             cam.put("lookat", new Float[]{Float.valueOf(0), Float.valueOf(0),Float.valueOf(0)});
