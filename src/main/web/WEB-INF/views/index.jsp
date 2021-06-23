@@ -203,13 +203,19 @@
     <!-- 页面加载完成后 进行渲染展示  -->
     window.onload = function () {
         var models = new Array();
-        debugger;
+        var cameras = new Array();
+        var lights = new Array();
+        var initCamera = new Array();
+        
+        
+        debugger; // 数据获取
         models = ${models};
-        if (models != null) {
-            // 模型记载渲染
-            $("#display1").empty();
-            start(models[0]);
-        }
+        cameras = ${cameras};
+        lights = ${lights}; 
+        initCamera = ${initcam};
+        
+        start(initCamera, models[0], cameras[0], lights[0]);
+        
         draw2();
     }
 </script>

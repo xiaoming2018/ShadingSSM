@@ -38,11 +38,19 @@ public class PageController {
      */
     @RequestMapping("/toIndex")
     public String ToIndexJSP(Model model) {
+        Integer sceneID = 1; // 默认场景ID
+        
         List<JSONObject> sceneList = new ArrayList<>();
 
         // 默认相机设置
         JSONObject initcamera = new JSONObject();
         MyCamera initcam = cameraService.getCameraById(1101);
+
+        System.out.println(new JSONObject().toJSONString(initcam));
+        
+        
+        model.addAttribute("initcam",new JSONObject().toJSONString(initcam));
+        
         if(initcam == null){
             model.addAttribute("message", "get init camera error");
             return "error";
@@ -62,9 +70,20 @@ public class PageController {
             sceneList.add(sce);
         }
         model.addAttribute("treeData", sceneList);
+        
+        // JSON数组 给前端js处理
         List<MyModel> modelList = modelService.getAllModels();
-        JSONArray array = new JSONArray(Collections.singletonList(modelList));
-        model.addAttribute("models", array); // 
+        JSONArray modelArray = new JSONArray(Collections.singletonList(modelList));
+        model.addAttribute("models", modelArray); // 
+        
+        List<MyCamera> cameraList = cameraService.getCameraBySceneID(sceneID);
+        JSONArray cameraArray = new JSONArray(Collections.singletonList(cameraList));
+        model.addAttribute("cameras", cameraArray);
+        
+        List<MyLight> lightList = lightService.getLightBySceneID(sceneID);
+        JSONArray lightArray = new JSONArray(Collections.singletonList(lightList));
+        model.addAttribute("lights", lightArray);
+        
         return "index";
     }
 

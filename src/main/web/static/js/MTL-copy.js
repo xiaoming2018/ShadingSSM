@@ -17,33 +17,34 @@ function initscene() {
 
 function initCamera(initCam) {
     debugger;
-    if (initCam == null) {  // 如果全局初始化相机为空，按照基础参数默认值
+    
+    if(initCam == null) {  // 如果全局初始化相机为空，按照基础参数默认值
         camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
         camera.position.set(0, 20, 30);
         camera.lookAt(0, 0, 0);
-        camera.up.set(0, 1, 0);
+        camera.up.set(0,1,0);
         scene.add(camera);
-    } else {
-        if (initCam.cameraType == "Perspective") {
+    } else{
+        if(initCam.cameraType == "Perspective"){
             // 透视相机
-            camera = new THREE.PerspectiveCamera(initCam.cameraFieldOfView, width / height, initCam.cameraNear, initCam.cameraFar);
+            camera = new THREE.PerspectiveCamera(initCam.cameraFieldOfView, width/height, initCam.cameraNear, initCam.cameraFar);
             camera.position.set(initCam.cameraPositionX, initCam.cameraPositionY, initCam.cameraPositionZ);
             camera.lookAt(initCam.cameraLookatX, initCam.cameraLookatY, initCam.cameraLookatZ);
             camera.up.set(initCam.cameraUpX, initCam.cameraUpY, initCam.cameraUpZ);
             scene.add(camera);
-
-        } else if (initCam.cameraType == "Orthographic") {
-            camera = new THREE.OrthographicCamera(width / -2, width / 2, height / 2, height / -2, initCam.cameraNear, initCam.cameraFar);
+            
+        } else if(initCam.cameraType == "Orthographic"){
+            camera = new THREE.OrthographicCamera(width / - 2, width / 2, height / 2, height / - 2, initCam.cameraNear, initCam.cameraFar);
             camera.position.set(initCam.cameraPositionX, initCam.cameraPositionY, initCam.cameraPositionZ);
             camera.lookAt(initCam.cameraLookatX, initCam.cameraLookatY, initCam.cameraLookatZ);
             camera.up.set(initCam.cameraUpX, initCam.cameraUpY, initCam.cameraUpZ);
             scene.add(camera);
-        } else {
+        } else{
             // 非法相机类型 采用透视相机模型进行初始化处理
             camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
             camera.position.set(0, 20, 30);
             camera.lookAt(0, 0, 0);
-            camera.up.set(0, 1, 0);
+            camera.up.set(0,1,0);
             scene.add(camera);
         }
     }
@@ -76,19 +77,14 @@ function loadObject(i, models) {
     debugger;
     console.log("序号：" + i + " path: " + models[i].modelFilePath);
     var path = models[i].modelFilePath;
+
     var manager = new THREE.LoadingManager();
     manager.addHandler(/\.dds$/i, new THREE.DDSLoader());
     var objLoader = new THREE.OBJLoader(manager);
     objLoader.load(path, function (object) {
         object.traverse(function (child) {
             if (child instanceof THREE.Mesh) {
-                // 设置模型位置、缩放、旋转
-                child.position.set(models[i].modelPositionX, models[i].modelPositionY, models[i].modelPositionZ);
-                child.scale(models[i].modelScaleX, models[i].modelScaleY, models[i].modelScaleZ);
-                child.rotateX = models[i].modelRotationX;
-                child.rotateY = models[i].modelRotationY;
-                child.rotateZ = models[i].modelRotationZ;
-
+                child.position.set(0, 0, 0);
                 child.castShadow = true;
                 child.receiveShadow = true;
                 child.indexId = i;
@@ -103,10 +99,65 @@ function loadObject(i, models) {
         object.indexId = i; // models 下表索引值
         object.name = models[i].modelTitle;
         object.modelid = models[i].modelId;
-
+        
         objects.push(object); // 进行控制拖曳控制
         scene.add(object);
     }, onProgress, onError);
+    
+    // 局部相机参数导入
+
+    // var mtlLoader = new THREE.MTLLoader(manager);
+    // mtlLoader.load("/upload/box.mtl", function (materials) {
+    //     materials.preload();
+    //     var objLoader = new THREE.OBJLoader(manager);
+    //     objLoader.setMaterials(materials);
+    //     objLoader.load(models[i].modelFilePath, function (object) {
+    //         object.scale.set(1, 1, 1); // 缩放设置 
+    //         object.traverse(function (child) {
+    //             if (child instanceof THREE.Mesh) {
+    //                 child.castShadow = true;
+    //                 child.receiveShadow = true;
+    //             }
+    //         });
+    //         let bbox = new THREE.Box3().setFromObject(object);
+    //         x = bbox.max.x - bbox.min.x;
+    //         y = bbox.max.y - bbox.min.y;
+    //         z = bbox.max.z - bbox.min.z;
+    //        
+    //         debugger;
+    //         let tempx = -(bbox.max.x - bbox.min.x)/ 2 + (i * 10);
+    //         console.log(tempx);
+    //        
+    //         object.position.set(-(bbox.max.x - bbox.min.x) / 2 + (i * 10),
+    //             -(bbox.max.y - bbox.min.y) / 2,
+    //             -(bbox.max.z - bbox.min.z) / 2);
+    //        
+    //         debugger;
+    //         object.indexId = i; // models 下表索引值
+    //         object.name = models[i].modelTitle;
+    //         object.modelid = models[i].modelId;
+    //        
+    //         if (y / x >= i) {
+    //             let h = y;
+    //             let fov = camera.fov * Math.PI / 180;
+    //             m = h / (2 * Math.tan(fov * 0.5));
+    //             camera.position.y = 0;
+    //             camera.position.z = 2 * m + (z / 2);
+    //             camera.position.x = 0;
+    //         } else {
+    //             let w = x;
+    //             let h = w * i;
+    //             let Fov = camera.fov * Math.PI / 180;
+    //             m = h / (2 * Math.tan(Fov * 0.5));
+    //             camera.position.y = 0;
+    //             camera.position.z = 2 * m + (z / 2);
+    //             camera.position.x = 0;
+    //         }
+    //         objects.push(object); // 进行控制拖曳控制
+    //         group.add(object);
+    //         scene.add(group);
+    //     }, onProgress, onError);
+    // });
 }
 
 function initDragControls(models) {
@@ -130,7 +181,7 @@ function initDragControls(models) {
  *   -- rotation
  *   -- scale
  *   -- up
- *
+ * 
  * @param event
  * @param models
  */
@@ -156,7 +207,7 @@ function getModelPosition(event, models) {
     model.modelPositionX = tmp_object.position.x;
     model.modelPositionY = tmp_object.position.y;
     model.modelPositionZ = tmp_object.position.z;
-
+    
     // model数据库更新
     delete model.createTime;
     delete model.updateTime;
@@ -164,7 +215,7 @@ function getModelPosition(event, models) {
     $.ajax({
         url: "/ShadingSSM/Model/Update",
         data: model,
-        type: "post",
+        type: "post",   
         success: function (result) {
             if (result.code == 200) {
                 layer.msg("update position information faield, please try again!");
@@ -173,62 +224,52 @@ function getModelPosition(event, models) {
     })
 }
 
-function loadCameraModel(j, cameras) {
-    debugger;
-    var cameraPath = "/upload/camera";
-    var cameraManager = new THREE.LoadingManager();
-    manager.addHandler(/\.dds$/i, new THREE.DDSLoader());
-    var cameraLoader = new THREE.OBJLoad(cameraManager);
-    cameraLoader.load(cameraPath + ".obj", function (object) {
+
+function initObject() {
+    var manager = new THREE.LoadingManager();
+    var texture = new THREE.Texture();
+    var loader = new THREE.ImageLoader(manager);
+    //loader.load('webgl_resource/models/texture/female.jpg', function (image) {
+    loader.load('webgl_resource/models/mtl/textured_material0000_map_Kd.png', function (image) {
+        texture.image = image;
+        texture.needsUpdate = true;
+    });
+
+    var material = new THREE.MeshBasicMaterial({map: texture});
+    var loader = new THREE.OBJLoader(manager);
+    //loader.load('webgl_resource/models/obj/Female.obj', function (object) {
+    loader.load('webgl_resource/models/mtl/textured.obj', function (object) {
+        var mesh = new THREE.Mesh(object, material);
         object.traverse(function (child) {
             if (child instanceof THREE.Mesh) {
-                child.position.set(cameras[j].cameraPositionX, cameras[j].cameraPositionY, cameras[j].cameraPositionX);
-                child.scale(1,1,1);
-                // 旋转角度计算 lookat position and up
+                child.material.map = texture;
+                child.position.set(0, 3, -3);
                 child.castShadow = true;
                 child.receiveShadow = true;
-                child.indexId = j;
-                child.name = cameras[j].cameraTitle;
-                child.cameraId = models[j].cameraId;
             }
         });
-        object.castShadow = true;
+        object.castShadow = true;  // 模型也产生阴影
         object.receiveShadow = true;
-        
-        object.indexId = j; // 相机索引值
-        object.name = cameras[j].cameraTitle;
-        object.cameraId = cameras[j].cameraId;
-        
-        objects.push(object);
-        scene.add(object);
-    }, onProgress, onError);
+        scene.add(object);//将导入的模型添加到场景
+    });
 }
-
 
 //初始化灯光
 var light;
 var amlight;
 
-function initLight(light) {
-    // light 初始化设置
-    for(var k = 0; k < light.length; k++){
-        if(light[k].cameraType == "Perspective"){
-            amlight = new THREE.AmbientLight(light[k].lightColor, light[k].lightIntensity);
-            amlight.position.set(light[k].lightPositionX, light[k].lightPositionY, light[k].lightPositionZ);
-            scene.add(amlight);
-        } else if(light[k].cameraType == "SpotLight"){
-            light = new THREE.SpotLight(light[k].lightColor, light[k].lightIntensity);
-            light.position.set(light[k].lightPositionX, light[k].lightPositionY, light[k].lightPositionZ);
-            light.castShadow = true;
-            light.shadowMapHeight = 2048;
-            light.shadowMapWidth = 2048;
-            scene.add(light);
-        } else {
-            // amlight = new THREE.AmbientLight(0xFFFFFF, 0.5);
-            // amlight.position.set(100, 100, 100);
-            // scene.add(amlight);
-        }
-    }
+function initLight() {
+    amlight = new THREE.AmbientLight(0xFFFFFF, 0.5);
+    amlight.position.set(100, 100, 100);
+    scene.add(amlight);
+
+    light = new THREE.SpotLight(0xFFFFFF, 0.5);
+    // light.position.set(2, 10, 10);
+    light.position.set(200, 200, 200);
+    light.castShadow = true;
+    light.shadowMapHeight = 2048;
+    light.shadowMapWidth = 2048;
+    scene.add(light);
 }
 
 var plane;
@@ -267,8 +308,7 @@ function initControls() {
 }
 
 function start(initCam, models, cameras, light) {
-
-    debugger;
+    
     // 初始化场景对象
     initscene();
     initCamera(initCam);
@@ -281,14 +321,12 @@ function start(initCam, models, cameras, light) {
         debugger;
         loadObject(i, models);
     }
-    for (var j = 0; j < cameras.length; j++) {
-        loadCameraModel(j, cameras[j]);
-    }
-    initLight(light);
+    initLight();
     initControls();
+
     composer = new THREE.ThreeJs_Composer(renderer, scene, camera, options);
 
-    initDragControls(models, cameras);
+    initDragControls(models);
     animate();
     document.getElementById('display1').appendChild(renderer.domElement);
 }

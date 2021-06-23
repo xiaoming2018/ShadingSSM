@@ -6,8 +6,8 @@
       <idArg column="Camera_ID" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="Camera_Title" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="Camera_Type" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="Camera_near" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="Camera_Far" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="Camera_near" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="Camera_Far" javaType="java.lang.Float" jdbcType="REAL" />
       <arg column="Camera_Visibility" javaType="java.lang.String" jdbcType="CHAR" />
       <arg column="Camera_Position_X" javaType="java.lang.Float" jdbcType="REAL" />
       <arg column="Camera_Position_Y" javaType="java.lang.Float" jdbcType="REAL" />
@@ -19,7 +19,7 @@
       <arg column="Camera_LookAt_Y" javaType="java.lang.Float" jdbcType="REAL" />
       <arg column="Camera_LookAt_Z" javaType="java.lang.Float" jdbcType="REAL" />
       <arg column="scene_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="field_of_view" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="Camera_field_of_view" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
     </constructor>
@@ -85,7 +85,7 @@
   <sql id="Base_Column_List">
     Camera_ID, Camera_Title, Camera_Type, Camera_near, Camera_Far, Camera_Visibility, 
     Camera_Position_X, Camera_Position_Y, Camera_Position_Z, Camera_Up_X, Camera_Up_Y, 
-    Cmaera_Up_Z, Camera_LookAt_X, Camera_LookAt_Y, Camera_LookAt_Z, scene_id, field_of_view, 
+    Cmaera_Up_Z, Camera_LookAt_X, Camera_LookAt_Y, Camera_LookAt_Z, scene_id, Camera_field_of_view, 
     create_time, update_time
   </sql>
   <select id="selectByExample" parameterType="com.xiaoming.model.MyCameraExample" resultMap="BaseResultMap">
@@ -125,14 +125,14 @@
       Camera_Position_X, Camera_Position_Y, Camera_Position_Z, 
       Camera_Up_X, Camera_Up_Y, Cmaera_Up_Z, 
       Camera_LookAt_X, Camera_LookAt_Y, Camera_LookAt_Z, 
-      scene_id, field_of_view, create_time, 
+      scene_id, Camera_field_of_view, create_time, 
       update_time)
     values (#{cameraId,jdbcType=INTEGER}, #{cameraTitle,jdbcType=VARCHAR}, #{cameraType,jdbcType=VARCHAR}, 
-      #{cameraNear,jdbcType=INTEGER}, #{cameraFar,jdbcType=INTEGER}, #{cameraVisibility,jdbcType=CHAR}, 
+      #{cameraNear,jdbcType=REAL}, #{cameraFar,jdbcType=REAL}, #{cameraVisibility,jdbcType=CHAR}, 
       #{cameraPositionX,jdbcType=REAL}, #{cameraPositionY,jdbcType=REAL}, #{cameraPositionZ,jdbcType=REAL}, 
       #{cameraUpX,jdbcType=REAL}, #{cameraUpY,jdbcType=REAL}, #{cmaeraUpZ,jdbcType=REAL}, 
       #{cameraLookatX,jdbcType=REAL}, #{cameraLookatY,jdbcType=REAL}, #{cameraLookatZ,jdbcType=REAL}, 
-      #{sceneId,jdbcType=INTEGER}, #{fieldOfView,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{sceneId,jdbcType=INTEGER}, #{cameraFieldOfView,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.xiaoming.model.MyCamera">
@@ -186,8 +186,8 @@
       <if test="sceneId != null">
         scene_id,
       </if>
-      <if test="fieldOfView != null">
-        field_of_view,
+      <if test="cameraFieldOfView != null">
+        Camera_field_of_view,
       </if>
       <if test="createTime != null">
         create_time,
@@ -207,10 +207,10 @@
         #{cameraType,jdbcType=VARCHAR},
       </if>
       <if test="cameraNear != null">
-        #{cameraNear,jdbcType=INTEGER},
+        #{cameraNear,jdbcType=REAL},
       </if>
       <if test="cameraFar != null">
-        #{cameraFar,jdbcType=INTEGER},
+        #{cameraFar,jdbcType=REAL},
       </if>
       <if test="cameraVisibility != null">
         #{cameraVisibility,jdbcType=CHAR},
@@ -245,8 +245,8 @@
       <if test="sceneId != null">
         #{sceneId,jdbcType=INTEGER},
       </if>
-      <if test="fieldOfView != null">
-        #{fieldOfView,jdbcType=INTEGER},
+      <if test="cameraFieldOfView != null">
+        #{cameraFieldOfView,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -275,10 +275,10 @@
         Camera_Type = #{record.cameraType,jdbcType=VARCHAR},
       </if>
       <if test="record.cameraNear != null">
-        Camera_near = #{record.cameraNear,jdbcType=INTEGER},
+        Camera_near = #{record.cameraNear,jdbcType=REAL},
       </if>
       <if test="record.cameraFar != null">
-        Camera_Far = #{record.cameraFar,jdbcType=INTEGER},
+        Camera_Far = #{record.cameraFar,jdbcType=REAL},
       </if>
       <if test="record.cameraVisibility != null">
         Camera_Visibility = #{record.cameraVisibility,jdbcType=CHAR},
@@ -313,8 +313,8 @@
       <if test="record.sceneId != null">
         scene_id = #{record.sceneId,jdbcType=INTEGER},
       </if>
-      <if test="record.fieldOfView != null">
-        field_of_view = #{record.fieldOfView,jdbcType=INTEGER},
+      <if test="record.cameraFieldOfView != null">
+        Camera_field_of_view = #{record.cameraFieldOfView,jdbcType=INTEGER},
       </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -332,8 +332,8 @@
     set Camera_ID = #{record.cameraId,jdbcType=INTEGER},
       Camera_Title = #{record.cameraTitle,jdbcType=VARCHAR},
       Camera_Type = #{record.cameraType,jdbcType=VARCHAR},
-      Camera_near = #{record.cameraNear,jdbcType=INTEGER},
-      Camera_Far = #{record.cameraFar,jdbcType=INTEGER},
+      Camera_near = #{record.cameraNear,jdbcType=REAL},
+      Camera_Far = #{record.cameraFar,jdbcType=REAL},
       Camera_Visibility = #{record.cameraVisibility,jdbcType=CHAR},
       Camera_Position_X = #{record.cameraPositionX,jdbcType=REAL},
       Camera_Position_Y = #{record.cameraPositionY,jdbcType=REAL},
@@ -345,7 +345,7 @@
       Camera_LookAt_Y = #{record.cameraLookatY,jdbcType=REAL},
       Camera_LookAt_Z = #{record.cameraLookatZ,jdbcType=REAL},
       scene_id = #{record.sceneId,jdbcType=INTEGER},
-      field_of_view = #{record.fieldOfView,jdbcType=INTEGER},
+      Camera_field_of_view = #{record.cameraFieldOfView,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
@@ -362,10 +362,10 @@
         Camera_Type = #{cameraType,jdbcType=VARCHAR},
       </if>
       <if test="cameraNear != null">
-        Camera_near = #{cameraNear,jdbcType=INTEGER},
+        Camera_near = #{cameraNear,jdbcType=REAL},
       </if>
       <if test="cameraFar != null">
-        Camera_Far = #{cameraFar,jdbcType=INTEGER},
+        Camera_Far = #{cameraFar,jdbcType=REAL},
       </if>
       <if test="cameraVisibility != null">
         Camera_Visibility = #{cameraVisibility,jdbcType=CHAR},
@@ -400,8 +400,8 @@
       <if test="sceneId != null">
         scene_id = #{sceneId,jdbcType=INTEGER},
       </if>
-      <if test="fieldOfView != null">
-        field_of_view = #{fieldOfView,jdbcType=INTEGER},
+      <if test="cameraFieldOfView != null">
+        Camera_field_of_view = #{cameraFieldOfView,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -416,8 +416,8 @@
     update camera
     set Camera_Title = #{cameraTitle,jdbcType=VARCHAR},
       Camera_Type = #{cameraType,jdbcType=VARCHAR},
-      Camera_near = #{cameraNear,jdbcType=INTEGER},
-      Camera_Far = #{cameraFar,jdbcType=INTEGER},
+      Camera_near = #{cameraNear,jdbcType=REAL},
+      Camera_Far = #{cameraFar,jdbcType=REAL},
       Camera_Visibility = #{cameraVisibility,jdbcType=CHAR},
       Camera_Position_X = #{cameraPositionX,jdbcType=REAL},
       Camera_Position_Y = #{cameraPositionY,jdbcType=REAL},
@@ -429,7 +429,7 @@
       Camera_LookAt_Y = #{cameraLookatY,jdbcType=REAL},
       Camera_LookAt_Z = #{cameraLookatZ,jdbcType=REAL},
       scene_id = #{sceneId,jdbcType=INTEGER},
-      field_of_view = #{fieldOfView,jdbcType=INTEGER},
+      Camera_field_of_view = #{cameraFieldOfView,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where Camera_ID = #{cameraId,jdbcType=INTEGER}

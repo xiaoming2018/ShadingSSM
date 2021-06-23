@@ -1,5 +1,7 @@
 package com.xiaoming.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class MyLight {
@@ -126,18 +128,22 @@ public class MyLight {
         this.sceneId = sceneId;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     public Date getCreateTime() {
         return createTime;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     public Date getUpdateTime() {
         return updateTime;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }

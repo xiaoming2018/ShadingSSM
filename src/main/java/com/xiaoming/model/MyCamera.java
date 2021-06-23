@@ -1,5 +1,7 @@
 package com.xiaoming.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class MyCamera {
@@ -9,9 +11,9 @@ public class MyCamera {
 
     private String cameraType;
 
-    private Integer cameraNear;
+    private Float cameraNear;
 
-    private Integer cameraFar;
+    private Float cameraFar;
 
     private String cameraVisibility;
 
@@ -35,13 +37,13 @@ public class MyCamera {
 
     private Integer sceneId;
 
-    private Integer fieldOfView;
+    private Integer cameraFieldOfView;
 
     private Date createTime;
 
     private Date updateTime;
 
-    public MyCamera(Integer cameraId, String cameraTitle, String cameraType, Integer cameraNear, Integer cameraFar, String cameraVisibility, Float cameraPositionX, Float cameraPositionY, Float cameraPositionZ, Float cameraUpX, Float cameraUpY, Float cmaeraUpZ, Float cameraLookatX, Float cameraLookatY, Float cameraLookatZ, Integer sceneId, Integer fieldOfView, Date createTime, Date updateTime) {
+    public MyCamera(Integer cameraId, String cameraTitle, String cameraType, Float cameraNear, Float cameraFar, String cameraVisibility, Float cameraPositionX, Float cameraPositionY, Float cameraPositionZ, Float cameraUpX, Float cameraUpY, Float cmaeraUpZ, Float cameraLookatX, Float cameraLookatY, Float cameraLookatZ, Integer sceneId, Integer cameraFieldOfView, Date createTime, Date updateTime) {
         this.cameraId = cameraId;
         this.cameraTitle = cameraTitle;
         this.cameraType = cameraType;
@@ -58,7 +60,7 @@ public class MyCamera {
         this.cameraLookatY = cameraLookatY;
         this.cameraLookatZ = cameraLookatZ;
         this.sceneId = sceneId;
-        this.fieldOfView = fieldOfView;
+        this.cameraFieldOfView = cameraFieldOfView;
         this.createTime = createTime;
         this.updateTime = updateTime;
     }
@@ -91,19 +93,19 @@ public class MyCamera {
         this.cameraType = cameraType == null ? null : cameraType.trim();
     }
 
-    public Integer getCameraNear() {
+    public Float getCameraNear() {
         return cameraNear;
     }
 
-    public void setCameraNear(Integer cameraNear) {
+    public void setCameraNear(Float cameraNear) {
         this.cameraNear = cameraNear;
     }
 
-    public Integer getCameraFar() {
+    public Float getCameraFar() {
         return cameraFar;
     }
 
-    public void setCameraFar(Integer cameraFar) {
+    public void setCameraFar(Float cameraFar) {
         this.cameraFar = cameraFar;
     }
 
@@ -195,27 +197,32 @@ public class MyCamera {
         this.sceneId = sceneId;
     }
 
-    public Integer getFieldOfView() {
-        return fieldOfView;
+    public Integer getCameraFieldOfView() {
+        return cameraFieldOfView;
     }
 
-    public void setFieldOfView(Integer fieldOfView) {
-        this.fieldOfView = fieldOfView;
+    public void setCameraFieldOfView(Integer cameraFieldOfView) {
+        this.cameraFieldOfView = cameraFieldOfView;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     public Date getCreateTime() {
         return createTime;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     public Date getUpdateTime() {
         return updateTime;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
+    
 }
