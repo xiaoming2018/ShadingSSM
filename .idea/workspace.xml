@@ -9,16 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a927a490-f0fb-4ae5-b8c1-82353338dd4b" name="Default Changelist" comment="update for json load">
+    <list default="true" id="a927a490-f0fb-4ae5-b8c1-82353338dd4b" name="Default Changelist" comment="update camera view">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/CameraController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/CameraController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/FilesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/FilesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/LightController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/LightController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/ModelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/ModelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/PageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoming/controller/PageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/web/WEB-INF/views/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/WEB-INF/views/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/web/static/js/MTL.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/static/js/MTL.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/web/static/js/box2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/web/static/js/box2.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -312,7 +304,7 @@
       <workItem from="1624325106346" duration="5348000" />
       <workItem from="1624410895618" duration="17659000" />
       <workItem from="1624497170291" duration="301000" />
-      <workItem from="1624497732863" duration="17389000" />
+      <workItem from="1624497732863" duration="19117000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1620630624571</created>
@@ -573,7 +565,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624353982281</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="update camera view">
+      <created>1624522300510</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1624522300510</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -617,7 +616,8 @@
     <MESSAGE value="model camera light add edit and delete" />
     <MESSAGE value="test for cameta shading" />
     <MESSAGE value="update for json load" />
-    <option name="LAST_COMMIT_MESSAGE" value="update for json load" />
+    <MESSAGE value="update camera view" />
+    <option name="LAST_COMMIT_MESSAGE" value="update camera view" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -641,11 +641,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/utils/FileProcess.java</url>
           <line>23</line>
           <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/controller/FilesController.java</url>
-          <line>82</line>
-          <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/xiaoming/controller/LightController.java</url>
