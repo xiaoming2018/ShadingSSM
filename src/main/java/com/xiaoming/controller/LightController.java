@@ -17,7 +17,6 @@ public class LightController {
     @Autowired
     private LightServiceImpl lightService;
 
-
     @ResponseBody
     @RequestMapping("/GetLightById")
     public Msg getLightById(Integer lightId) {
@@ -35,7 +34,7 @@ public class LightController {
         Date date = new Date();
         light.setUpdateTime(date);
         light.setCreateTime(date);
-        
+
         // 动态场景ID
         light.setSceneId(1);
         try {
@@ -54,7 +53,8 @@ public class LightController {
     @ResponseBody
     @RequestMapping("/UpdateLight")
     public Msg updateLight(MyLight light) {
-        System.out.println(light);
+        Date date = new Date();
+        light.setUpdateTime(date);
         try {
             int flag = lightService.updateLight(light);
             if (flag == 1) {
@@ -71,7 +71,6 @@ public class LightController {
     @ResponseBody
     @RequestMapping("/DeleteLight")
     public Msg deleteLight(Integer lightId) {
-        System.out.println(lightId);
         try {
             int flag = lightService.deleteLight(lightId);
             if (flag == 1) {
@@ -84,5 +83,4 @@ public class LightController {
             return Msg.fail().add("message", "delete light failed " + e.getMessage());
         }
     }
-
 }

@@ -29,7 +29,7 @@ public class PageController {
 
     @Autowired
     private CameraServiceImpl cameraService;
-    
+
     @Autowired
     private LightServiceImpl lightService;
 
@@ -39,26 +39,19 @@ public class PageController {
     @RequestMapping("/toIndex")
     public String ToIndexJSP(Model model) {
         Integer sceneID = 1; // 默认场景ID
-        
         List<JSONObject> sceneList = new ArrayList<>();
-
         // 默认相机设置
         JSONObject initcamera = new JSONObject();
         MyCamera initcam = cameraService.getCameraById(1101);
-
-        System.out.println(new JSONObject().toJSONString(initcam));
-        
-        
-        model.addAttribute("initcam",new JSONObject().toJSONString(initcam));
-        
-        if(initcam == null){
+        model.addAttribute("initcam", new JSONObject().toJSONString(initcam));
+        if (initcam == null) {
             model.addAttribute("message", "get init camera error");
             return "error";
         }
         initcamera.put("id", initcam.getCameraId());
         initcamera.put("title", initcam.getCameraTitle());
         sceneList.add(initcamera);
-        
+
         List<MyScene> scenes = sceneService.getScence();
         for (MyScene tmpScene : scenes) {
             JSONObject sce = new JSONObject();
@@ -70,25 +63,25 @@ public class PageController {
             sceneList.add(sce);
         }
         model.addAttribute("treeData", sceneList);
-        
+
         // JSON数组 给前端js处理
         List<MyModel> modelList = modelService.getAllModels();
         JSONArray modelArray = new JSONArray(Collections.singletonList(modelList));
         model.addAttribute("models", modelArray); // 
-        
+
         List<MyCamera> cameraList = cameraService.getCameraBySceneID(sceneID);
         JSONArray cameraArray = new JSONArray(Collections.singletonList(cameraList));
         model.addAttribute("cameras", cameraArray);
-        
+
         List<MyLight> lightList = lightService.getLightBySceneID(sceneID);
         JSONArray lightArray = new JSONArray(Collections.singletonList(lightList));
         model.addAttribute("lights", lightArray);
-        
         return "index";
     }
 
     /**
      * 根据 sceneID 进行 节点拼装
+     *
      * @param sceneID
      * @return
      */
@@ -115,8 +108,8 @@ public class PageController {
         // 封装 camera package
         List<JSONObject> cameraList = new ArrayList<>();
         List<MyCamera> cameras = cameraService.getCameraBySceneID(sceneID);
-        for (MyCamera tmpCam : cameras){
-            if(tmpCam.getCameraId() == 1101)
+        for (MyCamera tmpCam : cameras) {
+            if (tmpCam.getCameraId() == 1101)
                 continue;
             JSONObject came = new JSONObject();
             came.put("id", tmpCam.getCameraId());
@@ -124,18 +117,18 @@ public class PageController {
             came.put("spread", true);
             cameraList.add(came);
         }
-        
+
         JSONObject camera = new JSONObject();
         camera.put("id", 201);
         camera.put("title", "Camera");
         camera.put("spread", true);
         camera.put("children", cameraList);
         ls.add(camera);
-        
+
         // 封装 light package
         List<JSONObject> lightList = new ArrayList<>();
         List<MyLight> lights = lightService.getLightBySceneID(sceneID);
-        for(MyLight tmplight: lights){
+        for (MyLight tmplight : lights) {
             JSONObject lig = new JSONObject();
             lig.put("id", tmplight.getLightId());
             lig.put("title", tmplight.getLightTitle());
@@ -150,7 +143,7 @@ public class PageController {
         ls.add(light);
         return ls;
     }
-    
+
     /**
      * 请求模型文件添加页面
      *
@@ -168,8 +161,7 @@ public class PageController {
      * index 请求模型文件修改页面
      */
     @RequestMapping("/getModelEdit")
-    public String getModelEdit(Integer modelId, Model model){
-        System.out.println(modelId);
+    public String getModelEdit(Integer modelId, Model model) {
         MyModel myModel = modelService.getModelByID(modelId);
         List<MyModelType> modelTypeList = modelTypeService.selectAll();
         model.addAttribute("modelTypeList", modelTypeList);
@@ -181,8 +173,7 @@ public class PageController {
      * index 请求camera 修改界面
      */
     @RequestMapping("/getCameraEdit")
-    public String getCameraEdit(Integer cameraId, Model model){
-        System.out.println(cameraId);
+    public String getCameraEdit(Integer cameraId, Model model) {
         MyCamera myCamera = cameraService.getCameraById(cameraId);
         model.addAttribute("camera", myCamera);
         return "CameraBaseEdit";
@@ -192,8 +183,7 @@ public class PageController {
      * index 请求light 修改页面
      */
     @RequestMapping("/getLightEdit")
-    public String getLightEdit(Integer lightId, Model model){
-        System.out.println(lightId);
+    public String getLightEdit(Integer lightId, Model model) {
         MyLight myLight = lightService.getLightById(lightId);
         model.addAttribute("light", myLight);
         return "LightBaseEdit";
@@ -204,7 +194,7 @@ public class PageController {
      * 请求相机加载页面
      */
     @RequestMapping("/getCameraAdd")
-    public String getCameraAdd(){
+    public String getCameraAdd() {
         return "CameraBaseAdd";
     }
 
@@ -212,7 +202,7 @@ public class PageController {
      * 请求光源加载页面
      */
     @RequestMapping("/getLightAdd")
-    public String getLightAdd(){
+    public String getLightAdd() {
         return "LightBaseAdd";
     }
 

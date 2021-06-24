@@ -57,7 +57,8 @@ public class ModelController {
     @ResponseBody
     @RequestMapping("UpdateModel")
     public Msg updateModel(MyModel model) {
-        System.out.println(model);
+        Date date = new Date();
+        model.setUpdateTime(date);
         try {
             int flag = modelService.updateModel(model);
             if (flag == 1) {
@@ -74,7 +75,6 @@ public class ModelController {
     @ResponseBody
     @RequestMapping("DeleteModel")
     public Msg deleteMode(Integer modelId) {
-        System.out.println(modelId);
         try {
             int flag = modelService.deleteModelByModelId(modelId);
             if (flag == 1) {
@@ -107,21 +107,4 @@ public class ModelController {
         return Msg.success().add("models", models);
     }
 
-    @ResponseBody
-    @RequestMapping("/Update")
-    public Msg modelUpdate(MyModel model) {
-        Date date = new Date();
-        model.setUpdateTime(date);
-        try {
-            int flag = modelService.updateModel(model);
-            if (flag == 1) {
-                return Msg.success().add("message", "insert database success");
-            } else {
-                return Msg.success().add("message", "未改变");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return Msg.fail().add("message", "插入失败");
-        }
-    }
 }

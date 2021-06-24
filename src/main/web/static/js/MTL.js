@@ -71,7 +71,6 @@ var onError = function (xhr) {
     console.log(xhr);
 };
 
-
 function loadObject(i, models) {
     debugger;
     console.log("序号：" + i + " path: " + models[i].modelFilePath);
@@ -84,32 +83,26 @@ function loadObject(i, models) {
             if (child instanceof THREE.Mesh) {
                 // 设置模型位置、缩放、旋转
                 child.position.set(models[i].modelPositionX, models[i].modelPositionY, models[i].modelPositionZ);
-                child.scale(models[i].modelScaleX, models[i].modelScaleY, models[i].modelScaleZ);
+                child.scale.set(models[i].modelScaleX, models[i].modelScaleY, models[i].modelScaleZ);
                 child.rotateX = models[i].modelRotationX;
                 child.rotateY = models[i].modelRotationY;
                 child.rotateZ = models[i].modelRotationZ;
 
                 child.castShadow = true;
                 child.receiveShadow = true;
+
+                child.configType = "model";
                 child.indexId = i;
                 child.name = models[i].modelTitle;
                 child.modelid = models[i].modelId;
             }
         });
-        object.castShadow = true;
-        object.receiveShadow = true;
-
-        debugger;
-        object.indexId = i; // models 下表索引值
-        object.name = models[i].modelTitle;
-        object.modelid = models[i].modelId;
-
         objects.push(object); // 进行控制拖曳控制
         scene.add(object);
     }, onProgress, onError);
 }
 
-function initDragControls(models) {
+function initDragControls(models, cameras) {
     dragControls = new THREE.DragControls(objects, camera, renderer.domElement);
     dragControls.addEventListener('dragstart', function () {
         controls.enabled = false;
@@ -118,11 +111,10 @@ function initDragControls(models) {
     dragControls.addEventListener('dragend', function (event) {
         controls.enabled = true;
         isPaused = false;
-        getModelPosition(event, models);
+        getModelPosition(event, models, cameras);
     })
 }
 
-// get model positon 更新数据
 /**
  * event.object
  *   -- position
@@ -134,119 +126,139 @@ function initDragControls(models) {
  * @param event
  * @param models
  */
-function getModelPosition(event, models) {
+function getModelPosition(event, models, cameras) {
     debugger;
     var tmp_object = event.object;
     console.log(tmp_object);
-    // 进行页面位置更新 与 数据库更新
-    let model = models[tmp_object.indexId];
-    $("#config").css('display', 'block');
-    $("#name").val(model.modelTitle);
-    if (model.modelTypeId == 401) {
-        $("#type").empty().html("OBJ");
-    } else if (model.modelTypeId == 402) {
-        $("#type").empty().html("PLY");
-    } else {
-        $("#type").empty().html("Other");
-    }
-    $("#posX").val(tmp_object.position.x);
-    $("#posY").val(tmp_object.position.y);
-    $("#posZ").val(tmp_object.position.z);
-
-    model.modelPositionX = tmp_object.position.x;
-    model.modelPositionY = tmp_object.position.y;
-    model.modelPositionZ = tmp_object.position.z;
-
-    // model数据库更新
-    delete model.createTime;
-    delete model.updateTime;
-
-    $.ajax({
-        url: "/ShadingSSM/Model/Update",
-        data: model,
-        type: "post",
-        success: function (result) {
-            if (result.code == 200) {
-                layer.msg("update position information faield, please try again!");
-            }
+    if (tmp_object.configType == "model") {
+        // 进行页面位置更新 与 数据库更新
+        let model = models[tmp_object.indexId];
+        $("#light").css('light', 'none'); // 光源折叠
+        $("#config").css('display', 'block');
+        $("#name").val(model.modelTitle);
+        if (model.modelTypeId == 401) {
+            $("#type").empty().html("OBJ");
+        } else if (model.modelTypeId == 402) {
+            $("#type").empty().html("PLY");
+        } else {
+            $("#type").empty().html("Other");
         }
-    })
+        $("#posX").val(tmp_object.position.x);
+        $("#posY").val(tmp_object.position.y);
+        $("#posZ").val(tmp_object.position.z);
+
+        model.modelPositionX = tmp_object.position.x;
+        model.modelPositionY = tmp_object.position.y;
+        model.modelPositionZ = tmp_object.position.z;
+
+        // model数据库更新
+        delete model.createTime;
+        delete model.updateTime;
+
+        $.ajax({
+            url: "/ShadingSSM/Model/UpdateModel",
+            data: model,
+            type: "post",
+            success: function (result) {
+                if (result.code == 200) {
+                    layer.msg("update position information failed, please try again!");
+                }
+            }
+        })
+    } else if (tmp_object.configType == "camera") {
+        let camera = cameras[tmp_object.indexId];
+        $("#config").css('display', 'block');
+        $("#light").css('light', 'none');
+        $("#name").val(camera.cameraTitle);
+
+        $("#type").empty().html(camera.cameraType);
+
+        $("#posX").val(tmp_object.position.x);
+        $("#posY").val(tmp_object.position.y);
+        $("#posZ").val(tmp_object.position.z);
+
+        camera.cameraPositionX = tmp_object.position.x;
+        camera.cameraPositionY = tmp_object.position.y;
+        camera.cameraPositionZ = tmp_object.position.z;
+
+        delete camera.createTime;
+        delete camera.updateTime;
+
+        $.ajax({
+            url: "/ShadingSSM/Camera/UpdateCamera",
+            data: camera,
+            type: "post",
+            success: function (result) {
+                if (result.code == 200) {
+                    layer.msg("update camera position information failed " + result.extend.message);
+                }
+            }
+        });
+    }
 }
 
 function loadCameraModel(j, cameras) {
     debugger;
     var cameraPath = "/upload/camera";
     var cameraManager = new THREE.LoadingManager();
-    manager.addHandler(/\.dds$/i, new THREE.DDSLoader());
-    var cameraLoader = new THREE.OBJLoad(cameraManager);
+    cameraManager.addHandler(/\.dds$/i, new THREE.DDSLoader());
+    var cameraLoader = new THREE.OBJLoader(cameraManager);
     cameraLoader.load(cameraPath + ".obj", function (object) {
         object.traverse(function (child) {
             if (child instanceof THREE.Mesh) {
                 child.position.set(cameras[j].cameraPositionX, cameras[j].cameraPositionY, cameras[j].cameraPositionX);
-                child.scale(1,1,1);
+                child.scale.set(1, 1, 1);
+                
+                // 旋转坐标 计算
+                var thera_z = Math.atan2(cameras[j].cameraPositionY, cameras[j].cameraPositionX);
+                var thera_x = Math.atan2(cameras[j].cameraPositionY, cameras[j].cameraPositionZ);
+                var thera_y = Math.atan2(cameras[j].cameraPositionZ, cameras[j].cameraPositionX);
+                
+                // 角度--弧度 绕自身旋转
+                
+                //child.rotation.set(0, 0, 10);
+                child.rotateY(-45);
+                child.rotateZ(-45);
+                
                 // 旋转角度计算 lookat position and up
                 child.castShadow = true;
                 child.receiveShadow = true;
+
+                child.configType = "camera";
                 child.indexId = j;
                 child.name = cameras[j].cameraTitle;
-                child.cameraId = models[j].cameraId;
+                child.cameraId = cameras[j].cameraId;
             }
         });
-        object.castShadow = true;
-        object.receiveShadow = true;
-        
-        object.indexId = j; // 相机索引值
-        object.name = cameras[j].cameraTitle;
-        object.cameraId = cameras[j].cameraId;
-        
         objects.push(object);
         scene.add(object);
     }, onProgress, onError);
 }
 
-
-//初始化灯光
-var light;
-var amlight;
-
-function initLight(light) {
+function initLight(lights) {
+    debugger;
     // light 初始化设置
-    for(var k = 0; k < light.length; k++){
-        if(light[k].cameraType == "Perspective"){
-            amlight = new THREE.AmbientLight(light[k].lightColor, light[k].lightIntensity);
-            amlight.position.set(light[k].lightPositionX, light[k].lightPositionY, light[k].lightPositionZ);
+    for (var k = 0; k < lights.length; k++) {
+        if (lights[k].lightType == "AmbientLight") {
+            var amlight = new THREE.AmbientLight(lights[k].lightColor, lights[k].lightIntensity);
+            amlight.position.set(lights[k].lightPositionX, lights[k].lightPositionY, lights[k].lightPositionZ);
             scene.add(amlight);
-        } else if(light[k].cameraType == "SpotLight"){
-            light = new THREE.SpotLight(light[k].lightColor, light[k].lightIntensity);
-            light.position.set(light[k].lightPositionX, light[k].lightPositionY, light[k].lightPositionZ);
+        } else if (lights[k].lightType == "SpotLight") {
+            var light = new THREE.SpotLight(lights[k].lightColor, lights[k].lightIntensity);
+            light.position.set(lights[k].lightPositionX, lights[k].lightPositionY, lights[k].lightPositionZ);
             light.castShadow = true;
             light.shadowMapHeight = 2048;
             light.shadowMapWidth = 2048;
             scene.add(light);
         } else {
-            // amlight = new THREE.AmbientLight(0xFFFFFF, 0.5);
-            // amlight.position.set(100, 100, 100);
-            // scene.add(amlight);
+            let amlight = new THREE.AmbientLight(0xFFFFFF, 0.5);
+            amlight.position.set(100, 100, 100);
+            scene.add(amlight);
         }
     }
 }
 
-var plane;
-
-function plane_fun() {
-    var planeGeometry = new THREE.PlaneGeometry(200, 200);//平面
-    var planeMaterial = new THREE.MeshLambertMaterial({color: 0xffffff});
-    plane = new THREE.Mesh(planeGeometry, planeMaterial);
-    plane.rotation.x = -0.5 * Math.PI;//将平面沿着x轴进行旋转
-    plane.position.x = 0;
-    plane.position.y = -0.8;
-    plane.position.z = 0;
-    plane.receiveShadow = true;//平面进行接受阴影
-    scene.add(plane);
-}
-
 function animate() {
-    //camera.updateProjectionMatrix();
     controls.update();
     renderer.render(scene, camera);
     requestAnimationFrame(animate);
@@ -266,27 +278,22 @@ function initControls() {
     controls.enablePan = true;
 }
 
-function start(initCam, models, cameras, light) {
-
+function start(initCam, models, cameras, lights) {
     debugger;
-    // 初始化场景对象
     initscene();
     initCamera(initCam);
-    //plane_fun();
     initrenderer();
-    //initObject();
-
-    // 根据传参 进行多模型加载
     for (var i = 0; i < models.length; i++) {
         debugger;
         loadObject(i, models);
     }
     for (var j = 0; j < cameras.length; j++) {
-        loadCameraModel(j, cameras[j]);
+        loadCameraModel(j, cameras);
     }
-    initLight(light);
+    initLight(lights);
     initControls();
-    composer = new THREE.ThreeJs_Composer(renderer, scene, camera, options);
+   
+   //composer = new THREE.ThreeJs_Composer(renderer, scene, camera, options);
 
     initDragControls(models, cameras);
     animate();

@@ -1,160 +1,151 @@
-var scene2, renderer2, camera2, gui2, light2, stats2, controls2; // 场景 、 渲染器
-var cube4, cube5, cube6;
-var width2, height2; // div width height
+let scene2, renderer2, camera2, light2, controls2; // 场景 、 渲染器
+let width2, height2;
+let objects2 = [];
+let group2 = new THREE.Group();
+let dragControls2; // 模型拖曳
 
-function initRender2(){
+function initScene2() {
     var div2 = document.getElementById("display");
     width2 = div2.clientWidth || div2.offsetWidth;
     height2 = div2.clientHeight || div2.offsetHeight;
+    scene2 = new THREE.Scene(); // 第二场景
+    let gridHelper2 = new THREE.GridHelper(2000, 40);
+    scene2.add(gridHelper2);
+}
 
-    renderer2 = new THREE.WebGLRenderer({
-        antialias: true,
-        preserveDrawingBuffer: false
-    });
+function initCamera2(initCam) {
+    debugger;
+    if (initCam == null) {  // 如果全局初始化相机为空，按照基础参数默认值
+        camera2 = new THREE.PerspectiveCamera(45, width2 / height2, 0.1, 1000);
+        camera2.position.set(0, 30, 30);
+        camera2.lookAt(0, 0, 0);
+        camera2.up.set(0, 1, 0);
+        scene2.add(camera2);
+    } else {
+        if (initCam.cameraType == "Perspective") {
+            // 透视相机
+            camera2 = new THREE.PerspectiveCamera(initCam.cameraFieldOfView, width2 / height2, initCam.cameraNear, initCam.cameraFar);
+            camera2.position.set(initCam.cameraPositionX, initCam.cameraPositionY, initCam.cameraPositionZ);
+            camera2.lookAt(initCam.cameraLookatX, initCam.cameraLookatY, initCam.cameraLookatZ);
+            camera2.up.set(initCam.cameraUpX, initCam.cameraUpY, initCam.cameraUpZ);
+            scene2.add(camera2);
+        } else if (initCam.cameraType == "Orthographic") {
+            camera2 = new THREE.OrthographicCamera(width2 / -2, width2 / 2, height2 / 2, height2 / -2, initCam.cameraNear, initCam.cameraFar);
+            camera2.position.set(initCam.cameraPositionX, initCam.cameraPositionY, initCam.cameraPositionZ);
+            camera2.lookAt(initCam.cameraLookatX, initCam.cameraLookatY, initCam.cameraLookatZ);
+            camera2.up.set(initCam.cameraUpX, initCam.cameraUpY, initCam.cameraUpZ);
+            scene2.add(camera2);
+        } else {
+            // 非法相机类型 采用透视相机模型进行初始化处理
+            camera2 = new THREE.PerspectiveCamera(45, width2 / height2, 0.1, 1000);
+            camera2.position.set(0, 20, 30);
+            camera2.lookAt(0, 0, 0);
+            camera2.up.set(0, 1, 0);
+            scene2.add(camera2);
+        }
+    }
+}
 
-    renderer2.setPixelRatio(window.devicePixelRatio);
+function initRender2() {
+    renderer2 = new THREE.WebGLRenderer({antialias: true,});
     renderer2.setSize(width2, height2);
-    renderer2.setClearColor(0xffffff);
+    renderer2.setPixelRatio(width2 / height2);
+    renderer2.setClearColor(0xb9d3ff, 1);//设置背景颜色(淡蓝色)
     renderer2.shadowMap.enabled = true;
-
+    renderer2.shadowMapSoft = true; // 软阴影
+    renderer2.shadowMapType = THREE.PCFSoftShadowMap; //边缘柔和
     // 指定节点
     document.getElementById("display2").appendChild(renderer2.domElement);
 }
 
-function initCamera2(){
-    camera2 = new THREE.PerspectiveCamera(45, width2 / height2, 0.1, 1000);
-    camera2.position.set(0,0,15);
+function loadObject2(i, models) {
+    debugger;
+    console.log("序号：" + i + " path: " + models[i].modelFilePath);
+    var path = models[i].modelFilePath;
+    var manager = new THREE.LoadingManager();
+    manager.addHandler(/\.dds$/i, new THREE.DDSLoader());
+    var objLoader = new THREE.OBJLoader(manager);
+    objLoader.load(path, function (object) {
+        object.traverse(function (child) {
+            if (child instanceof THREE.Mesh) {
+                // 设置模型位置、缩放、旋转
+                child.position.set(models[i].modelPositionX, models[i].modelPositionY, models[i].modelPositionZ);
+                child.scale.set(models[i].modelScaleX, models[i].modelScaleY, models[i].modelScaleZ);
+                child.rotateX = models[i].modelRotationX;
+                child.rotateY = models[i].modelRotationY;
+                child.rotateZ = models[i].modelRotationZ;
+
+                child.castShadow = true;
+                child.receiveShadow = true;
+
+                child.configType = "model";
+                child.indexId = i;
+                child.name = models[i].modelTitle;
+                child.modelid = models[i].modelId;
+            }
+        });
+        scene2.add(object);
+    }, onProgress, onError);
 }
 
-function initScene2(){
-    // 天空盒纹理
-    var cubeTextureLoader = new THREE.CubeTextureLoader();
-    var path = temp + '/static/textures/cube/space/';
-    cubeTextureLoader.setPath(path);
-    var cubeTexture2 = cubeTextureLoader.load([
-        'right.jpg', 'left.jpg',
-        'top.jpg','bottom.jpg',
-        'front.jpg', 'back.jpg'
-    ]);
-
-    scene2 = new THREE.Scene(); // 第二场景
-    scene2.background = cubeTexture2;
+function initLight2(lights) {
+    debugger;
+    // light 初始化设置
+    for (var k = 0; k < lights.length; k++) {
+        if (lights[k].lightType == "AmbientLight") {
+            var amlight = new THREE.AmbientLight(lights[k].lightColor, lights[k].lightIntensity);
+            amlight.position.set(lights[k].lightPositionX, lights[k].lightPositionY, lights[k].lightPositionZ);
+            scene2.add(amlight);
+        } else if (lights[k].lightType == "SpotLight") {
+            var light = new THREE.SpotLight(lights[k].lightColor, lights[k].lightIntensity);
+            light.position.set(lights[k].lightPositionX, lights[k].lightPositionY, lights[k].lightPositionZ);
+            light.castShadow = true;
+            light.shadowMapHeight = 2048;
+            light.shadowMapWidth = 2048;
+            scene2.add(light);
+        } else {
+            let amlight = new THREE.AmbientLight(0xFFFFFF, 0.5);
+            amlight.position.set(100, 100, 100);
+            scene2.add(amlight);
+        }
+    }
 }
 
-function initLight2(){
-    scene2.add(new THREE.AmbientLight(0x444444)); // 场景2
-
-    light2 = new THREE.DirectionalLight(0xffffff);
-    light2.position.set(0, 20, 20);
-    light2.castShadow = true;
-    light2.shadow.camera.top = 10;
-    light2.shadow.camera.bottom = -10;
-    light2.shadow.camera.left = -10;
-    light2.shadow.camera.right = 10;
-
-    // 平行光需要开启阴影投射
-    light2.castShadow = true;
-    scene2.add(light2); // 场景2
-}
-
-function initModel2() {
-    // 辅助坐标系
-    var helper2 = new THREE.AxesHelper(50);
-    scene2.add(helper2);
-
-    // 材质
-    var material = new THREE.MeshStandardMaterial({color:0x00ffff});
-    // 添加立方体
-    var geometry = new THREE.BoxBufferGeometry(1,1,1);
-
-    // 第一个立方体
-    cube4 = new THREE.Mesh(geometry, material);
-    scene2.add(cube4);
-
-    // 第二个立方体
-    cube5 = new THREE.Mesh(geometry,material);
-    cube5.position.set(3,3,-2);
-    scene2.add(cube5);
-
-    // 第三个立方体
-    cube6 = new THREE.Mesh(geometry,material);
-    cube6.position.set(-3, 3, 2);
-
-    scene2.add(cube6);
-}
-
-function initControls2(){
-    controls2 = new THREE.OrbitControls(this.camera2, this.renderer2.domElement);
-    // 设置控制器的中心点
-    //controls.target.set( 0, 5, 0 );
-    // 如果使用animate方法时，将此函数删除
-    //controls.addEventListener( 'change', render );
-    // 使动画循环使用时阻尼或自转 意思是否有惯性
-    controls2.enableDamping = true;
-    //动态阻尼系数 就是鼠标拖拽旋转灵敏度
-    controls2.dampingFactor = 0.25;
-    //是否可以缩放
-    controls2.enableZoom = true;
-    //是否自动旋转
-    controls2.autoRotate = false;
-    controls2.autoRotateSpeed = 0.5;
-    //设置相机距离原点的最远距离
-    controls2.minDistance = 1;
-    //设置相机距离原点的最远距离
-    controls2.maxDistance = 2000;
-    //是否开启右键拖拽
-    controls2.enablePan = true;
-}
-
-// 每帧额外的运算
-function render2() {
-    // 获取到窗口的一般高度和一半宽度
-    let halfwidth = width / 2;
-    let halfheight = height / 2;
-
-    let vector4 = cube4.position.clone().project(camera2);
-    let vector5 = cube5.position.clone().project(camera2);
-    let vector6 = cube6.position.clone().project(camera2);
-
-    // 修改标签 div 位置
-    $(".four").css({
-        left:vector4.x * halfwidth + halfwidth,
-        top:-vector4.y * halfheight + halfheight
-    });
-
-    $(".five").css({
-        left:vector5.x * halfwidth + halfwidth,
-        top:-vector5.y * halfheight + halfheight
-    });
-
-    $(".six").css({
-        left:vector6.x * halfwidth + halfwidth,
-        top:-vector6.y * halfheight + halfheight
-    });
-}
-
-function onWindowResize2() {
-    camera2.aspect = width / height;
-    camera2.updateProjectionMatrix();
-    renderer2.setSize(width, height); // renderer2
-}
 
 function animate2() {
     // 每帧额外的运算
-    render2();
     controls2.update();
     renderer2.render(scene2, camera2);
     requestAnimationFrame(animate2);
 }
 
-function draw2() {
-    initRender2();
-    initScene2();
-    initCamera2();
-    initLight2();
-    initModel2();
-    initControls2();
+function initControls2() {
+    controls2 = new THREE.OrbitControls(camera2, renderer2.domElement);
+    // 设置控制器的中心点
+    controls2.target.set(0, 0, 0);
+    controls2.enableDamping = true;
+    controls2.dampingFactor = 0.25;
+    controls2.enableZoom = true;
+    controls2.autoRotate = false;
+    controls2.minDistance = 1;
+    controls2.maxDistance = 2000;
+    controls2.enablePan = true;
+}
 
+function draw2(camera, models, lights) {
+    // debugger;
+    // var models = modelList[0];
+    // var lights = lightList[0];
+
+    debugger;
+    initScene2();
+    initCamera2(camera);
+    initRender2();
+    for (var i = 0; i < models.length; i++) {
+        loadObject2(i, models);
+    }
+    initLight2(lights);
+    initControls2();
     animate2();
-    window.onresize = onWindowResize2;
+    document.getElementById('display2').appendChild(renderer2.domElement);
 }

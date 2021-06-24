@@ -24,8 +24,6 @@ public class CameraController {
         camera.setCreateTime(date);
         camera.setUpdateTime(date);
 
-        System.out.println(camera);
-
         // 获取当前场景id
         camera.setSceneId(1);
         camera.setCameraNear(0.1F);
@@ -48,7 +46,8 @@ public class CameraController {
     @ResponseBody
     @RequestMapping("/UpdateCamera")
     public Msg updateCamera(MyCamera camera) {
-        System.out.println(camera.toString());
+        Date date = new Date();
+        camera.setUpdateTime(date);
         try {
             int flag = cameraService.updateCamera(camera);
             if (flag == 1) {
@@ -65,7 +64,6 @@ public class CameraController {
     @ResponseBody
     @RequestMapping("/DeleteCamera")
     public Msg deleteCamera(Integer cameraId) {
-        System.out.println(cameraId);
         try {
             int flag = cameraService.deleteCameraById(cameraId);
             if (flag == 1) {

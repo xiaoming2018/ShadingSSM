@@ -207,7 +207,6 @@
         var lights = new Array();
         var initCamera = new Array();
         
-        
         debugger; // 数据获取
         models = ${models};
         cameras = ${cameras};
@@ -215,8 +214,7 @@
         initCamera = ${initcam};
         
         start(initCamera, models[0], cameras[0], lights[0]);
-        
-        draw2();
+        //draw2(initCamera, models[0], lights[0]);
     }
 </script>
 <script src="<%=path%>/static/layui/layui.js"></script>
@@ -322,6 +320,8 @@
                             type: "post",
                             success: function (result) {
                                 attributeResolution("camera", result.extend.camera);
+                                // 局部视角渲染
+                                draw2(result.extend.camera, ${models}[0], ${lights}[0]);
                             }
                         })
                     } else {
@@ -425,7 +425,6 @@
                         }
                         console.log(elem.find('.layui-tree-txt').html()); //得到修改后的内容
                     } else if (type == 'del') {  // 删除节点
-
                         var url = "";
                         if (id >= 101 && id < 201) { // 模型
                             url = "<%=path%>/Model/DeleteModel?modelId=" + id;
@@ -505,7 +504,6 @@
             }
         }
     });
-</script>
 </script>
 </body>
 </html>
